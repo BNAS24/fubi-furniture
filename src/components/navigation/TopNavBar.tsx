@@ -1,6 +1,5 @@
 "use client";
 import CloseIcon from "@mui/icons-material/Close";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/material/styles";
 import Image from "next/image";
@@ -60,8 +59,8 @@ export const TopNavBar = () => {
                 ...springs,
               }}
             >
-              <Box
-                sx={{
+              <animated.div
+                style={{
                   flex: 1,
                   height: "100%",
                   backgroundColor: theme.palette.background.paper,
