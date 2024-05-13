@@ -65,6 +65,11 @@ nav {
   cursor: pointer;
 }
 
+.menu-span {
+  width: 24px;
+  height: 24px;
+}
+
 footer {
   display: flex;
   flex-direction: column;
