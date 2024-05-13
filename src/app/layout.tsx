@@ -18,7 +18,6 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <AppRouterCacheProvider>
       <ThemeProvider theme={theme}>
         <body className={inter.className}>
-          {/*Navbar*/}
           <TopNavBar />
           {children}
           <Footer />
