@@ -1,38 +1,31 @@
-"use client";
 import { ThemeProvider } from "@emotion/react";
-import Button from "@mui/material/Button";
+import Button, { ButtonProps } from "@mui/material/Button"; // Import ButtonProps from Material-UI
 import theme from "../../_styles/muiTheme";
 
 interface HomepageButtonProps {
   text: string;
-  variantProp: string;
+  variantProp: ButtonProps['variant']; // Define type based on ButtonProps
 }
 
-export const HomepageButton: React.FC<HomepageButtonProps> = ({
+export const HomepageButton = ({
   text,
   variantProp,
-}) => {
-  const hoverStyles =
-    variantProp === "outlined"
-      ? {
-          "&:hover": {
-            color: theme.palette.primary.contrastText,
-            backgroundColor: theme.palette.primary.main,
-          },
-        }
-      : {};
-
+}: HomepageButtonProps) => {
+  
   return (
     <ThemeProvider theme={theme}>
       <Button
-        variant={variantProp as any}
+        variant={variantProp}
         disableElevation
         sx={{
           mt: "16px",
           height: "32px",
           width: "64px",
           borderRadius: "16px",
-          ...hoverStyles,
+          "&:hover": {
+            color: variantProp ? theme.palette.primary.contrastText : null,
+            backgroundColor: variantProp === "outlined" ? theme.palette.primary.main : null,
+          },
         }}
       >
         {text}
