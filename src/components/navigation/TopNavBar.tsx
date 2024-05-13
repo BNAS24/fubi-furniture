@@ -10,6 +10,7 @@ import menuButtonIcon from "../../../public/elements/menu-white.webp";
 import searchButtonIcon from "../../../public/elements/search-white.webp";
 import theme from "../../styles/muiTheme";
 import { useSpring, animated } from "@react-spring/web";
+import Box from "@mui/material/Box";
 
 export const TopNavBar = () => {
   const [navOpened, setNavOpened] = useState(false);
@@ -59,8 +60,8 @@ export const TopNavBar = () => {
                 ...springs,
               }}
             >
-              <animated.div
-                style={{
+              <Box
+                sx={{
                   flex: 1,
                   height: "100%",
                   backgroundColor: theme.palette.background.paper,
