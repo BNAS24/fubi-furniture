@@ -1,5 +1,5 @@
 "use client";
-import { HomepageButton } from "@/components/buttons/HomepageButton";
+import { HomepageButton } from "../components/buttons/HomepageButton";
 import Typography from "@mui/material/Typography";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
