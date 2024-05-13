@@ -3,7 +3,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/material/styles";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import brandLogo from "../../../../public/brand-logo-mobile.svg";
 import bagButtonIcon from "../../../../public/elements/bag-white.webp";
 import menuButtonIcon from "../../../../public/elements/menu-white.webp";
@@ -14,6 +14,11 @@ import Box from "@mui/material/Box";
 
 export const TopNavBar = () => {
   const [navOpened, setNavOpened] = useState(false);
+
+  // Added to stop the screen from scrolling in the background while the navigation menu is open
+  useEffect(() => {
+    navOpened === true ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto";
+  },[navOpened]);
 
   // Define spring animation configuration
   const springs = useSpring({

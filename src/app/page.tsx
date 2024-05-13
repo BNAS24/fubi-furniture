@@ -25,8 +25,8 @@ const EmblacCarousel = () => {
             Pillow Set
           </Typography>
           <div className={styles["pair-of-buttons-container"]}>
-            <HomepageButton text="Shop" variantProp="contained" />
-            <HomepageButton text="Buy" variantProp="outlined" />
+            <HomepageButton text="Shop" variant="contained" />
+            <HomepageButton text="Buy" variant="outlined" />
           </div>
         </div>
         <div className={styles["embla__slide"]}>
@@ -42,8 +42,8 @@ const EmblacCarousel = () => {
             Dining Room Set
           </Typography>
           <div className={styles["pair-of-buttons-container"]}>
-            <HomepageButton text="Shop" variantProp="contained" />
-            <HomepageButton text="Buy" variantProp="outlined" />
+            <HomepageButton text="Shop" variant="contained" />
+            <HomepageButton text="Buy" variant="outlined" />
           </div>
         </div>
         <div className={styles["embla__slide"]}>
@@ -59,8 +59,8 @@ const EmblacCarousel = () => {
             Moon Lamp
           </Typography>
           <div className={styles["pair-of-buttons-container"]}>
-            <HomepageButton text="Shop" variantProp="contained" />
-            <HomepageButton text="Buy" variantProp="outlined" />
+            <HomepageButton text="Shop" variant="contained" />
+            <HomepageButton text="Buy" variant="outlined" />
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default function Home() {
         >
           Vintage Voyage
         </Typography>
-        <HomepageButton text="Shop" variantProp="contained" />
+        <HomepageButton text="Shop" variant="contained" />
       </div>
       <div className={styles["featured-products"]}>
         <EmblacCarousel />
@@ -105,7 +105,7 @@ export default function Home() {
         >
           Lamps
         </Typography>
-        <HomepageButton text="Shop" variantProp="contained" />
+        <HomepageButton text="Shop" variant="contained" />
       </div>
       <div
         className={[styles["featured-categories"], styles["sofas"]].join(" ")}
@@ -122,7 +122,7 @@ export default function Home() {
         >
           Sofas
         </Typography>
-        <HomepageButton text="Shop" variantProp="contained" />
+        <HomepageButton text="Shop" variant="contained" />
       </div>
       <div
         className={[styles["featured-categories"], styles["pillows"]].join(" ")}
@@ -139,7 +139,7 @@ export default function Home() {
         >
           Pillows
         </Typography>
-        <HomepageButton text="Shop" variantProp="contained" />
+        <HomepageButton text="Shop" variant="contained" />
       </div>
     </div>
   );

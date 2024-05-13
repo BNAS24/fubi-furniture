@@ -4,18 +4,18 @@ import theme from "../../_styles/muiTheme";
 
 interface HomepageButtonProps {
   text: string;
-  variantProp: ButtonProps['variant']; // Define type based on ButtonProps
+  variant: ButtonProps['variant']; // Define type based on ButtonProps
 }
 
 export const HomepageButton = ({
   text,
-  variantProp,
+  variant,
 }: HomepageButtonProps) => {
   
   return (
     <ThemeProvider theme={theme}>
       <Button
-        variant={variantProp}
+        variant={variant}
         disableElevation
         sx={{
           mt: "16px",
@@ -23,8 +23,8 @@ export const HomepageButton = ({
           width: "64px",
           borderRadius: "16px",
           "&:hover": {
-            color: variantProp ? theme.palette.primary.contrastText : null,
-            backgroundColor: variantProp === "outlined" ? theme.palette.primary.main : null,
+            color: variant ? theme.palette.primary.contrastText : null,
+            backgroundColor: variant === "outlined" ? theme.palette.primary.main : null,
           },
         }}
       >
