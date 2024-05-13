@@ -1,16 +1,11 @@
+import { Footer } from "@/components/navigation/Footer";
+import { TopNavBar } from "@/components/navigation/TopNavBar";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { ThemeProvider } from "@mui/material/styles";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import Image from "next/image";
-import brandLogo from "../../public/brand-logo-mobile.svg";
-import searchButtonIcon from "../../public/elements/search-white.webp";
-import bagButtonIcon from "../../public/elements/bag-white.webp";
-import menuButtonIcon from "../../public/elements/menu-white.webp";
-import { ThemeProvider } from "@mui/material/styles";
 import theme from "../styles/muiTheme";
-import Typography from "@mui/material/Typography";
-
+import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,43 +18,10 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <AppRouterCacheProvider>
       <ThemeProvider theme={theme}>
         <body className={inter.className}>
-          <nav>
-            <div className="main-nav">
-              <div className="brand-logo-container">
-                <Image alt="brand-logo" src={brandLogo} className="nav-logo" />
-              </div>
-              <div className="nav-controllers">
-                <Image
-                  alt="search"
-                  src={searchButtonIcon}
-                  className="search-button nav-buttons"
-                />
-                <Image
-                  alt="bag"
-                  src={bagButtonIcon}
-                  className="bag-button nav-buttons"
-                />
-                <Image
-                  alt="menu"
-                  src={menuButtonIcon}
-                  className="menu-button nav-buttons"
-                />
-              </div>
-            </div>
-          </nav>
+          {/*Navbar*/}
+          <TopNavBar />
           {children}
-          <footer>
-            <Typography
-              align="center"
-              noWrap
-              sx={{
-                color: "white",
-                fontSize: "16px",
-              }}
-            >
-              Website Created By Brandon Bradley
-            </Typography>
-          </footer>
+          <Footer />
         </body>
       </ThemeProvider>
     </AppRouterCacheProvider>

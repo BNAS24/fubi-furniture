@@ -1,9 +1,9 @@
 "use client";
-import { HomepageButton } from "@/components/buttons/homepageButton";
+import { HomepageButton } from "@/components/buttons/HomepageButton";
 import Typography from "@mui/material/Typography";
-import styles from "./page.module.css";
-import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
+import styles from "./page.module.css";
 
 // Slider component
 const EmblacCarousel = () => {
