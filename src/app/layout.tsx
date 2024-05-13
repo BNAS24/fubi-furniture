@@ -1,10 +1,10 @@
-import { Footer } from "@/components/navigation/Footer";
-import { TopNavBar } from "@/components/navigation/TopNavBar";
+import { Footer } from "./_components/navigation/Footer";
+import { TopNavBar } from "./_components/navigation/Nav";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import theme from "../styles/muiTheme";
+import theme from "./_styles/muiTheme";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 

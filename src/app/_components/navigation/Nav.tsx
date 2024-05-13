@@ -4,11 +4,11 @@ import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/material/styles";
 import Image from "next/image";
 import { useState } from "react";
-import brandLogo from "../../../public/brand-logo-mobile.svg";
-import bagButtonIcon from "../../../public/elements/bag-white.webp";
-import menuButtonIcon from "../../../public/elements/menu-white.webp";
-import searchButtonIcon from "../../../public/elements/search-white.webp";
-import theme from "../../styles/muiTheme";
+import brandLogo from "../../../../public/brand-logo-mobile.svg";
+import bagButtonIcon from "../../../../public/elements/bag-white.webp";
+import menuButtonIcon from "../../../../public/elements/menu-white.webp";
+import searchButtonIcon from "../../../../public/elements/search-white.webp";
+import theme from "../../_styles/muiTheme";
 import { useSpring, animated } from "@react-spring/web";
 import Box from "@mui/material/Box";
 

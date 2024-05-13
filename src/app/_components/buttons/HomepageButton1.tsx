@@ -1,7 +1,7 @@
 "use client";
 import { ThemeProvider } from "@emotion/react";
 import Button from "@mui/material/Button";
-import theme from "../../styles/muiTheme";
+import theme from "../../_styles/muiTheme";
 
 interface HomepageButtonProps {
   text: string;
