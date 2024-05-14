@@ -4,6 +4,8 @@ import Typography from "@mui/material/Typography";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./page.module.css";
+import { slide } from "./_assets/homepage/slideImages";
+import { Container } from "@mui/material";
 
 // Slider component
 const EmblacCarousel = () => {
@@ -12,57 +14,40 @@ const EmblacCarousel = () => {
   return (
     <div className={styles["embla"]} ref={emblaRef}>
       <div className={styles["embla__container"]}>
-        <div className={styles["embla__slide"]}>
-          <Typography
-            align="center"
-            noWrap
+        {slide.map((slide) => (
+          <Container
+            key={slide.id}
+            disableGutters={true}
+            maxWidth={false}
+            className={styles["embla__slide"]}
             sx={{
-              color: "white",
-              fontSize: "32px",
-              textShadow: "0px 2px 4px #000000A6",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundImage: `url(${slide.backgroundImage})`,
+              backgroundPosition: "center",
+              backgroundRepeat: "none",
+              backgroundSize: "cover",
             }}
           >
-            Pillow Set
-          </Typography>
-          <div className={styles["pair-of-buttons-container"]}>
-            <HomepageButton text="Shop" variant="contained" />
-            <HomepageButton text="Buy" variant="outlined" />
-          </div>
-        </div>
-        <div className={styles["embla__slide"]}>
-          <Typography
-            align="center"
-            noWrap
-            sx={{
-              color: "white",
-              fontSize: "32px",
-              textShadow: "0px 2px 4px #000000A6",
-            }}
-          >
-            Dining Room Set
-          </Typography>
-          <div className={styles["pair-of-buttons-container"]}>
-            <HomepageButton text="Shop" variant="contained" />
-            <HomepageButton text="Buy" variant="outlined" />
-          </div>
-        </div>
-        <div className={styles["embla__slide"]}>
-          <Typography
-            align="center"
-            noWrap
-            sx={{
-              color: "white",
-              fontSize: "32px",
-              textShadow: "0px 2px 4px #000000A6",
-            }}
-          >
-            Moon Lamp
-          </Typography>
-          <div className={styles["pair-of-buttons-container"]}>
-            <HomepageButton text="Shop" variant="contained" />
-            <HomepageButton text="Buy" variant="outlined" />
-          </div>
-        </div>
+            <Typography
+              align="center"
+              noWrap
+              sx={{
+                color: "white",
+                fontSize: "32px",
+                textShadow: "0px 2px 4px #000000A6",
+              }}
+            >
+              {slide.name}
+            </Typography>
+            <div className={styles["pair-of-buttons-container"]}>
+              <HomepageButton text="Shop" variant="contained" />
+              <HomepageButton text="Buy" variant="outlined" />
+            </div>
+          </Container>
+        ))}
       </div>
     </div>
   );

@@ -18,8 +18,8 @@ export const TopNavBar = () => {
   // Added to stop the screen from scrolling in the background while the navigation menu is open
   useEffect(() => {
     navOpened === true
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "auto");
+      ? (document.body.style.overflowX = "hidden")
+      : (document.body.style.overflowX = "auto");
   }, [navOpened]);
 
   // Define spring animation configuration
