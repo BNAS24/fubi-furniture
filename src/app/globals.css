@@ -77,3 +77,12 @@ footer {
   height: 96px;
   background-color: var(--main-green);
 }
+
+/*Style for pagination on homepage*/
+.pagination-controls {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+}

@@ -15,7 +15,7 @@ export const slide: SlideContent[] = [
     backgroundImage: "/Furniture/pop-funiture-7.webp",
     id: 2,
   },
-  {
+  { 
     name: "Pullaski Accents",
     backgroundImage: "/Furniture/pop-funiture-8.jpg",
     id: 3,

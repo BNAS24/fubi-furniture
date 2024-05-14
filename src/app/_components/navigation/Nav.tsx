@@ -93,7 +93,7 @@ export const TopNavBar = () => {
                   onClick={() => setNavOpened(!navOpened)}
                   sx={{
                     alignSelf: "flex-end",
-                    fontSize: "32px",
+                    fontSize: "2.5rem",
                     mr: "8px",
                     mt: "8px",
                     color: theme.palette.primary.contrastText,

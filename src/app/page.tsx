@@ -6,6 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import styles from "./page.module.css";
 import { slide } from "./_assets/homepage/slideImages";
 import { Container } from "@mui/material";
+import { SliderPagination } from "./_components/svg/slider-pagination";
 
 // Slider component
 const EmblacCarousel = () => {
@@ -36,7 +37,7 @@ const EmblacCarousel = () => {
               noWrap
               sx={{
                 color: "white",
-                fontSize: "32px",
+                fontSize: "2rem",
                 textShadow: "0px 2px 4px #000000A6",
               }}
             >
@@ -64,7 +65,7 @@ export default function Home() {
           fontWeight={500}
           sx={{
             color: "white",
-            fontSize: "40px",
+            fontSize: "2.5rem",
             textShadow: "0px 2px 4px #000000A6",
           }}
         >
@@ -74,6 +75,7 @@ export default function Home() {
       </div>
       <div className={styles["featured-products"]}>
         <EmblacCarousel />
+        <SliderPagination />
       </div>
       <div
         className={[styles["featured-categories"], styles["lamps"]].join(" ")}
@@ -84,7 +86,7 @@ export default function Home() {
           fontWeight={500}
           sx={{
             color: "white",
-            fontSize: "40px",
+            fontSize: "2.5rem",
             textShadow: "0px 2px 4px #000000A6",
           }}
         >
@@ -101,7 +103,7 @@ export default function Home() {
           fontWeight={500}
           sx={{
             color: "white",
-            fontSize: "40px",
+            fontSize: "2.5rem",
             textShadow: "0px 2px 4px #000000A6",
           }}
         >
@@ -118,7 +120,7 @@ export default function Home() {
           fontWeight={500}
           sx={{
             color: "white",
-            fontSize: "40px",
+            fontSize: "2.5rem",
             textShadow: "0px 2px 4px #000000A6",
           }}
         >

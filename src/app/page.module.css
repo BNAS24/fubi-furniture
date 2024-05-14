@@ -18,6 +18,7 @@
 }
 
 .featured-products {
+    position: relative;
     height: 50vh;
     width: auto;
 }
