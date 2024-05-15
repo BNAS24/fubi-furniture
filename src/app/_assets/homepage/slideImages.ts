@@ -20,4 +20,19 @@ export const slide: SlideContent[] = [
     backgroundImage: "/Furniture/pop-funiture-8.jpg",
     id: 3,
   },
+  { 
+    name: "Brabbu",
+    backgroundImage: "/Furniture/pop-funiture-2.jpg",
+    id: 4,
+  },
+  { 
+    name: "Castlery",
+    backgroundImage: "/Furniture/pop-funiture-4.jpg",
+    id: 5,
+  },
+  { 
+    name: "Fendi Casa",
+    backgroundImage: "/Furniture/pop-funiture-6.jpg",
+    id: 6,
+  },
 ];
