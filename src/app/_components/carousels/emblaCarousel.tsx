@@ -51,9 +51,7 @@ export const EmblacCarousel: React.FC<PropType> = (props) => {
                   textShadow: "0px 2px 4px #000000A6",
                 }}
               >
-                {/* {slide.name} */}
-                {/* {index} */}
-                {`selected: ${selectedIndex}`}
+                {slide.name}
               </Typography>
               <div className="pair-of-buttons-container">
                 <HomepageButton text="Shop" variant="contained" />

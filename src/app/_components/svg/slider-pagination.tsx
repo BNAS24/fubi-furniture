@@ -1,3 +1,5 @@
+"use client";
+
 type Page = {
   slide: {
     name: string;
