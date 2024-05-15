@@ -87,6 +87,7 @@ export const TopNavBar = () => {
                   justifyContent: "flex-start",
                   width: "296px",
                   height: "100%",
+                  padding: "1rem 1rem",
                   color: theme.palette.primary.contrastText,
                   backgroundColor: theme.palette.primary.main,
                 }}
@@ -96,8 +97,8 @@ export const TopNavBar = () => {
                   sx={{
                     alignSelf: "flex-end",
                     fontSize: "2.5rem",
-                    mr: "8px",
-                    mt: "8px",
+                    // mr: "8px",
+                    // mt: "8px",
                     color: theme.palette.primary.contrastText,
                     "&:hover": {
                       cursor: "pointer",
@@ -119,6 +120,7 @@ export const TopNavBar = () => {
                   {navDir.map((nav, index) => (
                     <Typography
                       key={index}
+                      fontWeight={500}
                       sx={{
                         fontSize: "1.5rem",
                         "&:hover": {
