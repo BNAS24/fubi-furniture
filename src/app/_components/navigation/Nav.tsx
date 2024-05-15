@@ -1,18 +1,18 @@
 "use client";
 import CloseIcon from "@mui/icons-material/Close";
+import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import { ThemeProvider } from "@mui/material/styles";
+import { animated, useSpring } from "@react-spring/web";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import brandLogo from "../../../../public/brand-logo-mobile.svg";
 import bagButtonIcon from "../../../../public/elements/bag-white.webp";
 import menuButtonIcon from "../../../../public/elements/menu-white.webp";
 import searchButtonIcon from "../../../../public/elements/search-white.webp";
-import theme from "../../_styles/muiTheme";
-import { useSpring, animated } from "@react-spring/web";
-import Box from "@mui/material/Box";
 import { navDir } from "../../_assets/navigation/navDirectory";
-import Typography from "@mui/material/Typography";
+import theme from "../../_styles/muiTheme";
 
 export const TopNavBar = () => {
   const [navOpened, setNavOpened] = useState(false);
@@ -97,8 +97,6 @@ export const TopNavBar = () => {
                   sx={{
                     alignSelf: "flex-end",
                     fontSize: "2.5rem",
-                    // mr: "8px",
-                    // mt: "8px",
                     color: theme.palette.primary.contrastText,
                     "&:hover": {
                       cursor: "pointer",
@@ -126,10 +124,10 @@ export const TopNavBar = () => {
                         "&:hover": {
                           cursor: "pointer",
                           textDecoration: "underline",
-                        }
+                        },
                       }}
                     >
-                      {nav.title} 
+                      {nav.title}
                     </Typography>
                   ))}
                 </Container>

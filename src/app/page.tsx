@@ -1,13 +1,15 @@
 "use client";
-import { HomepageButton } from "./_components/buttons/HomepageButton1";
+import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import { EmblaOptionsType } from "embla-carousel";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
-import styles from "./page.module.css";
+import { featuredCategories } from "./_assets/homepage/featuredCategories";
 import { slide } from "./_assets/homepage/slideImages";
-import { usePagination } from "./_helpers/emblaPagination";
+import { HomepageButton } from "./_components/buttons/HomepageButton1";
 import { EmblacCarousel } from "./_components/carousels/emblaCarousel";
-import { EmblaOptionsType } from "embla-carousel";
+import { usePagination } from "./_helpers/emblaPagination";
+import styles from "./page.module.css";
 
 // Homepage component
 export default function Home() {
@@ -40,57 +42,32 @@ export default function Home() {
           emblaRef={emblaRef}
         />
       </div>
-      <div
-        className={[styles["featured-categories"], styles["lamps"]].join(" ")}
-      >
-        <Typography
-          align="center"
-          noWrap
-          fontWeight={500}
-          sx={{
-            color: "white",
-            fontSize: "2.5rem",
-            textShadow: "0px 2px 4px #000000A6",
-          }}
-        >
-          Lamps
-        </Typography>
-        <HomepageButton text="Shop" variant="contained" />
-      </div>
-      <div
-        className={[styles["featured-categories"], styles["sofas"]].join(" ")}
-      >
-        <Typography
-          align="center"
-          noWrap
-          fontWeight={500}
-          sx={{
-            color: "white",
-            fontSize: "2.5rem",
-            textShadow: "0px 2px 4px #000000A6",
-          }}
-        >
-          Sofas
-        </Typography>
-        <HomepageButton text="Shop" variant="contained" />
-      </div>
-      <div
-        className={[styles["featured-categories"], styles["pillows"]].join(" ")}
-      >
-        <Typography
-          align="center"
-          noWrap
-          fontWeight={500}
-          sx={{
-            color: "white",
-            fontSize: "2.5rem",
-            textShadow: "0px 2px 4px #000000A6",
-          }}
-        >
-          Pillows
-        </Typography>
-        <HomepageButton text="Shop" variant="contained" />
-      </div>
+      {/*Featured Categories*/}
+      <Container disableGutters={true} maxWidth={false}>
+        {featuredCategories.map((category, index) => (
+          <div
+            key={index}
+            className={[
+              styles["featured-categories"],
+              styles[category.className],
+            ].join(" ")}
+          >
+            <Typography
+              align="center"
+              noWrap
+              fontWeight={500}
+              sx={{
+                color: "white",
+                fontSize: "2.5rem",
+                textShadow: "0px 2px 4px #000000A6",
+              }}
+            >
+              {category.title}
+            </Typography>
+            <HomepageButton text="Shop" variant="contained" />
+          </div>
+        ))}
+      </Container>
     </div>
   );
 }

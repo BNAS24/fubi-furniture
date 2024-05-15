@@ -5,10 +5,6 @@ interface NavDirectory {
 
 export const navDir: NavDirectory[] = [
   {
-    title: "Home",
-    path: "/",
-  },
-  {
     title: "Collections",
     path: "/collections",
   },
