@@ -1,61 +1,31 @@
-"use client";
-import { useState, useCallback, useEffect } from "react";
-import { EmblaCarouselType } from "embla-carousel";
-
-type UseDotButtonType = {
+type Page = {
+  slide: {
+    name: string;
+    backgroundImage: string;
+    id: number;
+  }[];
   selectedIndex: number;
-  scrollSnaps: number[];
 };
 
-export const usePagination = (
-  emblaApi: EmblaCarouselType | undefined
-): UseDotButtonType => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
-
-  const onInit = useCallback((emblaApi: EmblaCarouselType) => {
-    setScrollSnaps(emblaApi.scrollSnapList());
-  }, []);
-
-  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, []);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    onInit(emblaApi);
-    onSelect(emblaApi);
-    emblaApi.on("reInit", onInit);
-    emblaApi.on("reInit", onSelect);
-    emblaApi.on("select", onSelect);
-  }, [emblaApi, onInit, onSelect]);
-
-  return {
-    selectedIndex,
-    scrollSnaps,
-  };
-};
-
-export const SliderPagination = (indexSelected: any) => {
-  console.log("index selected in slider component", indexSelected);
-  const colors = {
-    color1: indexSelected.indexSelected === 0 ? "white" : "black",
-    color2: indexSelected.indexSelected === 1 ? "white" : "black",
-    color3: indexSelected.indexSelected === 2 ? "white" : "black",
-    color4: indexSelected.indexSelected === 3 ? "white" : "black",
-    color5: indexSelected.indexSelected === 4 ? "white" : "black",
-    color6: indexSelected.indexSelected === 6 ? "white" : "black",
-  };
+export const SliderPagination: React.FC<Page> = ({
+  slide,
+  selectedIndex,
+}: Page) => {
 
   const paths = [
-    { key: 1, d: "M4 4H20", color: colors.color1 },
-    { key: 2, d: "M28 4H44", color: colors.color2 },
-    { key: 3, d: "M76 4H92", color: colors.color3 },
-    { key: 4, d: "M100 4H116", color: colors.color4 },
-    { key: 5, d: "M52 4H68", color: colors.color5 },
-    { key: 6, d: "M124 4H140", color: colors.color6 },
+    { key: 0, d: "M4 4H20", color: "black" },
+    { key: 1, d: "M28 4H44", color: "black"},
+    { key: 2, d: "M76 4H92", color: "black" },
+    { key: 3, d: "M100 4H116", color: "black"},
+    { key: 4, d: "M52 4H68", color: "black" },
+    { key: 5, d: "M124 4H140", color:"black"},
   ];
+
+  console.log({
+    selectedIndex: selectedIndex,
+    paths: paths,
+    slide: slide,
+  });
 
   return (
     <svg
@@ -73,7 +43,7 @@ export const SliderPagination = (indexSelected: any) => {
         <path
           key={path.key}
           d={path.d}
-          stroke={path.color}
+          stroke={selectedIndex === path.key ? path.color = "white" : "black" }
           strokeWidth="2"
           strokeLinecap="round"
         />

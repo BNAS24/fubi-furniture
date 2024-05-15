@@ -78,6 +78,29 @@ footer {
   background-color: var(--main-green);
 }
 
+/*Slider component*/
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
+}
+
+.embla__slide {
+  display: flex;
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.pair-of-buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
 /*Style for pagination on homepage*/
 .pagination-controls {
   position: absolute;
