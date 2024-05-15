@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 
 type Page = {
   slide: {
@@ -9,19 +10,31 @@ type Page = {
   selectedIndex: number;
 };
 
-export const SliderPagination: React.FC<Page> = ({
-  slide,
-  selectedIndex,
-}: Page) => {
+export const SliderPagination = ({ slide, selectedIndex }: Page) => {
+  type Paths = {
+    key: number;
+    d: string;
+    color: string;
+  }[];
 
-  const paths = [
+  const [paths, setPaths] = useState<Paths>([
     { key: 0, d: "M4 4H20", color: "black" },
-    { key: 1, d: "M28 4H44", color: "black"},
-    { key: 2, d: "M76 4H92", color: "black" },
-    { key: 3, d: "M100 4H116", color: "black"},
-    { key: 4, d: "M52 4H68", color: "black" },
-    { key: 5, d: "M124 4H140", color:"black"},
-  ];
+    { key: 1, d: "M28 4H44", color: "black" },
+    { key: 2, d: "M52 4H68", color: "black" },
+    { key: 3, d: "M76 4H92", color: "black" },
+    { key: 4, d: "M100 4H116", color: "black" },
+    { key: 5, d: "M124 4H140", color: "black" },
+  ]);
+
+  useEffect(() => {
+    setPaths((prevPaths) =>
+      prevPaths.map((path) =>
+        path.key === selectedIndex
+          ? { ...path, color: "white" }
+          : { ...path, color: "black" }
+      )
+    );
+  }, [selectedIndex]);
 
   console.log({
     selectedIndex: selectedIndex,
@@ -45,7 +58,7 @@ export const SliderPagination: React.FC<Page> = ({
         <path
           key={path.key}
           d={path.d}
-          stroke={selectedIndex === path.key ? path.color = "white" : "black" }
+          stroke={path.color}
           strokeWidth="2"
           strokeLinecap="round"
         />
