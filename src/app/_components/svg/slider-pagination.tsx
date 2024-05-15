@@ -36,12 +36,6 @@ export const SliderPagination = ({ slide, selectedIndex }: Page) => {
     );
   }, [selectedIndex]);
 
-  console.log({
-    selectedIndex: selectedIndex,
-    paths: paths,
-    slide: slide,
-  });
-
   return (
     <svg
       className="pagination-controls"

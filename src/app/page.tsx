@@ -9,14 +9,11 @@ import { usePagination } from "./_helpers/emblaPagination";
 import { EmblacCarousel } from "./_components/carousels/emblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 
-const OPTIONS: EmblaOptionsType = { loop: true };
-
 // Homepage component
 export default function Home() {
+  const OPTIONS: EmblaOptionsType = { loop: true };
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [Autoplay()]);
   const { selectedIndex } = usePagination(emblaApi);
-
-  console.log("selectedIndex", selectedIndex);
 
   return (
     <div>

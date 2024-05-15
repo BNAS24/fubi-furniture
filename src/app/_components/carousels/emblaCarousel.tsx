@@ -3,22 +3,22 @@ import { SliderPagination } from "../svg/slider-pagination";
 import Typography from "@mui/material/Typography";
 import { HomepageButton } from "../buttons/HomepageButton1";
 
-type Slide = {
-  name: string;
-  backgroundImage: string;
-  id: number;
-};
-
 type PropType = {
-  slides: Slide[];
+  slides: {
+    name: string;
+    backgroundImage: string;
+    id: number;
+  }[];
   selectedIndex: number;
   emblaRef: any;
 };
 
 // Slider component
-export const EmblacCarousel: React.FC<PropType> = (props) => {
-  const { slides, selectedIndex, emblaRef } = props;
-
+export const EmblacCarousel = ({
+  slides,
+  selectedIndex,
+  emblaRef,
+}: PropType) => {
   return (
     //Slides wrapper div to keep components/elements together
     <div>

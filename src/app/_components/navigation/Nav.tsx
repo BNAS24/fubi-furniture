@@ -11,6 +11,8 @@ import searchButtonIcon from "../../../../public/elements/search-white.webp";
 import theme from "../../_styles/muiTheme";
 import { useSpring, animated } from "@react-spring/web";
 import Box from "@mui/material/Box";
+import { navDir } from "../../_assets/navigation/navDirectory";
+import Typography from "@mui/material/Typography";
 
 export const TopNavBar = () => {
   const [navOpened, setNavOpened] = useState(false);
@@ -19,7 +21,7 @@ export const TopNavBar = () => {
   useEffect(() => {
     navOpened === true
       ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow= "auto");
+      : (document.body.style.overflow = "auto");
   }, [navOpened]);
 
   // Define spring animation configuration
@@ -102,7 +104,33 @@ export const TopNavBar = () => {
                     },
                   }}
                 />
-                Hello World
+                <Container
+                  disableGutters={true}
+                  maxWidth={false}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    height: "100%",
+                    paddingY: "1.5rem",
+                  }}
+                >
+                  {navDir.map((nav, index) => (
+                    <Typography
+                      key={index}
+                      sx={{
+                        fontSize: "1.5rem",
+                        "&:hover": {
+                          cursor: "pointer",
+                          textDecoration: "underline",
+                        }
+                      }}
+                    >
+                      {nav.title} 
+                    </Typography>
+                  ))}
+                </Container>
               </Container>
             </animated.nav>
           </div>
