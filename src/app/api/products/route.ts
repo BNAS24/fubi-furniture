@@ -2,7 +2,7 @@ import dbConnect from "@/app/lib/dbConnect";
 import Test from "@/app/models/Test";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET() {
   console.log("trying to fetch..");
 
   await dbConnect();
