@@ -17,7 +17,7 @@ export default async function Dashboard() {
   return (
     <div>
       <h1>Products</h1>
-      {products.map((product: any) => (
+      {products?.map((product: any) => (
         <div key={product._id}>
           <h2>{product.name}</h2>
           <p>{product.description}</p>
