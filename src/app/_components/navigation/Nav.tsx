@@ -13,8 +13,10 @@ import menuButtonIcon from "../../../../public/elements/menu-white.webp";
 import searchButtonIcon from "../../../../public/elements/search-white.webp";
 import { navDir } from "../../_assets/navigation/navDirectory";
 import theme from "../../_styles/muiTheme";
+import { useRouter } from "next/navigation";
 
 export const TopNavBar = () => {
+  const router = useRouter();
   const [navOpened, setNavOpened] = useState(false);
 
   useEffect(() => {
@@ -38,7 +40,12 @@ export const TopNavBar = () => {
       <nav>
         <div className="main-nav">
           <div className="brand-logo-container">
-            <Image alt="brand-logo" src={brandLogo} className="nav-logo" />
+            <Image
+              onClick={() => router.push("/")}
+              alt="brand-logo"
+              src={brandLogo}
+              className="nav-logo"
+            />
           </div>
           <div className="nav-controllers">
             <Image
