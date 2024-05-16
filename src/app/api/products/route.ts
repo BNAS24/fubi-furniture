@@ -1,5 +1,5 @@
-import dbConnect from "@/app/_lib/dbConnect";
-import Test from "@/app/_models/Test";
+import dbConnect from "@/app/lib/dbConnect";
+import Test from "@/app/models/Test";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
