@@ -17,8 +17,8 @@ import theme from "../../_styles/muiTheme";
 export const TopNavBar = () => {
   const [navOpened, setNavOpened] = useState(false);
 
-  // Added to stop the screen from scrolling in the background while the navigation menu is open
   useEffect(() => {
+    // Added to stop the screen from scrolling in the background while the navigation menu is open
     navOpened
       ? document.body.classList.add("body-no-scroll")
       : document.body.classList.remove("body-no-scroll");
