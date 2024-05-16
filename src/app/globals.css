@@ -18,6 +18,11 @@ body {
   overflow-x: hidden;
 }
 
+/*Dynamically set when the sidenavbar open*/
+.body-no-scroll {
+  overflow-y: hidden;
+}
+
 nav {
   position: sticky;
   top: 0;
