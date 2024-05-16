@@ -3,6 +3,10 @@ async function getData() {
     cache: "no-store", // Very important for fetching data from the database
   });
 
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
   const products = await res.json();
 
   return products;
