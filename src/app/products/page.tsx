@@ -1,6 +1,6 @@
 export async function getData() {
   const res = await fetch(`http://localhost:3000/api/products`, {
-    cache: "no-store",
+    cache: "no-store", // Very important for fetching data from the database
   });
 
   const products = await res.json();
