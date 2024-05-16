@@ -1,13 +1,13 @@
 async function getData() {
-  const res = await fetch(`http://localhost:3000/api/products`, {
+  const response = await fetch(`http://localhost:3000/api/products`, {
     cache: "no-store", // Very important for fetching data from the database
   });
 
-  if (!res.ok) {
+  if (!response.ok) {
     throw new Error('Failed to fetch data');
   }
 
-  const products = await res.json();
+  const products = await response.json();
 
   return products;
 }
