@@ -4,10 +4,8 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   console.log("trying to fetch..");
-
-  await dbConnect();
-
   try {
+    await dbConnect();
     const products = await Test.find();
     console.log("products", products);
     return NextResponse.json(products);

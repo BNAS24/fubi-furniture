@@ -1,14 +1,20 @@
 import { models, model, Schema } from "mongoose";
 
-const testSchema = new Schema({
+export interface ITest {
+  name: string;
+  age: number;
+  description: string;
+}
+
+const testSchema = new Schema<ITest>({
   name: {
     type: String,
   },
   age: {
     type: Number,
   },
-  rank: {
-    type: Number,
+  description: {
+    type: String,
   },
 });
 
