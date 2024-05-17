@@ -19,7 +19,9 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <ThemeProvider theme={theme}>
         <body className={inter.className}>
           <TopNavBar />
+          <div>
           {children}
+          </div>
           <Footer />
         </body>
       </ThemeProvider>
