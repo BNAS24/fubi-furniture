@@ -9,6 +9,7 @@ export async function GET() {
 
   try {
     const products = await Test.find();
+    console.log("products", products);
     return NextResponse.json(products);
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });
