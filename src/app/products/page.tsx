@@ -1,6 +1,7 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import {FilterButton} from "../_components/buttons/FilterButton";
+import { FilterButton } from "../_components/buttons/FilterButton";
+import Image from "next/image";
 
 async function getData() {
   const response = await fetch(`http://localhost:3000/api/products`, {
@@ -16,8 +17,24 @@ async function getData() {
   return products;
 }
 
+async function getImages() {
+  const response = await fetch(`http://localhost:3000/api/images`, {
+    cache: "no-store", // Very important for fetching data from the database
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const products = await response.json();
+
+  return products;
+}
+
 export default async function Dashboard() {
   const products = await getData();
+  const images = await getImages();
+  console.log("images", images);
   return (
     <>
       {/*Container for category of products*/}
@@ -76,9 +93,9 @@ export default async function Dashboard() {
           paddingX: "1rem",
         }}
       >
-        {products?.map((product: any) => (
+        {images.map((image: any, index: number) => (
           <Container
-            key={product._id}
+            key={index}
             disableGutters={true}
             maxWidth={false}
             sx={{
@@ -90,9 +107,15 @@ export default async function Dashboard() {
             }}
           >
             <Typography align="center" fontWeight={500}>
-              {product.name}
+              Hello world
             </Typography>
-            <Typography align="center">{product.description}</Typography>
+            {/*!!! IMPORTANT make sure to change to a nextjs image for performance */}
+            <Image
+              src={image.url}
+              alt={image.pathname}
+              height={500}
+              width={500}
+            />
           </Container>
         ))}
       </Container>
