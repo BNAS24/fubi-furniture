@@ -10,23 +10,23 @@ export const navDir: NavDirectory[] = [
   },
   {
     title: "Sofas",
-    path: "/sofas",
+    path: "/products/sofas",
   },
   {
     title: "Pillows",
-    path: "/pillows",
+    path: "/products/pillows",
   },
   {
     title: "Lamps",
-    path: "/lamps",
+    path: "/products/lamps",
   },
   {
     title: "Bedding",
-    path: "/bedding",
+    path: "/products/bedding",
   },
   {
     title: "Chairs",
-    path: "/chairs",
+    path: "/products/chairs",
   },
   {
     title: "About Us",

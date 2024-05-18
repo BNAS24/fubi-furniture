@@ -3,22 +3,8 @@ import Typography from "@mui/material/Typography";
 import { FilterButton } from "../../_components/buttons/FilterButton";
 import Image from "next/image";
 
-async function getData() {
-  const response = await fetch(`http://localhost:3000/api/products`, {
-    cache: "no-store", // Very important for fetching data from the database
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const products = await response.json();
-
-  return products;
-}
-
-async function getImages() {
-  const response = await fetch(`http://localhost:3000/api/images`, {
+async function getImages(category: string) {
+  const response = await fetch(`http://localhost:3000/api/images?category=${category}`, {
     cache: "no-store", // Very important for fetching data from the database
   });
 
@@ -28,18 +14,7 @@ async function getImages() {
 
   const images = await response.json();
 
-  interface Image {
-    pathname: string;
-    [key: string]: string; // This line allows for additional string properties
-  }
-
-  // Function to filter images for the correct page item fetching. Will be later update to take in the url params to dynamically know which products to filter
-
-  const filteredImages = images.filter((image: Image) =>
-    image.pathname.startsWith("Furniture/pop-funiture")
-  );
-
-  return filteredImages;
+  return images;
 }
 
 export default async function Dashboard({
@@ -47,10 +22,16 @@ export default async function Dashboard({
 }: {
   params: { category: string };
 }) {
-  const products = await getData();
-  const images = await getImages();
+  const imageCategory = params.category;
+  const images = await getImages(imageCategory);
+  const updatedParams = {
+    ...params, // Spread the original params object to copy its properties
+    category:
+      params.category.charAt(0).toUpperCase() + params.category.slice(1), // Uppercase the first letter of the category string
+  };
+  const pageCategoryTitle = updatedParams.category;
 
-  console.log(images);
+  console.log("images", images);
   return (
     <>
       {/*Container for category of products*/}
@@ -71,7 +52,7 @@ export default async function Dashboard({
             fontSize: "1.5rem",
           }}
         >
-          {params.category}
+          {pageCategoryTitle}
         </Typography>
       </Container>
       {/*Container for filtering and results count*/}

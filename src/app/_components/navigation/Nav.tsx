@@ -14,6 +14,7 @@ import searchButtonIcon from "../../../../public/elements/search-white.webp";
 import { navDir } from "../../_assets/navigation/navDirectory";
 import theme from "../../_styles/muiTheme";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export const TopNavBar = () => {
   const router = useRouter();
@@ -127,20 +128,25 @@ export const TopNavBar = () => {
                   }}
                 >
                   {navDir.map((nav, index) => (
-                    <Typography
+                    <Link
+                      className="side-nav-link-decoration"
                       key={index}
-                      onClick={() => router.push(`/products/${nav.title}`)}
-                      fontWeight={500}
-                      sx={{
-                        fontSize: "1.5rem",
-                        "&:hover": {
-                          cursor: "pointer",
-                          textDecoration: "underline",
-                        },
-                      }}
+                      href={`http://localhost:3000${nav.path}`}
+                      replace
                     >
-                      {nav.title}
-                    </Typography>
+                      <Typography
+                        fontWeight={500}
+                        sx={{
+                          fontSize: "1.5rem",
+                          "&:hover": {
+                            cursor: "pointer",
+                            textDecoration: "underline",
+                          },
+                        }}
+                      >
+                        {nav.title}
+                      </Typography>
+                    </Link>
                   ))}
                 </Container>
               </Container>

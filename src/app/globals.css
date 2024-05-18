@@ -73,6 +73,11 @@ nav {
   cursor: pointer;
 }
 
+/*This class removes the default styling of nextjs link component*/
+.side-nav-link-decoration {
+  all: unset
+}
+
 .menu-span {
   width: 24px;
   height: 24px;

@@ -12,7 +12,6 @@ async function dbConnect() {
   connection.isConnected = db.connections[0].readyState;
 
   console.log("Connected to MongoDB");
-  console.log("MONGODB_URI", process.env.MONGODB_URI);
 }
 
 export default dbConnect;
