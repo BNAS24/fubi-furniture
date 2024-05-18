@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import theme from "./_styles/muiTheme";
 import "./globals.css";
+import Container from "@mui/material/Container";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,9 +20,13 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <ThemeProvider theme={theme}>
         <body className={inter.className}>
           <TopNavBar />
-          <div>
-          {children}
-          </div>
+          <Container
+            disableGutters={true}
+            maxWidth={false}
+            sx={{ display: "flex", flexDirection: "column", flex: 1 }}
+          >
+            {children}
+          </Container>
           <Footer />
         </body>
       </ThemeProvider>

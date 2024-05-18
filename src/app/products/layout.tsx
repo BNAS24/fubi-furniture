@@ -1,15 +1,16 @@
-import styles from "./page.module.css";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
-export default function ProductLayout({
-  children,
-}: {
+interface LayoutProps {
   children: React.ReactNode;
-}) {
+  params: { category: string };
+}
+
+export default function Layout({ children, params }: LayoutProps) {
+  console.log("params", params);
   return (
-    <div className={styles["products-body"]}>
-    {children}
-    </div>
+    <Container disableGutters={true} maxWidth={false}>
+      {children}
+    </Container>
   );
 }

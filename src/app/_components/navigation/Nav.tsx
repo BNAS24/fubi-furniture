@@ -129,6 +129,7 @@ export const TopNavBar = () => {
                   {navDir.map((nav, index) => (
                     <Typography
                       key={index}
+                      onClick={() => router.push(`/products/${nav.title}`)}
                       fontWeight={500}
                       sx={{
                         fontSize: "1.5rem",
