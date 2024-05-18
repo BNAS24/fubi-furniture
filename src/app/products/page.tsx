@@ -3,6 +3,11 @@ import Typography from "@mui/material/Typography";
 import { FilterButton } from "../_components/buttons/FilterButton";
 import Image from "next/image";
 
+interface Image {
+  pathname: string;
+  [key: string]: string; // This line allows for additional string properties
+}
+
 async function getData() {
   const response = await fetch(`http://localhost:3000/api/products`, {
     cache: "no-store", // Very important for fetching data from the database
@@ -35,6 +40,15 @@ export default async function Dashboard() {
   const products = await getData();
   const images = await getImages();
 
+  {
+    /*Function to filter images for the correct page item fetching. Will be later update to take in the url params to dynamically know which products to filter*/
+  }
+  const filteredImages = images.filter((image: Image) =>
+    image.pathname.startsWith("Furniture/pop-funiture")
+  );
+
+  console.log(filteredImages);
+  console.log(images);
   return (
     <>
       {/*Container for category of products*/}
@@ -76,7 +90,7 @@ export default async function Dashboard() {
             color: "var(--light-grey2)",
           }}
         >
-          {`results`}
+          {`results ${filteredImages.length}`}
         </Typography>
         <FilterButton />
       </Container>
@@ -93,7 +107,7 @@ export default async function Dashboard() {
           paddingX: "1rem",
         }}
       >
-        {images.map((image: any, index: number) => (
+        {filteredImages.map((image: any, index: number) => (
           <Container
             key={index}
             disableGutters={true}
@@ -104,7 +118,7 @@ export default async function Dashboard() {
               justifyContent: "space-around",
               alignItems: "center",
               gridColumn: "span 6",
-              position:"relative",
+              position: "relative",
               height: "100px",
               width: "100px",
             }}
