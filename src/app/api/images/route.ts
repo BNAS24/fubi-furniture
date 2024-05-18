@@ -8,16 +8,15 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get("category");
 
     console.log("params:", category);
-    console.log("nextRequest:", NextRequest);
 
     const { blobs } = await list({
-      prefix: `Furniture/${category}`!
+      prefix: `Furniture/${category}`!,
     });
 
     console.log("blobs:", blobs);
 
     return Response.json(blobs);
   } catch (error: any) {
-    Response.json({ error: error.message });
+    return Response.json({ error: error.message });
   }
 }
