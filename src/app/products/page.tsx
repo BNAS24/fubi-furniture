@@ -34,7 +34,7 @@ async function getImages() {
 export default async function Dashboard() {
   const products = await getData();
   const images = await getImages();
-  console.log("images", images);
+
   return (
     <>
       {/*Container for category of products*/}
@@ -104,17 +104,18 @@ export default async function Dashboard() {
               justifyContent: "space-around",
               alignItems: "center",
               gridColumn: "span 6",
+              position:"relative",
+              height: "100px",
+              width: "100px",
             }}
           >
-            <Typography align="center" fontWeight={500}>
-              Hello world
-            </Typography>
             {/*!!! IMPORTANT make sure to change to a nextjs image for performance */}
+            {/*Changes these defulat sizes, this was just made up to get rid of errors*/}
             <Image
               src={image.url}
               alt={image.pathname}
-              height={500}
-              width={500}
+              fill={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </Container>
         ))}
