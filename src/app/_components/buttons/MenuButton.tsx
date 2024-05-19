@@ -23,7 +23,7 @@ export default function MenuButton() {
 
   return (
     <>
-      {/*Sidebar nav components*/}
+      {/*Menu Button*/}
       <Box
         onClick={() => setOpen(true)}
         sx={{
@@ -51,7 +51,7 @@ export default function MenuButton() {
       <animated.nav
         style={{
           ...springs,
-          display: open ? "flex" : "hidden",
+          display: open ? "flex" : "none",
           flexDirection: "row",
           backgroundColor: "transparent",
           width: "100%",
