@@ -10,10 +10,14 @@ import { useState, useEffect } from "react";
 
 export default function MenuButton() {
   const [open, setOpen] = useState<boolean>(false);
+  const [animationDone, setAnimationDone] = useState<boolean>(false);
 
   // Define spring animation configuration
   const springs = useSpring({
     transform: open ? "translateX(0%)" : "translateX(100%)",
+    onRest: () => {
+      !open ? setAnimationDone(true) : setAnimationDone(false);
+    },
   });
 
   // Prevents scrolling when the nav side menu opens
@@ -51,7 +55,7 @@ export default function MenuButton() {
       <animated.nav
         style={{
           ...springs,
-          display: open ? "flex" : "none",
+          display: animationDone ? "none" : "flex",
           flexDirection: "row",
           backgroundColor: "transparent",
           width: "100%",
