@@ -17,13 +17,9 @@ export default function MenuButton() {
   });
 
   useEffect(() => {
-    // Added to stop the screen from scrolling in the background while the navigation menu is open
-    open
-      ? document.body.classList.add("body-no-scroll")
-      : document.body.classList.remove("body-no-scroll");
-
+    document.body.style.overflow = open ? 'hidden' : 'auto';
     return () => {
-      document.body.classList.remove("body-no-scroll");
+      document.body.style.overflow = "auto";
     };
   }, [open]);
 
@@ -59,7 +55,7 @@ export default function MenuButton() {
           backgroundColor: "transparent",
           width: "100%",
           height: "100vh",
-          position: "absolute",
+          position: "fixed",
           top: 0,
           right: 0,
           bottom: 0,
