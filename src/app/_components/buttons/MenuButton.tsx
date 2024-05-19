@@ -16,8 +16,9 @@ export default function MenuButton() {
     transform: open ? "translateX(0%)" : "translateX(100%)",
   });
 
+  // Prevents scrolling when the nav side menu opens
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : 'auto';
+    document.body.style.overflow = open ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -25,6 +26,7 @@ export default function MenuButton() {
 
   return (
     <>
+      {/*Sidebar nav component*/}
       <Box
         onClick={() => setOpen(true)}
         sx={{

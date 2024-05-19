@@ -27,10 +27,8 @@ export const TopNavBar = () => {
             <SearchButton />
             <BagButton />
             <MenuButton />
-            {/*Sidebar nav component*/}
           </div>
         </div>
-
       </nav>
     </ThemeProvider>
   );
