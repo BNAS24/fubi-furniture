@@ -18,15 +18,12 @@ export default function MenuButton() {
 
   // Prevents scrolling when the nav side menu opens
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
+    document.body.className = open ? "body-no-scroll" : "";
   }, [open]);
 
   return (
     <>
-      {/*Sidebar nav component*/}
+      {/*Sidebar nav components*/}
       <Box
         onClick={() => setOpen(true)}
         sx={{
@@ -49,6 +46,8 @@ export default function MenuButton() {
           />
         </svg>
       </Box>
+
+      {/*Nav side menu*/}
       <animated.nav
         style={{
           ...springs,
@@ -57,11 +56,9 @@ export default function MenuButton() {
           backgroundColor: "transparent",
           width: "100%",
           height: "100vh",
-          position: "fixed",
+          position: "absolute",
           top: 0,
           right: 0,
-          bottom: 0,
-          left: 0,
           margin: "0 0",
         }}
       >

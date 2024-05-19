@@ -19,11 +19,14 @@ body {
   min-height: 100vh;
   background: var(--main-white);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/*Dynamically set when the sidenavbar open*/
 .body-no-scroll {
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 
 nav {
