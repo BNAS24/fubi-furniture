@@ -22,7 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.body-no-scroll {
+.body-no-scroll-true {
   position: fixed;
   top: 0;
   right: 0;
