@@ -51,7 +51,7 @@ export default function MenuButton() {
       <animated.nav
         style={{
           ...springs,
-          display: "flex",
+          display: open ? "flex" : "hidden",
           flexDirection: "row",
           backgroundColor: "transparent",
           width: "100%",
