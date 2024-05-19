@@ -23,7 +23,7 @@ body {
 
 /*Dynamically set when the sidenavbar open*/
 .body-no-scroll {
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 nav {
@@ -61,7 +61,6 @@ nav {
 .nav-controllers {
   display: flex;
   flex-direction: row;
-  gap: 16px;
 }
 
 .nav-buttons {

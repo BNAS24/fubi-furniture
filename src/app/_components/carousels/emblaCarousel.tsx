@@ -1,14 +1,10 @@
 import { Container } from "@mui/material";
-import { SliderPagination } from "../svg/slider-pagination";
+import SliderPagination from "../svg/SliderPagination";
 import Typography from "@mui/material/Typography";
 import { HomepageButton } from "../buttons/HomepageButton1";
 
-type PropType = {
-  slides: {
-    name: string;
-    backgroundImage: string;
-    id: number;
-  }[];
+type Carousel = {
+  slides: any;
   selectedIndex: number;
   emblaRef: any;
 };
@@ -18,14 +14,14 @@ export const EmblacCarousel = ({
   slides,
   selectedIndex,
   emblaRef,
-}: PropType) => {
+}: Carousel) => {
   return (
     //Slides wrapper div to keep components/elements together
     <div>
       {/*Main embla slides container*/}
       <div className="embla" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((slide, index) => (
+          {slides.map((slide: any, index: number) => (
             <Container
               key={index}
               disableGutters={true}
@@ -62,7 +58,7 @@ export const EmblacCarousel = ({
         </div>
       </div>
       {/*Slider pagination dots*/}
-      <SliderPagination slide={slides} selectedIndex={selectedIndex} />
+      <SliderPagination selectedIndex={selectedIndex} />
     </div>
   );
 };

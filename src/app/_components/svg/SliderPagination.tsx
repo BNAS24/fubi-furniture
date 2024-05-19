@@ -1,16 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 
-type Page = {
-  slide: {
-    name: string;
-    backgroundImage: string;
-    id: number;
-  }[];
+type Index = {
   selectedIndex: number;
 };
 
-export const SliderPagination = ({ slide, selectedIndex }: Page) => {
+export default function SliderPagination({ selectedIndex }: Index) {
   type Paths = {
     key: number;
     d: string;
@@ -84,4 +79,4 @@ export const SliderPagination = ({ slide, selectedIndex }: Page) => {
       </defs>
     </svg>
   );
-};
+}
