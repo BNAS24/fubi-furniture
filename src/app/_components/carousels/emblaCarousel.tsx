@@ -1,11 +1,11 @@
-import { Container } from "@mui/material";
-import SliderPagination from "../svg/SliderPagination";
-import Typography from "@mui/material/Typography";
-import { HomepageButton } from "../buttons/HomepageButton1";
 import { SlideContent } from "@/app/_assets/homepage/slideImages";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { usePagination } from "../../_helpers/emblaPagination";
+import { HomepageButton } from "../buttons/HomepageButton1";
+import SliderPagination from "../svg/SliderPagination";
 
 interface PropType {
   slides: SlideContent[];
