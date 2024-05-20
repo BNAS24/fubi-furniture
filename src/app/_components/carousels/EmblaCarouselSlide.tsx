@@ -12,7 +12,7 @@ interface PropType {
 }
 
 // Slider component
-export default function EmblaCarousel({ slides }: PropType) {
+export default function EmblaCarouselSlide({ slides }: PropType) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
   const { selectedIndex } = usePagination(emblaApi);
 

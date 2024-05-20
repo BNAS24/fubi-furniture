@@ -1,16 +1,14 @@
 "use client";
-import React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { featuredCategories } from "./_assets/homepage/featuredCategories";
 import { slide } from "./_assets/homepage/slideImages";
 import { HomepageButton } from "./_components/buttons/HomepageButton1";
-import EmblaCarousel from "./_components/carousels/EmblaCarousel";
+import EmblaCarouselSlide from "./_components/carousels/EmblaCarouselSlide";
 import styles from "./page.module.css";
 
 // Homepage component
 export default function Home() {
-
   return (
     <div>
       <div className={styles["hero-container"]}>
@@ -40,9 +38,7 @@ export default function Home() {
       </div>
       <div className={styles["featured-products"]}>
         {/*Carousel component */}
-        <EmblaCarousel
-          slides={slide}
-        />
+        <EmblaCarouselSlide slides={slide} />
       </div>
       {/*Featured Categories*/}
       <Container disableGutters={true} maxWidth={false}>
