@@ -71,7 +71,7 @@ export default function MenuButton() {
         }}
       >
         <Box
-          onClick={() => setOpen(true)}
+          onClick={() => setOpen(false)}
           sx={{
             flex: 1,
             height: "100%",
