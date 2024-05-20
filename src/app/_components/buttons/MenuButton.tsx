@@ -1,3 +1,4 @@
+"use";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
@@ -10,14 +11,16 @@ import { useState, useEffect } from "react";
 
 export default function MenuButton() {
   const [open, setOpen] = useState<boolean>(false);
-  const [animationDone, setAnimationDone] = useState<boolean>(false);
-  const [navVisibility, setNavVisibility] = useState<string>("none");
+  const [animationComplete, setAnimationComplete] = useState(true);
 
   // Define spring animation configuration
-  const springs = useSpring({
-    transform: open ? "translateX(0%)" : "translateX(100%)",
-    onRest: () => {
-      !open && animationDone ? setAnimationDone(true) : setAnimationDone(false);
+  const spring = useSpring({
+    width: open ? '100%' : '0%',
+    onStart: () => {
+      setAnimationComplete(false)
+    },
+    onRest: (result) => {
+      open && result.finished ? setAnimationComplete(false) : setAnimationComplete(true);
     },
   });
 
@@ -25,10 +28,8 @@ export default function MenuButton() {
   useEffect(() => {
     document.body.className = open
       ? "body-no-scroll-true"
-      : "body-no-scrol-false";
-
-    setNavVisibility(animationDone ? "none" : "flex");
-  }, [open, animationDone]);
+      : "body-no-scroll-false";
+  }, [open]);
 
   return (
     <>
@@ -59,20 +60,18 @@ export default function MenuButton() {
       {/*Nav side menu*/}
       <animated.nav
         style={{
-          ...springs,
-          display: navVisibility,
+          ...spring,
+          display: !animationComplete ? "flex" : "none",
           flexDirection: "row",
           backgroundColor: "transparent",
-          width: "100%",
           height: "100vh",
-          position: "absolute",
-          top: 0,
+          position: "fixed",
           right: 0,
           margin: "0 0",
         }}
       >
         <Box
-          onClick={() => setOpen((prevOpen) => !prevOpen)}
+          onClick={() => setOpen(true)}
           sx={{
             flex: 1,
             height: "100%",
@@ -96,7 +95,7 @@ export default function MenuButton() {
           }}
         >
           <CloseIcon
-            onClick={() => setOpen((prevOpen) => !prevOpen)}
+            onClick={() => setOpen(false)}
             sx={{
               alignSelf: "flex-end",
               fontSize: "2.5rem",
