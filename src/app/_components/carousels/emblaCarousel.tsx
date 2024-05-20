@@ -16,7 +16,7 @@ export const EmblaCarousel = ({
   emblaRef,
 }: Carousel) => {
   return (
-    //Slides wrapper div to keep components/elements together
+    //Slides wrapper div to keep elements together
     <div>
       {/*Main embla slides container*/}
       <div className="embla" ref={emblaRef}>
