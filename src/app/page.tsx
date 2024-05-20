@@ -1,21 +1,16 @@
 "use client";
+import React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { EmblaOptionsType } from "embla-carousel";
-import Autoplay from "embla-carousel-autoplay";
-import useEmblaCarousel from "embla-carousel-react";
 import { featuredCategories } from "./_assets/homepage/featuredCategories";
 import { slide } from "./_assets/homepage/slideImages";
 import { HomepageButton } from "./_components/buttons/HomepageButton1";
-import { EmblaCarousel } from "./_components/carousels/EmblaCarousel";
-import { usePagination } from "./_helpers/emblaPagination";
+import EmblaCarousel from "./_components/carousels/EmblaCarousel";
 import styles from "./page.module.css";
 
 // Homepage component
 export default function Home() {
-  const OPTIONS: EmblaOptionsType = { loop: true };
-  const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [Autoplay()]);
-  const { selectedIndex } = usePagination(emblaApi);
+
 
   return (
     <div>
@@ -40,7 +35,7 @@ export default function Home() {
             fontSize: "1rem",
           }}
         >
-          Elevate your comfort: Vinatage Voyage - Where Cozy Meets Chic!
+          Elevate your comfort: Vintage Voyage - Where Cozy Meets Chic!
         </Typography>
         <HomepageButton text="Shop Now" variant="contained" />
       </div>
@@ -48,8 +43,6 @@ export default function Home() {
         {/*Carousel component */}
         <EmblaCarousel
           slides={slide}
-          selectedIndex={selectedIndex}
-          emblaRef={emblaRef}
         />
       </div>
       {/*Featured Categories*/}

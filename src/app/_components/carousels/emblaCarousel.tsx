@@ -3,28 +3,28 @@ import SliderPagination from "../svg/SliderPagination";
 import Typography from "@mui/material/Typography";
 import { HomepageButton } from "../buttons/HomepageButton1";
 import { SlideContent } from "@/app/_assets/homepage/slideImages";
+import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
+import { usePagination } from "../../_helpers/emblaPagination";
 
-type Carousel = {
+interface PropType {
   slides: SlideContent[];
-  selectedIndex: number;
-  emblaRef: any;
-};
+}
 
 // Slider component
-export const EmblaCarousel = ({
-  slides,
-  selectedIndex,
-  emblaRef,
-}: Carousel) => {
+export default function EmblaCarousel({ slides }: PropType) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+  const { selectedIndex } = usePagination(emblaApi);
+
   return (
     //Slides wrapper div to keep elements together
     <div>
       {/*Main embla slides container*/}
       <div className="embla" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((slide: any, index: number) => (
+          {slides.map((slide: any) => (
             <Container
-              key={index}
+              key={slide.id}
               disableGutters={true}
               maxWidth={false}
               className="embla__slide"
@@ -62,4 +62,4 @@ export const EmblaCarousel = ({
       <SliderPagination selectedIndex={selectedIndex} />
     </div>
   );
-};
+}

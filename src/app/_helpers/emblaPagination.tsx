@@ -1,14 +1,14 @@
 import { useState, useCallback, useEffect } from "react";
 import { EmblaCarouselType } from "embla-carousel";
 
-type UsePaginationType = {
+interface PaginationType {
   selectedIndex: number;
   scrollSnaps: number[];
-};
+}
 
 export const usePagination = (
   emblaApi: EmblaCarouselType | undefined
-): UsePaginationType => {
+): PaginationType => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps] = useState<number[]>([]);
 

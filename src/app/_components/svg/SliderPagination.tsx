@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-type Index = {
+interface Index {
   selectedIndex: number;
 };
 
