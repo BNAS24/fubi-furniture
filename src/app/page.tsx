@@ -32,7 +32,17 @@ export default function Home() {
         >
           Vintage Voyage
         </Typography>
-        <HomepageButton text="Shop" variant="contained" />
+        <Typography
+          align="center"
+          fontWeight={200}
+          sx={{
+            color: "white",
+            fontSize: "1rem",
+          }}
+        >
+          Elevate your comfort: Vinatage Voyage - Where Cozy Meets Chic!
+        </Typography>
+        <HomepageButton text="Shop Now" variant="contained" />
       </div>
       <div className={styles["featured-products"]}>
         {/*Carousel component */}
@@ -64,7 +74,7 @@ export default function Home() {
             >
               {category.title}
             </Typography>
-            <HomepageButton text="Shop" variant="contained" />
+            <HomepageButton text="Shop Now" variant="contained" />
           </div>
         ))}
       </Container>

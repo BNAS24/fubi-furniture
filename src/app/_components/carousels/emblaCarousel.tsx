@@ -50,7 +50,7 @@ export const EmblaCarousel = ({
                 {slide.name}
               </Typography>
               <div className="pair-of-buttons-container">
-                <HomepageButton text="Shop" variant="contained" />
+                <HomepageButton text="Shop Now" variant="contained" />
                 <HomepageButton text="Buy" variant="outlined" />
               </div>
             </Container>

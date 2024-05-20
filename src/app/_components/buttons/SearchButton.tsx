@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import theme from "../../_styles/muiTheme";
 
 const SearchButton = () => (
   <Box
@@ -7,6 +8,8 @@ const SearchButton = () => (
       justifyContent: "center",
       alignItems: "center",
       padding: "0.5rem 0.5rem",
+      backgroundColor: theme.palette.primary.light,
+      borderRadius: "2.5rem",
     }}
   >
     <svg
@@ -23,6 +26,7 @@ const SearchButton = () => (
         fill="white"
       />
     </svg>
+    <input className="search-button" type="search" placeholder="search" id="site-search"/>
   </Box>
 );
 

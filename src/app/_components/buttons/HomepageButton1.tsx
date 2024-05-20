@@ -15,9 +15,10 @@ export const HomepageButton = ({ text, variant }: HomepageButtonProps) => {
         disableElevation
         sx={{
           mt: "1rem",
-          height: "2rem",
-          width: "4rem",
+          height: "2.5rem",
+          width: "6rem",
           borderRadius: "16rem",
+          whiteSpace: "nowrap",
           "&:hover": {
             color: variant ? theme.palette.primary.contrastText : null,
             backgroundColor:
