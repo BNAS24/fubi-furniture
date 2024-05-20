@@ -7,7 +7,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { featuredCategories } from "./_assets/homepage/featuredCategories";
 import { slide } from "./_assets/homepage/slideImages";
 import { HomepageButton } from "./_components/buttons/HomepageButton1";
-import { EmblacCarousel } from "./_components/carousels/emblaCarousel";
+import { EmblaCarousel } from "./_components/carousels/EmblaCarousel";
 import { usePagination } from "./_helpers/emblaPagination";
 import styles from "./page.module.css";
 
@@ -36,7 +36,7 @@ export default function Home() {
       </div>
       <div className={styles["featured-products"]}>
         {/*Carousel component */}
-        <EmblacCarousel
+        <EmblaCarousel
           slides={slide}
           selectedIndex={selectedIndex}
           emblaRef={emblaRef}

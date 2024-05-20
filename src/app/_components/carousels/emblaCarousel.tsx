@@ -10,7 +10,7 @@ type Carousel = {
 };
 
 // Slider component
-export const EmblacCarousel = ({
+export const EmblaCarousel = ({
   slides,
   selectedIndex,
   emblaRef,
@@ -34,7 +34,7 @@ export const EmblacCarousel = ({
                 alignItems: "center",
                 backgroundImage: `url(${slide.backgroundImage})`,
                 backgroundPosition: "center",
-                backgroundRepeat: "none",
+                backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
               }}
             >
