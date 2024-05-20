@@ -11,7 +11,6 @@ import styles from "./page.module.css";
 // Homepage component
 export default function Home() {
 
-
   return (
     <div>
       <div className={styles["hero-container"]}>
