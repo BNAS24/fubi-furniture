@@ -30,6 +30,7 @@ export default function Home() {
           sx={{
             color: "white",
             fontSize: "1rem",
+            maxWidth: "80%",
           }}
         >
           Elevate your comfort: Vintage Voyage - Where Cozy Meets Chic!

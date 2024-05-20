@@ -19,6 +19,10 @@ export const HomepageButton = ({ text, variant }: HomepageButtonProps) => {
           width: "6rem",
           borderRadius: "16rem",
           whiteSpace: "nowrap",
+          color: theme.palette.primary.contrastText,
+          backgroundColor: variant === "outlined"
+            ? "rgba(102, 140, 20, 0.2)"
+            : theme.palette.primary.main,
           "&:hover": {
             color: variant ? theme.palette.primary.contrastText : null,
             backgroundColor:
