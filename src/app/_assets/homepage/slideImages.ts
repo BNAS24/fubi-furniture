@@ -1,4 +1,4 @@
-interface SlideContent {
+export interface SlideContent {
   name: string;
   backgroundImage: string;
   id: number;

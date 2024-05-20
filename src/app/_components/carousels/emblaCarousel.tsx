@@ -2,9 +2,10 @@ import { Container } from "@mui/material";
 import SliderPagination from "../svg/SliderPagination";
 import Typography from "@mui/material/Typography";
 import { HomepageButton } from "../buttons/HomepageButton1";
+import { SlideContent } from "@/app/_assets/homepage/slideImages";
 
 type Carousel = {
-  slides: any;
+  slides: SlideContent[];
   selectedIndex: number;
   emblaRef: any;
 };
