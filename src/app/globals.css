@@ -30,15 +30,6 @@ body {
   left: 0;
 }
 
-nav {
-  position: sticky;
-  top: 0;
-  height: 64px;
-  background: var(--main-green);
-  z-index: 99;
-}
-
-
 .nav-controllers {
   display: flex;
   flex-direction: row;

@@ -29,7 +29,23 @@ export const TopNavBar = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <nav>
+      <Container
+        disableGutters={true}
+        maxWidth={false}
+        component="nav"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          position: "sticky",
+          paddingTop: searchButtonClicked ? "1.5rem" : "unset",
+          top: 0,
+          height: searchButtonClicked ? "100vh" : "64px",
+          background: theme.palette.primary.main,
+          zIndex: 99,
+        }}
+      >
         <Container
           disableGutters={true}
           maxWidth={false}
@@ -39,7 +55,7 @@ export const TopNavBar = () => {
             justifyContent: searchButtonClicked ? "center" : "space-between",
             alignItems: "center",
             width: "100%",
-            height: "100%",
+            height: searchButtonClicked ? "unset" : "100%",
             padding: "0px 16px",
           }}
         >
@@ -75,7 +91,7 @@ export const TopNavBar = () => {
             </Typography>
           </Container>
         </Container>
-      </nav>
+      </Container>
     </ThemeProvider>
   );
 };

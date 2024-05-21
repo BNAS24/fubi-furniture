@@ -69,6 +69,7 @@ export default function MenuButton({ searchClicked }: SearchPropTypes) {
           backgroundColor: "transparent",
           height: "100vh",
           position: "fixed",
+          top: 0,
           right: 0,
           margin: "0 0",
         }}
