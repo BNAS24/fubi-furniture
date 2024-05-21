@@ -10,7 +10,10 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { SearchPropTypes } from "../navigation/Nav";
 
-export default function MenuButton({ searchClicked }: SearchPropTypes) {
+export default function MenuButton({
+  searchClicked,
+  bagButtonClicked,
+}: SearchPropTypes) {
   const [open, setOpen] = useState<boolean>(false);
   const [animationComplete, setAnimationComplete] = useState(true);
 
@@ -40,7 +43,7 @@ export default function MenuButton({ searchClicked }: SearchPropTypes) {
       <Box
         onClick={() => setOpen(true)}
         sx={{
-          display: searchClicked ? "none" : "flex",
+          display: searchClicked || bagButtonClicked ? "none" : "flex",
           justifyContent: "center",
           alignItems: "center",
           padding: "0.5rem 0.5rem",
@@ -124,8 +127,9 @@ export default function MenuButton({ searchClicked }: SearchPropTypes) {
           >
             {navDir.map((nav, index) => (
               <Link
-                className="side-nav-link-decoration"
                 key={index}
+                onClick={() => setOpen(false)}
+                className="side-nav-link-decoration"
                 href={`http://localhost:3000${nav.path}`}
                 replace
               >

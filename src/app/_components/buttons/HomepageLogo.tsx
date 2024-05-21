@@ -3,14 +3,14 @@ import theme from "../../_styles/muiTheme";
 import { SearchPropTypes } from "../navigation/Nav";
 import { useRouter } from "next/navigation";
 
-const HomepageLogo = ({ searchClicked }: SearchPropTypes) => {
+const HomepageLogo = ({ searchClicked, bagButtonClicked }: SearchPropTypes) => {
   const router = useRouter();
 
   return (
     <Box
       onClick={() => router.push("/")}
       sx={{
-        display: searchClicked ? "none" : "flex",
+        display: searchClicked || bagButtonClicked ? "none" : "flex",
         justifyContent: "center",
         alignItems: "center",
         padding: "0.25rem 0.25rem",

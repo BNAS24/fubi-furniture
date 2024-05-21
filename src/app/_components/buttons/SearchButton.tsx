@@ -5,7 +5,11 @@ import { animated, useSpring } from "@react-spring/web";
 
 const SearchAnimated = animated(Box);
 
-const SearchButton = ({ clicked, searchClicked }: SearchPropTypes) => {
+const SearchButton = ({
+  clicked,
+  searchClicked,
+  bagButtonClicked,
+}: SearchPropTypes) => {
   const spring = useSpring({
     from: { width: searchClicked ? "0%" : "auto" },
     to: { width: searchClicked ? "100%" : "15%" },
@@ -15,7 +19,7 @@ const SearchButton = ({ clicked, searchClicked }: SearchPropTypes) => {
     <SearchAnimated
       style={spring}
       sx={{
-        display: "flex",
+        display: bagButtonClicked ? "none" : "flex",
         justifyContent: searchClicked ? "flex-start" : "center",
         alignItems: "center",
         maxWidth: searchClicked ? "unset" : "40px",

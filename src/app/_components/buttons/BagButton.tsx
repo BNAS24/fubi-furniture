@@ -1,11 +1,12 @@
 import Box from "@mui/material/Box";
 import { SearchPropTypes } from "../navigation/Nav";
 
-const BagButton = ({ searchClicked }: SearchPropTypes) => (
+const BagButton = ({ searchClicked, bagClicked }: SearchPropTypes) => (
   <Box
+    onClick={bagClicked}
     sx={{
       display: searchClicked ? "none" : "flex",
-      justifyContent: "center",
+      justifyContent: bagClicked ? "flex-start" : "center",
       alignItems: "center",
       padding: "0.5rem 0.5rem",
     }}
