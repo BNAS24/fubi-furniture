@@ -7,8 +7,8 @@ const SearchAnimated = animated(Box);
 
 const SearchButton = ({ clicked, searchClicked }: SearchPropTypes) => {
   const spring = useSpring({
-    from: { width: searchClicked ? "20%" : "100%" },
-    to: { width: searchClicked ? "100%" : "20%" },
+    from: { width: searchClicked ? "0%" : "auto" },
+    to: { width: searchClicked ? "100%" : "15%" },
   });
 
   return (
@@ -18,7 +18,8 @@ const SearchButton = ({ clicked, searchClicked }: SearchPropTypes) => {
         display: "flex",
         justifyContent: searchClicked ? "flex-start" : "center",
         alignItems: "center",
-        width: "u",
+        // width: "auto",
+        maxWidth: searchClicked ? "unset" : "40%",
         height: "2.5rem",
         padding: "0.5rem 0.5rem",
         backgroundColor: searchClicked
@@ -28,6 +29,7 @@ const SearchButton = ({ clicked, searchClicked }: SearchPropTypes) => {
       }}
     >
       <svg
+        className="search-button"
         onClick={() => clicked?.()}
         width={24}
         height={24}

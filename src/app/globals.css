@@ -66,6 +66,9 @@ input[type="search"]::placeholder {
   color: var(--light-grey1);
 }
 
+.search-button {
+  min-width: 24px;
+}
 .search-button-false {
   display: none;
 }
