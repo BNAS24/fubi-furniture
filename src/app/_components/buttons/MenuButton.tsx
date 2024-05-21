@@ -1,4 +1,4 @@
-"use";
+"use client";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
@@ -7,7 +7,7 @@ import theme from "../../_styles/muiTheme";
 import { navDir } from "../../_assets/navigation/navDirectory";
 import { animated, useSpring } from "@react-spring/web";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { SearchPropTypes } from "../navigation/Nav";
 
 export default function MenuButton({ searchClicked }: SearchPropTypes) {
@@ -79,7 +79,7 @@ export default function MenuButton({ searchClicked }: SearchPropTypes) {
             flex: 1,
             height: "100%",
             backgroundColor: theme.palette.background.paper,
-            webkitBackdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
             backdropFilter: "blur(8px)",
           }}
         />
