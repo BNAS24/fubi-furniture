@@ -19,7 +19,7 @@ const SearchButton = ({ clicked, searchClicked }: SearchPropTypes) => {
         justifyContent: searchClicked ? "flex-start" : "center",
         alignItems: "center",
         // width: "auto",
-        maxWidth: searchClicked ? "unset" : "40%",
+        maxWidth: searchClicked ? "unset" : "40px",
         height: "2.5rem",
         padding: "0.5rem 0.5rem",
         backgroundColor: searchClicked
