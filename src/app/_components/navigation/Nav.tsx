@@ -1,34 +1,80 @@
-"use client"
+"use client";
+import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/material/styles";
-import Image from "next/image";
-import brandLogo from "../../../../public/brand-logo-mobile.svg";
+import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
 import theme from "../../_styles/muiTheme";
-import { useRouter } from "next/navigation";
-import MenuButton from "../buttons/MenuButton";
 import BagButton from "../buttons/BagButton";
+import HomepageLogo from "../buttons/HomepageLogo";
+import MenuButton from "../buttons/MenuButton";
 import SearchButton from "../buttons/SearchButton";
 
+export interface SearchPropTypes {
+  clicked?: () => any;
+  searchClicked: boolean;
+}
+
 export const TopNavBar = () => {
-  const router = useRouter();
+  const [searchButtonClicked, setSearchButtonClicked] =
+    useState<boolean>(false);
+
+  const clicked = () => setSearchButtonClicked(!searchButtonClicked);
+
+  useEffect(() => {
+    const searchElement = document.getElementById("site-search");
+    if (searchElement) {
+      searchElement.style.display = searchButtonClicked ? "flex" : "none";
+    }
+  }, [searchButtonClicked]);
 
   return (
     <ThemeProvider theme={theme}>
       <nav>
-        <div className="main-nav">
-          <div className="brand-logo-container">
-            <Image
-              onClick={() => router.push("/")}
-              alt="brand-logo"
-              src={brandLogo}
-              className="nav-logo"
+        <Container
+          disableGutters={true}
+          maxWidth={false}
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: searchButtonClicked ? "center" : "space-between",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+            padding: "0px 16px",
+          }}
+        >
+          <HomepageLogo searchClicked={searchButtonClicked} />
+          <Container
+            disableGutters={true}
+            maxWidth={false}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: searchButtonClicked ? "center" : "flex-end",
+              gap: searchButtonClicked ? "1rem" : "unset",
+            }}
+          >
+            <SearchButton
+              clicked={clicked}
+              searchClicked={searchButtonClicked}
             />
-          </div>
-          <div className="nav-controllers">
-            <SearchButton />
-            <BagButton />
-            <MenuButton />
-          </div>
-        </div>
+            <BagButton searchClicked={searchButtonClicked} />
+            <MenuButton searchClicked={searchButtonClicked} />
+            <Typography
+              align="center"
+              onClick={() => setSearchButtonClicked(false)}
+              sx={{
+                display: searchButtonClicked ? "flex" : "none",
+                justifyContent: "center",
+                alignItems: "center",
+                color: theme.palette.primary.contrastText,
+                padding: "0 0",
+              }}
+            >
+              cancel
+            </Typography>
+          </Container>
+        </Container>
       </nav>
     </ThemeProvider>
   );

@@ -38,29 +38,6 @@ nav {
   z-index: 99;
 }
 
-.main-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 0px 16px;
-}
-
-.nav-logo {
-  width: 100%;
-  height: 100%;
-}
-
-.nav-logo:hover {
-  cursor: pointer;
-}
-
-.brand-logo-container {
-  width: 40px;
-  height: auto;
-}
 
 .nav-controllers {
   display: flex;
@@ -82,16 +59,15 @@ input[type="search"] {
   height: 1.5rem;
   color: var(--main-white);
   padding: 0 0.3rem;
+  background-color: transparent;
 }
 
 input[type="search"]::placeholder {
   color: var(--light-grey1);
 }
 
-.search-button {
-  width: 100%;
-  height: 1rem;
-  background-color: black;
+.search-button-false {
+  display: none;
 }
 
 /*This class removes the default styling of nextjs link component*/

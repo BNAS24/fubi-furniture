@@ -8,19 +8,22 @@ import { navDir } from "../../_assets/navigation/navDirectory";
 import { animated, useSpring } from "@react-spring/web";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { SearchPropTypes } from "../navigation/Nav";
 
-export default function MenuButton() {
+export default function MenuButton({ searchClicked }: SearchPropTypes) {
   const [open, setOpen] = useState<boolean>(false);
   const [animationComplete, setAnimationComplete] = useState(true);
 
   // Define spring animation configuration
   const spring = useSpring({
-    width: open ? '100%' : '0%',
+    width: open ? "100%" : "0%",
     onStart: () => {
-      setAnimationComplete(false)
+      setAnimationComplete(false);
     },
     onRest: (result) => {
-      open && result.finished ? setAnimationComplete(false) : setAnimationComplete(true);
+      open && result.finished
+        ? setAnimationComplete(false)
+        : setAnimationComplete(true);
     },
   });
 
@@ -37,7 +40,7 @@ export default function MenuButton() {
       <Box
         onClick={() => setOpen(true)}
         sx={{
-          display: "flex",
+          display: searchClicked ? "none" : "flex",
           justifyContent: "center",
           alignItems: "center",
           padding: "0.5rem 0.5rem",

@@ -31,6 +31,7 @@ export default function Home() {
             color: "white",
             fontSize: "1rem",
             maxWidth: "80%",
+            textShadow: "0px 2px 4px #000000A6",
           }}
         >
           Elevate your comfort: Vintage Voyage - Where Cozy Meets Chic!
