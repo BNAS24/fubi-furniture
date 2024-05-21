@@ -79,7 +79,8 @@ export default function MenuButton({ searchClicked }: SearchPropTypes) {
             flex: 1,
             height: "100%",
             backgroundColor: theme.palette.background.paper,
-            backdropFilter: "blur(4px)",
+            webkitBackdropFilter: "blur(8px)",
+            backdropFilter: "blur(8px)",
           }}
         />
         <Container

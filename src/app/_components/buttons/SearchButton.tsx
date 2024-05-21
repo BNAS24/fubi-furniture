@@ -18,7 +18,6 @@ const SearchButton = ({ clicked, searchClicked }: SearchPropTypes) => {
         display: "flex",
         justifyContent: searchClicked ? "flex-start" : "center",
         alignItems: "center",
-        // width: "auto",
         maxWidth: searchClicked ? "unset" : "40px",
         height: "2.5rem",
         padding: "0.5rem 0.5rem",
@@ -44,12 +43,12 @@ const SearchButton = ({ clicked, searchClicked }: SearchPropTypes) => {
           fill="white"
         />
       </svg>
-      {/* <input
-        className={searchClicked ? "search-button-true" : "search-button-false"}
+      <input
+        className={searchClicked ? "unset" : "search-button-false"}
         type="search"
         placeholder="search"
         id="site-search"
-      /> */}
+      />
     </SearchAnimated>
   );
 };
