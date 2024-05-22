@@ -116,6 +116,7 @@ export const TopNavBar = () => {
               onClick={() =>
                 bagOrSearchIconClicked(bagButtonClicked ? "bag" : "search")
               }
+              fontWeight={500}
               sx={{
                 display:
                   searchButtonClicked || bagButtonClicked ? "flex" : "none",

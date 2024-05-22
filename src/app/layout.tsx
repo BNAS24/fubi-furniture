@@ -23,7 +23,12 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
           <Container
             disableGutters={true}
             maxWidth={false}
-            sx={{ display: "flex", flexDirection: "column", flex: 1 }}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              flex: 1,
+              backgroundColor: "var(--main-green)",
+            }}
           >
             {children}
           </Container>

@@ -38,12 +38,25 @@ export default function Home() {
         </Typography>
         <HomepageButton text="Shop Now" variant="contained" />
       </div>
+
+      {/*Component Carousel Container*/}
       <div className={styles["featured-products"]}>
         {/*Carousel component */}
         <EmblaCarouselSlide slides={slide} />
       </div>
-      {/*Featured Categories*/}
-      <Container disableGutters={true} maxWidth={false}>
+
+      {/*Featured Categories Component*/}
+      <Container
+        disableGutters={true}
+        maxWidth={false}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignContent: "center",
+          marginTop: "16px",
+          gap: "16px",
+        }}
+      >
         {featuredCategories.map((category, index) => (
           <div
             key={index}
