@@ -1,8 +1,17 @@
 import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 
 export const Footer = () => {
   return (
     <footer>
+      <Container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+      }}
+      >
       <Typography
         align="center"
         noWrap
@@ -13,6 +22,7 @@ export const Footer = () => {
       >
         Website Created By Brandon Bradley
       </Typography>
+      </Container>
     </footer>
   );
 };

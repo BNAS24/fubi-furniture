@@ -4,9 +4,12 @@ import { FilterButton } from "../../_components/buttons/FilterButton";
 import Image from "next/image";
 
 async function getImages(category: string) {
-  const response = await fetch(`http://localhost:3000/api/images?category=${category}`, {
-    cache: "no-store", // Very important for fetching data from the database
-  });
+  const response = await fetch(
+    `http://localhost:3000/api/images?category=${category}`,
+    {
+      cache: "no-store", // Very important for fetching data from the database
+    }
+  );
 
   if (!response.ok) {
     throw new Error("Failed to fetch data");
@@ -42,8 +45,9 @@ export default async function Dashboard({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          borderBottom: "2px solid var(--light-grey2)",
           height: "2.5rem",
+          borderBottom: "2px solid var(--light-grey2)",
+          backgroundColor: "var(--main-white)",
         }}
       >
         <Typography
@@ -65,6 +69,7 @@ export default async function Dashboard({
           justifyContent: "space-between",
           height: "2.5rem",
           paddingX: "1rem",
+          backgroundColor: "var(--main-white)",
         }}
       >
         <Typography
@@ -87,6 +92,7 @@ export default async function Dashboard({
           gridTemplateRows: "repeat(2, 1fr)",
           gap: "1rem",
           padding: "0 1rem 1.5rem 1rem",
+          backgroundColor: "var(--main-white)",
         }}
       >
         {images.map((image: any, index: number) => (

@@ -1,12 +1,12 @@
-import { Footer } from "./_components/navigation/Footer";
-import { TopNavBar } from "./_components/navigation/Nav";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/material/styles";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Footer } from "./_components/navigation/Footer";
+import { TopNavBar } from "./_components/navigation/Nav";
 import theme from "./_styles/muiTheme";
 import "./globals.css";
-import Container from "@mui/material/Container";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

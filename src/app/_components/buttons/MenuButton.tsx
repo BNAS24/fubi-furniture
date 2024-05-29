@@ -82,8 +82,8 @@ export default function MenuButton({
           sx={{
             flex: 1,
             height: "100%",
+            width: "auto",
             backgroundColor: theme.palette.background.paper,
-            WebkitBackdropFilter: "blur(8px)",
             backdropFilter: "blur(8px)",
           }}
         />

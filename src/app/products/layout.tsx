@@ -1,5 +1,4 @@
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 
 interface LayoutProps {
   children: React.ReactNode;
