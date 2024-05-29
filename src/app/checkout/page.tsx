@@ -15,7 +15,7 @@ export default function CheckoutPage() {
   const handleCheckout = async () => {
     setLoading(true);
 
-    const response = await fetch("http://localhost:3000/api/stripe/checkout", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/checkout`, {
       method: "POST",
     });
 
