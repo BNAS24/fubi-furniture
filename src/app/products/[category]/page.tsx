@@ -5,7 +5,7 @@ import Image from "next/image";
 
 async function getImages(category: string) {
   const response = await fetch(
-    `http://localhost:3000/api/images?category=${category}`,
+    `${process.env.NEXT_PUBLIC_DOMAIN}/api/images?category=${category}`,
     {
       cache: "no-store", // Very important for fetching data from the database
     }
