@@ -10,8 +10,9 @@ const SearchButton = ({
   searchClicked,
   bagButtonClicked,
 }: SearchPropTypes) => {
+  // Animation spring for search button
   const spring = useSpring({
-    from: { width: searchClicked ? "0%" : "auto" },
+    from: { width: searchClicked ? "15%" : "15%" },
     to: { width: searchClicked ? "100%" : "15%" },
   });
 

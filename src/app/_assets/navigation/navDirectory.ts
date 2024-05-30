@@ -6,7 +6,7 @@ interface NavDirectory {
 export const navDir: NavDirectory[] = [
   {
     title: "Collections",
-    path: "/products/pop-funiture",
+    path: "/products/featured",
   },
   {
     title: "Sofas",
@@ -18,7 +18,7 @@ export const navDir: NavDirectory[] = [
   },
   {
     title: "Lamps",
-    path: "/products/lamp",
+    path: "/products/lamps",
   },
   {
     title: "Bedding",

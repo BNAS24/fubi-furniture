@@ -5,7 +5,7 @@ import Image from "next/image";
 
 async function getImages(category: string) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_DOMAIN}/api/images?category=${category}`,
+    `${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/products/?category=${category}`,
     {
       cache: "no-store", // Very important for fetching data from the database
     }
@@ -15,9 +15,9 @@ async function getImages(category: string) {
     throw new Error("Failed to fetch data");
   }
 
-  const images = await response.json();
+  const products = await response.json();
 
-  return images;
+  return products;
 }
 
 export default async function Dashboard({
@@ -26,7 +26,7 @@ export default async function Dashboard({
   params: { category: string };
 }) {
   const imageCategory = params.category;
-  const images = await getImages(imageCategory);
+  const products = await getImages(imageCategory);
   const updatedParams = {
     ...params, // Spread the original params object to copy its properties
     category:
@@ -34,7 +34,7 @@ export default async function Dashboard({
   };
   const pageCategoryTitle = updatedParams.category;
 
-  console.log("images", images);
+  console.log("products from client:", products);
   return (
     <>
       {/*Container for category of products*/}
@@ -77,7 +77,7 @@ export default async function Dashboard({
             color: "var(--light-grey2)",
           }}
         >
-          {`results ${images.length}`}
+          {`results ${products.length}`}
         </Typography>
         <FilterButton />
       </Container>
@@ -87,38 +87,84 @@ export default async function Dashboard({
         disableGutters={true}
         maxWidth={false}
         sx={{
+          flexGrow: 1,
           display: "grid",
           gridTemplateColumns: "repeat(12, 1fr)",
           gridTemplateRows: "repeat(2, 1fr)",
           gap: "1rem",
+          width: "100vw",
+          height: "auto",
           padding: "0 1rem 1.5rem 1rem",
           backgroundColor: "var(--main-white)",
         }}
       >
-        {images.map((image: any, index: number) => (
+        {products.map((product: any) => (
           <Container
-            key={index}
+            key={product.product_id}
             disableGutters={true}
             maxWidth={false}
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-around",
+              justifyContent: "flex-start",
               alignItems: "center",
               gridColumn: "span 6",
               position: "relative",
-              height: "150px",
-              width: "150px",
+              width: "100%",
+              height: "auto",
             }}
           >
-            {/*!!! IMPORTANT make sure to change to a nextjs image for performance */}
             {/*Changes these defulat sizes, this was just made up to get rid of errors*/}
-            <Image
-              src={image.url}
-              alt={image.pathname}
-              fill={true}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+            <Container disableGutters={true} maxWidth={false}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+            }}
+            >
+              <Image
+                src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${product.image}`}
+                alt={product.name}
+                style={{
+                  flexShrink: 0,
+                }}
+                width={100}
+                height={100}
+                sizes="max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+              <Container disableGutters={true} maxWidth={false}>
+                <Typography
+                  align="center"
+                  noWrap
+                  sx={{
+                    fontSize: "1rem",
+                  }}
+                >
+                  {product.name}
+                </Typography>
+                <Typography
+                  align="center"
+                  noWrap={true}
+                  sx={{
+                    fontSize: "0.7rem",
+                  }}
+                >
+                  {product.description}
+                </Typography>
+                <Typography
+                  align="center"
+                  noWrap
+                  sx={{
+                    fontSize: "1rem",
+                  }}
+                >
+                  {`\$${product.price}`}
+                </Typography>
+              </Container>
+            </Container>
           </Container>
         ))}
       </Container>

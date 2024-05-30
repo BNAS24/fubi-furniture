@@ -11,25 +11,21 @@ export async function POST() {
   try {
     const cartItems = [
       {
-        name: "T-shirt",
-        price: 2000, // $20.00 in cents
+        name: "Lava Lamp",
+        productId: "prod_QC1nP288ob5WhN",
+        priceId: "price_1PLdk60201ag0YUEotwz0GKY",
         quantity: 2,
       },
       {
-        name: "Mug",
-        price: 1500, // $15.00 in cents
+        name: "Lamp",
+        productId: "prod_QC1nP288ob5WhN",
+        priceId: "price_1PJYyJ0201ag0YUEGU3xUVCw", 
         quantity: 1,
       },
     ];
 
     const line_items = cartItems.map((item) => ({
-      price_data: {
-        currency: "usd",
-        product_data: {
-          name: item.name,
-        },
-        unit_amount: item.price,
-      },
+      price: item.priceId,
       quantity: item.quantity,
     }));
 
@@ -37,8 +33,8 @@ export async function POST() {
       payment_method_types: ["card"],
       line_items: line_items,
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/cancel`,
+      success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/checkout-success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/checkout-canceled`,
     });
 
     return NextResponse.json({ id: session.id });
@@ -46,4 +42,4 @@ export async function POST() {
     console.log("error: ", error);
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
-};
+}

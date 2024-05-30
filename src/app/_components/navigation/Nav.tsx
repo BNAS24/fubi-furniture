@@ -14,7 +14,7 @@ export interface SearchPropTypes {
   searchClicked: boolean;
   bagClicked?: () => any;
   bagButtonClicked?: boolean;
-}
+};
 
 export const TopNavBar = () => {
   const [searchButtonClicked, setSearchButtonClicked] =

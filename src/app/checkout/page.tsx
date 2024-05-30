@@ -15,9 +15,12 @@ export default function CheckoutPage() {
   const handleCheckout = async () => {
     setLoading(true);
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/checkout`, {
-      method: "POST",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/checkout`,
+      {
+        method: "POST",
+      }
+    );
 
     const { id } = await response.json();
 
@@ -35,9 +38,11 @@ export default function CheckoutPage() {
 
   return (
     <Container
+      disableGutters={true}
+      maxWidth={false}
       sx={{
         height: "100vh",
-        width: "100%",
+        width: "100vw",
         backgroundColor: theme.palette.primary.contrastText,
       }}
     >
@@ -57,4 +62,4 @@ export default function CheckoutPage() {
       </div>
     </Container>
   );
-};
+}

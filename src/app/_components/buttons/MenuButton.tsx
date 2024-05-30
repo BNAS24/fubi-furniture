@@ -19,7 +19,7 @@ export default function MenuButton({
 
   // Define spring animation configuration
   const spring = useSpring({
-    width: open ? "100%" : "0%",
+    width: open ? 1 : 0,
     onStart: () => {
       setAnimationComplete(false);
     },
@@ -70,6 +70,7 @@ export default function MenuButton({
           display: !animationComplete ? "flex" : "none",
           flexDirection: "row",
           backgroundColor: "transparent",
+          width: spring.width.to((w) => `${w * 100}%`),
           height: "100vh",
           position: "fixed",
           top: 0,

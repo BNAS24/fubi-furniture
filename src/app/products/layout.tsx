@@ -8,7 +8,16 @@ interface LayoutProps {
 export default function Layout({ children, params }: LayoutProps) {
   console.log("params", params);
   return (
-    <Container disableGutters={true} maxWidth={false}>
+    <Container
+      disableGutters={true}
+      maxWidth={false}
+      sx={{
+        flexGrow: 1,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       {children}
     </Container>
   );
