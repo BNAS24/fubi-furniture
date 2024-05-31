@@ -5,10 +5,7 @@ import Image from "next/image";
 
 async function getImages(category: string) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/products/?category=${category}`,
-    {
-      cache: "no-store", // Very important for fetching data from the database
-    }
+    `${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/products/?category=${category}`
   );
 
   if (!response.ok) {
@@ -114,15 +111,17 @@ export default async function Dashboard({
             }}
           >
             {/*Changes these defulat sizes, this was just made up to get rid of errors*/}
-            <Container disableGutters={true} maxWidth={false}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              height: "100%",
-            }}
+            <Container
+              disableGutters={true}
+              maxWidth={false}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "100%",
+              }}
             >
               <Image
                 src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${product.image}`}

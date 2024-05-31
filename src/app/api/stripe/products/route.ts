@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
 // Creating a new instace of the stripe object
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 export async function GET(request: NextRequest) {
   try {
