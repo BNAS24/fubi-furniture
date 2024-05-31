@@ -34,7 +34,6 @@ export default async function Dashboard({
   };
   const pageCategoryTitle = updatedParams.category;
 
-  console.log("products from client:", products);
   return (
     <>
       {/*Container for category of products*/}

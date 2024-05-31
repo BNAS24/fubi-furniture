@@ -131,7 +131,7 @@ export default function MenuButton({
                 key={index}
                 onClick={() => setOpen(false)}
                 className="side-nav-link-decoration"
-                href={`http://localhost:3000${nav.path}`}
+                href={`${process.env.NEXT_PUBLIC_DOMAIN}${nav.path}`}
                 replace
               >
                 <Typography

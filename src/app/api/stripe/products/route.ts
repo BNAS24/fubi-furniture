@@ -29,8 +29,6 @@ export async function GET(request: NextRequest) {
       stripe_price_link: product.default_price,
     }));
 
-    console.log("products:", products);
-
     return NextResponse.json(products);
   } catch (error: any) {
     console.log(error);
