@@ -5,7 +5,9 @@ import Image from "next/image";
 
 async function getImages(category: string) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/products/?category=${category}`
+    `${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/products/?category=${category}`, {
+      next: { revalidate: 3600 }
+    }
   );
 
   if (!response.ok) {
