@@ -14,6 +14,12 @@ const nextConfig = {
         port: '3000',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'fubi-furniture-brandon-bradleys-projects.vercel.app',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
