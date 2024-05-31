@@ -6,7 +6,6 @@ interface LayoutProps {
 }
 
 export default function Layout({ children, params }: LayoutProps) {
-  console.log("params", params);
   return (
     <Container
       disableGutters={true}
@@ -21,4 +20,4 @@ export default function Layout({ children, params }: LayoutProps) {
       {children}
     </Container>
   );
-}
+};

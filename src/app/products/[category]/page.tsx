@@ -129,7 +129,9 @@ export default async function Dashboard({
                 src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${product.image}`}
                 alt={product.name}
                 style={{
-                  flexShrink: 0,
+                  width: "100%",
+                  height: "100%",
+                  aspectRatio: "1:1",
                 }}
                 width={100}
                 height={100}
