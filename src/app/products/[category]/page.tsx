@@ -28,7 +28,6 @@ export default function Dashboard() {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [itemFiltered, setItemFiltered] = useState<Product | null>(null);
-  console.log("item:", item);
 
   useEffect(() => {
     async function getProducts(category: any) {
@@ -57,7 +56,6 @@ export default function Dashboard() {
     getProducts(category);
   }, [category, item]);
 
-  console.log("itemFiltered:", itemFiltered);
   return (
     <>
       {item && itemFiltered && (
@@ -92,7 +90,6 @@ export default function Dashboard() {
           />
 
           <Container
-            // disableGutters={true}
             maxWidth={false}
             sx={{
               display: "flex",
