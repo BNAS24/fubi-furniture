@@ -1,7 +1,6 @@
 // @desc Create a customer session with stripe
 // @route api/stripe/customer-session
 // @access Public
-
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 

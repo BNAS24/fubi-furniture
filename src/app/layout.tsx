@@ -27,7 +27,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
               display: "flex",
               flexDirection: "column",
               flex: 1,
-              backgroundColor: "var(--main-green)",
+              backgroundColor: "var(--main-white)",
             }}
           >
             {children}

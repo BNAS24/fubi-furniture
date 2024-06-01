@@ -1,40 +1,126 @@
+"use client";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { FilterButton } from "../../_components/buttons/FilterButton";
 import Image from "next/image";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Button from "@mui/material/Button";
 
-async function getImages(category: string) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/products/?category=${category}`, {
-      next: { revalidate: 3600 }
-    }
-  );
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const products = await response.json();
-
-  return products;
+interface Product {
+  product_id: string;
+  name: string;
+  price: string;
+  description: string;
+  image: string;
+  category: string;
+  fallbackImages?: [];
+  stripe_price_link?: string;
 }
 
-export default async function Dashboard({
-  params,
-}: {
-  params: { category: string };
-}) {
-  const imageCategory = params.category;
-  const products = await getImages(imageCategory);
-  const updatedParams = {
-    ...params, // Spread the original params object to copy its properties
-    category:
-      params.category.charAt(0).toUpperCase() + params.category.slice(1), // Uppercase the first letter of the category string
-  };
-  const pageCategoryTitle = updatedParams.category;
+export default function Dashboard() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
+  const category = pathname.split("/")[2];
+  const item = searchParams.get("item");
+
+  const [products, setProducts] = useState<Product[]>([]);
+  const [itemFiltered, setItemFiltered] = useState<Product | null>(null);
+  console.log("item:", item);
+
+  useEffect(() => {
+    async function getProducts(category: any) {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/products/?category=${category}`,
+        {
+          next: { revalidate: 3600 },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+
+      const products = await response.json();
+
+      // Store products array in state
+      setProducts(products);
+
+      // Filtering through products array to get the item selected
+      setItemFiltered(
+        products.filter((product: any) => product.product_id === item)[0]
+      );
+    }
+
+    getProducts(category);
+  }, [category, item]);
+
+  console.log("itemFiltered:", itemFiltered);
   return (
     <>
+      {item && itemFiltered && (
+        <Container
+        disableGutters={true}
+        maxWidth={false}
+          sx={{
+            position: "absolute",
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+            width: "100%",
+            backgroundColor: "var(--main-white)",
+            zIndex: "98",
+          }}
+        >
+          <Image
+            src={
+              `${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${itemFiltered.image}` ||
+              "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
+            }
+            alt={itemFiltered.name || "Fubi furniture item"}
+            priority
+            style={{
+              width: "100%",
+              height: "auto",
+              aspectRatio: "1:1",
+            }}
+            width={100}
+            height={100}
+            sizes="max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+
+          <Container
+            // disableGutters={true}
+            maxWidth={false}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+            }}
+          >
+            <Typography fontWeight={600} variant="h3" align="left">
+              {itemFiltered.name}
+            </Typography>
+            <Typography>${itemFiltered.price}</Typography>
+            <Typography variant="body1" align="left">
+              {itemFiltered.description}
+            </Typography>
+            <Button
+              variant="contained"
+              fullWidth={true}
+              sx={{
+                alignSelf: "center",
+                marginTop: "16px",
+              }}
+            >
+              Add To Cart
+            </Button>
+          </Container>
+        </Container>
+      )}
+
       {/*Container for category of products*/}
       <Container
         disableGutters={true}
@@ -54,7 +140,7 @@ export default async function Dashboard({
             fontSize: "1.5rem",
           }}
         >
-          {pageCategoryTitle}
+          {category}
         </Typography>
       </Container>
       {/*Container for filtering and results count*/}
@@ -125,18 +211,20 @@ export default async function Dashboard({
                 height: "100%",
               }}
             >
-              <Image
-                src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${product.image}`}
-                alt={product.name}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  aspectRatio: "1:1",
-                }}
-                width={100}
-                height={100}
-                sizes="max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
+              <Link href={`/products/${category}?item=${product.product_id}`}>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${product.image}`}
+                  alt={product.name}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    aspectRatio: "1:1",
+                  }}
+                  width={100}
+                  height={100}
+                  sizes="max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </Link>
               <Container disableGutters={true} maxWidth={false}>
                 <Typography
                   align="center"

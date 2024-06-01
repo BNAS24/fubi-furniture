@@ -1,5 +1,6 @@
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import theme from "../../_styles/muiTheme";
 
 export const Footer = () => {
   return (
@@ -10,6 +11,8 @@ export const Footer = () => {
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
+        backgroundColor: "var(--main-green)",
+        zIndex: "99",
       }}
       >
       <Typography
