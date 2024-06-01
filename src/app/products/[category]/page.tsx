@@ -7,8 +7,9 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Button from "@mui/material/Button";
+import { addToCart } from "@/app/_helpers/cart/cart_update";
 
-interface Product {
+export interface Product {
   product_id: string;
   name: string;
   price: string;
@@ -60,8 +61,8 @@ export default function Dashboard() {
     <>
       {item && itemFiltered && (
         <Container
-        disableGutters={true}
-        maxWidth={false}
+          disableGutters={true}
+          maxWidth={false}
           sx={{
             position: "absolute",
             display: "flex",
@@ -107,6 +108,7 @@ export default function Dashboard() {
             <Button
               variant="contained"
               fullWidth={true}
+              onClick={() => addToCart(itemFiltered)}
               sx={{
                 alignSelf: "center",
                 marginTop: "16px",
@@ -208,7 +210,11 @@ export default function Dashboard() {
                 height: "100%",
               }}
             >
-              <Link href={`/products/${category}?item=${product.product_id}`}>
+              {/*Link wrapped around product image*/}
+              <Link
+                style={{ width: "100%", height: "100%" }}
+                href={`/products/${category}?item=${product.product_id}`}
+              >
                 <Image
                   src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${product.image}`}
                   alt={product.name}
