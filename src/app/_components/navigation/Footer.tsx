@@ -1,6 +1,5 @@
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import theme from "../../_styles/muiTheme";
 
 export const Footer = () => {
   return (

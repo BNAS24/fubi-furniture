@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { Footer } from "./_components/navigation/Footer";
 import { TopNavBar } from "./_components/navigation/Nav";
 import theme from "./_styles/muiTheme";
+import CartProvider from "./_context/CartContext";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,20 +20,22 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <AppRouterCacheProvider>
       <ThemeProvider theme={theme}>
         <body className={inter.className}>
-          <TopNavBar />
-          <Container
-            disableGutters={true}
-            maxWidth={false}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              flex: 1,
-              backgroundColor: "var(--main-white)",
-            }}
-          >
-            {children}
-          </Container>
-          <Footer />
+          <CartProvider>
+            <TopNavBar />
+            <Container
+              disableGutters={true}
+              maxWidth={false}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
+                backgroundColor: "var(--main-white)",
+              }}
+            >
+              {children}
+            </Container>
+            <Footer />
+          </CartProvider>
         </body>
       </ThemeProvider>
     </AppRouterCacheProvider>

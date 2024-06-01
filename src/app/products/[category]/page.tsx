@@ -7,7 +7,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Button from "@mui/material/Button";
-import { addToCart } from "@/app/_helpers/cart/cart_update";
+import { useCart } from "@/app/_context/CartContext";
 
 export interface Product {
   product_id: string;
@@ -29,6 +29,9 @@ export default function Dashboard() {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [itemFiltered, setItemFiltered] = useState<Product | null>(null);
+
+  const { addToCart, cartItems } = useCart();
+  const isInCart = cartItems.some(item => item.product_id === itemFiltered?.product_id);
 
   useEffect(() => {
     async function getProducts(category: any) {
@@ -109,12 +112,13 @@ export default function Dashboard() {
               variant="contained"
               fullWidth={true}
               onClick={() => addToCart(itemFiltered)}
+              disabled={isInCart}
               sx={{
                 alignSelf: "center",
                 marginTop: "16px",
               }}
             >
-              Add To Cart
+              {isInCart ? "Added to Cart" : "Add to Cart"}
             </Button>
           </Container>
         </Container>

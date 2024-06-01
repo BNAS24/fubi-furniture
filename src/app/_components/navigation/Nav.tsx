@@ -8,10 +8,9 @@ import BagButton from "../buttons/BagButton";
 import HomepageLogo from "../buttons/HomepageLogo";
 import MenuButton from "../buttons/MenuButton";
 import SearchButton from "../buttons/SearchButton";
-import { getCart, removeFromCart } from "@/app/_helpers/cart/cart_update";
 import Image from "next/image";
-import { Product } from "@/app/products/[category]/page";
 import Button from "@mui/material/Button";
+import { useCart } from "@/app/_context/CartContext";
 
 export interface SearchPropTypes {
   clicked?: () => any;
@@ -28,25 +27,20 @@ export const TopNavBar = () => {
   const [bagButtonClicked, setBagButtonClicked] = useState<boolean>(false);
   const bagClicked = () => setBagButtonClicked(!bagButtonClicked);
 
-  const [cartItems, setCartItems] = useState<Product[] | null>(null);
+  const {cartItems, removeFromCart} = useCart();
 
   useEffect(() => {
     const searchElement = document.getElementById("site-search");
     if (searchElement) {
       searchElement.style.display = searchButtonClicked ? "flex" : "none";
     }
-  }, [searchButtonClicked, cartItems]);
+  }, [searchButtonClicked]);
+
 
   const bagOrSearchIconClicked = (arg: string) => {
     arg === "bag"
       ? setBagButtonClicked(!bagButtonClicked)
       : setSearchButtonClicked(!searchButtonClicked);
-
-    //Get items from local storage
-    const items: any = getCart();
-
-    //Store items in state
-    setCartItems([...items]);
   };
 
   return (
