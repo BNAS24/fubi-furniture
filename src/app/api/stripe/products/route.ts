@@ -34,4 +34,4 @@ export async function GET(request: NextRequest) {
     console.log(error);
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
-}
+};

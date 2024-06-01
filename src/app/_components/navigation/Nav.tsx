@@ -11,6 +11,7 @@ import SearchButton from "../buttons/SearchButton";
 import Image from "next/image";
 import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
+import { CheckoutButton } from "../buttons/CheckoutButton";
 
 export interface SearchPropTypes {
   clicked?: () => any;
@@ -27,7 +28,7 @@ export const TopNavBar = () => {
   const [bagButtonClicked, setBagButtonClicked] = useState<boolean>(false);
   const bagClicked = () => setBagButtonClicked(!bagButtonClicked);
 
-  const {cartItems, removeFromCart} = useCart();
+  const { cartItems, removeFromCart } = useCart();
 
   useEffect(() => {
     const searchElement = document.getElementById("site-search");
@@ -35,7 +36,6 @@ export const TopNavBar = () => {
       searchElement.style.display = searchButtonClicked ? "flex" : "none";
     }
   }, [searchButtonClicked]);
-
 
   const bagOrSearchIconClicked = (arg: string) => {
     arg === "bag"
@@ -54,12 +54,14 @@ export const TopNavBar = () => {
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "center",
-          position: "sticky",
+          position:
+            searchButtonClicked || bagButtonClicked ? "fixed" : "sticky",
           paddingTop:
             searchButtonClicked || bagButtonClicked ? "1rem" : "unset",
           top: 0,
           height: searchButtonClicked || bagButtonClicked ? "100vh" : "64px",
           background: theme.palette.primary.main,
+          overflow: "auto",
           zIndex: 99,
         }}
       >
@@ -163,12 +165,20 @@ export const TopNavBar = () => {
               />
               <Typography>{item.name}</Typography>
               <Typography align="center">{item.description}</Typography>
-              <Typography>{item.price}</Typography>
-              <Button onClick={() => removeFromCart(item.product_id)}>
+              <Typography>{`\$${item.price}`}</Typography>
+              <Button
+                fullWidth={true}
+                disableElevation={true}
+                onClick={() => removeFromCart(item.product_id)}
+                sx={{
+                  color: theme.palette.error.dark
+                }}
+              >
                 Remove from cart
               </Button>
             </Container>
           ))}
+        {bagButtonClicked && cartItems.length > 0 && <CheckoutButton closeBag={bagClicked}/>}
       </Container>
     </ThemeProvider>
   );

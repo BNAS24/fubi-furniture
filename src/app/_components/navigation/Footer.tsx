@@ -11,7 +11,6 @@ export const Footer = () => {
         alignItems: "center",
         height: "100%",
         backgroundColor: "var(--main-green)",
-        zIndex: "99",
       }}
       >
       <Typography

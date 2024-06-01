@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState } from "react";
 import theme from "../_styles/muiTheme";
+import { useCart } from "../_context/CartContext";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -11,14 +12,19 @@ const stripePromise = loadStripe(
 
 export default function CheckoutPage() {
   const [loading, setLoading] = useState<boolean>(false);
+  const { cartItems } = useCart();
 
-  const handleCheckout = async () => {
+  const handleCheckout = async (products: any[]) => {
     setLoading(true);
 
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_DOMAIN}/api/stripe/checkout`,
       {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ products }),
       }
     );
 
@@ -49,7 +55,7 @@ export default function CheckoutPage() {
       <div>
         <h1>Checkout</h1>
         <Button
-          onClick={handleCheckout}
+          onClick={() => handleCheckout(cartItems)}
           variant="contained"
           disabled={loading}
           type="submit"
