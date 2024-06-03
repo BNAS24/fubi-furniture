@@ -56,10 +56,10 @@ export const TopNavBar = () => {
           alignItems: "center",
           position:
             searchButtonClicked || bagButtonClicked ? "fixed" : "sticky",
-          paddingTop:
-            searchButtonClicked || bagButtonClicked ? "1rem" : "unset",
+          padding: searchButtonClicked ? "8px 0 0 0" : "unset",
           top: 0,
-          height: searchButtonClicked || bagButtonClicked ? "100vh" : "64px",
+          height: "64px",
+          minHeight: searchButtonClicked || bagButtonClicked ? "100vh" : "auto",
           background: theme.palette.primary.main,
           overflow: "auto",
           zIndex: 99,
@@ -94,6 +94,7 @@ export const TopNavBar = () => {
                   : "flex-end",
               alignItems: "center",
               gap: searchButtonClicked ? "1rem" : "unset",
+              height: "64px",
             }}
           >
             <SearchButton
@@ -137,48 +138,64 @@ export const TopNavBar = () => {
             </Typography>
           </Container>
         </Container>
-        {bagButtonClicked &&
-          cartItems &&
-          cartItems.map((item: any) => (
-            <Container
-              key={item.product_id}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-                height: "auto",
-                backgroundColor: "white",
-              }}
-            >
-              <Image
-                src={
-                  `${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${item.image}` ||
-                  "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
-                }
-                alt={item.name || "Fubi furniture item"}
-                priority
-                style={{ width: "100%", height: "auto" }}
-                height={100}
-                width={100}
-              />
-              <Typography>{item.name}</Typography>
-              <Typography align="center">{item.description}</Typography>
-              <Typography>{`\$${item.price}`}</Typography>
-              <Button
-                fullWidth={true}
-                disableElevation={true}
-                onClick={() => removeFromCart(item.product_id)}
+        <Container
+          disableGutters={true}
+          maxWidth={false}
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "100%",
+            width: "100%",
+          }}
+        >
+          {bagButtonClicked &&
+            cartItems &&
+            cartItems.map((item: any) => (
+              <Container
+                key={item.product_id}
                 sx={{
-                  color: theme.palette.error.dark
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "100%",
+                  height: "auto",
+                  backgroundColor: "white",
+                  padding: "0 0 8px 0",
                 }}
               >
-                Remove from cart
-              </Button>
-            </Container>
-          ))}
-        {bagButtonClicked && cartItems.length > 0 && <CheckoutButton closeBag={bagClicked}/>}
+                <Image
+                  src={
+                    `${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${item.image}` ||
+                    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
+                  }
+                  alt={item.name || "Fubi furniture item"}
+                  priority
+                  style={{ width: "100%", height: "auto" }}
+                  height={100}
+                  width={100}
+                />
+                <Typography>{item.name}</Typography>
+                <Typography align="center">{item.description}</Typography>
+                <Typography>{`\$${item.price}`}</Typography>
+                <Button
+                  disableElevation={true}
+                  onClick={() => removeFromCart(item.product_id)}
+                  sx={{
+                    color: theme.palette.error.dark,
+                  }}
+                >
+                  Remove from cart
+                </Button>
+              </Container>
+            ))}
+          {bagButtonClicked && cartItems.length > 0 && (
+            <CheckoutButton closeBag={bagClicked} />
+          )}
+        </Container>
       </Container>
     </ThemeProvider>
   );
