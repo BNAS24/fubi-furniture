@@ -67,7 +67,7 @@ export default function Dashboard() {
           disableGutters={true}
           maxWidth={false}
           sx={{
-            position: "absolute",
+            position: "fixed",
             display: "flex",
             flexDirection: "column",
             height: "100%",
