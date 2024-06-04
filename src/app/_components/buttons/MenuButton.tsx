@@ -1,44 +1,11 @@
 "use client";
 import Box from "@mui/material/Box";
-import CloseIcon from "@mui/icons-material/Close";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import theme from "../../_styles/muiTheme";
-import { navDir } from "../../_assets/navigation/navDirectory";
-import { animated, useSpring } from "@react-spring/web";
-import Link from "next/link";
-import React, { useState, useEffect, Component } from "react";
-import Backdrop from "@mui/material/Backdrop";
-
-const SideNavigation = animated(Container);
 
 export default function MenuButton({
   handleMenu,
   searchClicked,
   bagButtonClicked,
 }: any) {
-  // const [open, setOpen] = useState<boolean>(false);
-  // const [animationComplete, setAnimationComplete] = useState(true);
-
-  // // Define spring animation configuration
-  // const spring = useSpring({
-  //   width: open ? "100%" : "0",
-  //   onStart: () => {
-  //     setAnimationComplete(false);
-  //   },
-  //   onRest: (result) => {
-  //     open && result.finished
-  //       ? setAnimationComplete(false)
-  //       : setAnimationComplete(true);
-  //   },
-  // });
-
-  // // Prevents scrolling when the nav side menu opens
-  // useEffect(() => {
-  //   document.body.className = open
-  //     ? "body-no-scroll-true"
-  //     : "body-no-scroll-false";
-  // }, [open]);
 
   return (
     <>
