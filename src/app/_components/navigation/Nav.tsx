@@ -13,22 +13,71 @@ import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
 import { CheckoutButton } from "../buttons/CheckoutButton";
 
-export interface SearchPropTypes {
-  handleMenu?: () => any;
-  clicked?: () => any;
-  searchClicked: boolean;
-  bagClicked?: () => any;
-  bagButtonClicked?: boolean;
-}
+// Utility function to determine container position
+const getContainerPosition = ({ menuOpen, searchButtonClicked, bagButtonClicked }: any) => {
+  if (menuOpen) return "absolute";
+  if (searchButtonClicked || bagButtonClicked) return "fixed";
+  return "sticky";
+};
+
+// Custom hook for managing button states
+const useButtonState = () => {
+  const [searchButtonClicked, setSearchButtonClicked] = useState(false);
+  const [bagButtonClicked, setBagButtonClicked] = useState(false);
+
+  const toggleSearchButton = () => setSearchButtonClicked(!searchButtonClicked);
+  const toggleBagButton = () => setBagButtonClicked(!bagButtonClicked);
+
+  return {
+    searchButtonClicked,
+    bagButtonClicked,
+    toggleSearchButton,
+    toggleBagButton,
+  };
+};
+
+// Component for rendering cart items
+const CartItem = ({ item, removeFromCart }: any) => (
+  <Container
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "auto",
+      backgroundColor: "white",
+      padding: "0 0 8px 0",
+    }}
+  >
+    <Image
+      src={
+        `${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${item.image}` ||
+        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
+      }
+      alt={item.name || "Fubi furniture item"}
+      priority
+      style={{ width: "100%", height: "auto" }}
+      height={100}
+      width={100}
+    />
+    <Typography>{item.name}</Typography>
+    <Typography align="center">{item.description}</Typography>
+    <Typography>{`\$${item.price}`}</Typography>
+    <Button
+      disableElevation={true}
+      onClick={() => removeFromCart(item.product_id)}
+      sx={{
+        color: theme.palette.error.dark,
+      }}
+    >
+      Remove from cart
+    </Button>
+  </Container>
+);
 
 export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
-  const [searchButtonClicked, setSearchButtonClicked] =
-    useState<boolean>(false);
-  const clicked = () => setSearchButtonClicked(!searchButtonClicked);
-
-  const [bagButtonClicked, setBagButtonClicked] = useState<boolean>(false);
-  const bagClicked = () => setBagButtonClicked(!bagButtonClicked);
-
+  const { searchButtonClicked, bagButtonClicked, toggleSearchButton, toggleBagButton } = useButtonState();
   const { cartItems, removeFromCart } = useCart();
 
   useEffect(() => {
@@ -40,14 +89,8 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
 
   const bagOrSearchIconClicked = (arg: string) => {
     arg === "bag"
-      ? setBagButtonClicked(!bagButtonClicked)
-      : setSearchButtonClicked(!searchButtonClicked);
-  };
-
-  const getContainerPosition = () => {
-    if (menuOpen) return "absolute";
-    if (searchButtonClicked || bagButtonClicked) return "fixed";
-    return "sticky";
+      ? toggleBagButton()
+      : toggleSearchButton();
   };
 
   return (
@@ -61,9 +104,12 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "center",
-          position: getContainerPosition(),
+          position: getContainerPosition({ menuOpen, searchButtonClicked, bagButtonClicked }),
           padding: searchButtonClicked ? "8px 0 0 0" : "unset",
           top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
           height: "64px",
           minHeight: searchButtonClicked || bagButtonClicked ? "100vh" : "auto",
           background: theme.palette.primary.main,
@@ -104,12 +150,12 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             }}
           >
             <SearchButton
-              clicked={clicked}
+              clicked={toggleSearchButton}
               searchClicked={searchButtonClicked}
               bagButtonClicked={bagButtonClicked}
             />
             <BagButton
-              bagClicked={bagClicked}
+              bagClicked={toggleBagButton}
               searchClicked={searchButtonClicked}
             />
             <MenuButton
@@ -160,47 +206,11 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
         >
           {bagButtonClicked &&
             cartItems &&
-            cartItems.map((item: any) => (
-              <Container
-                key={item.product_id}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "100%",
-                  height: "auto",
-                  backgroundColor: "white",
-                  padding: "0 0 8px 0",
-                }}
-              >
-                <Image
-                  src={
-                    `${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${item.image}` ||
-                    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
-                  }
-                  alt={item.name || "Fubi furniture item"}
-                  priority
-                  style={{ width: "100%", height: "auto" }}
-                  height={100}
-                  width={100}
-                />
-                <Typography>{item.name}</Typography>
-                <Typography align="center">{item.description}</Typography>
-                <Typography>{`\$${item.price}`}</Typography>
-                <Button
-                  disableElevation={true}
-                  onClick={() => removeFromCart(item.product_id)}
-                  sx={{
-                    color: theme.palette.error.dark,
-                  }}
-                >
-                  Remove from cart
-                </Button>
-              </Container>
+            cartItems.map((item) => (
+              <CartItem key={item.product_id} item={item} removeFromCart={removeFromCart} />
             ))}
           {bagButtonClicked && cartItems.length > 0 && (
-            <CheckoutButton closeBag={bagClicked} />
+            <CheckoutButton closeBag={toggleBagButton} />
           )}
         </Container>
       </Container>

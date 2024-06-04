@@ -8,7 +8,6 @@ import { navDir } from "../../_assets/navigation/navDirectory";
 import { animated, useSpring } from "@react-spring/web";
 import Link from "next/link";
 import React, { useState, useEffect, Component } from "react";
-import { SearchPropTypes } from "../navigation/Nav";
 import Backdrop from "@mui/material/Backdrop";
 
 const SideNavigation = animated(Container);
