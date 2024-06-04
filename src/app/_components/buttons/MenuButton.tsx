@@ -69,7 +69,7 @@ export default function MenuButton({
           ...spring,
           display: !animationComplete ? "flex" : "none",
           flexDirection: "row",
-          backgroundColor: "transparent",
+          // backgroundColor: "transparent",
           width: spring.width.to((w) => `${w * 100}%`),
           height: "100vh",
           position: "fixed",
