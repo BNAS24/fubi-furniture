@@ -9,6 +9,7 @@ import { animated, useSpring } from "@react-spring/web";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { SearchPropTypes } from "../navigation/Nav";
+import Backdrop from "@mui/material/Backdrop";
 
 export default function MenuButton({
   searchClicked,
@@ -69,23 +70,34 @@ export default function MenuButton({
           ...spring,
           display: !animationComplete ? "flex" : "none",
           flexDirection: "row",
+          backgroundColor: "transparent",
           width: spring.width.to((w) => `${w * 100}%`),
           height: "100vh",
           position: "fixed",
           top: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: theme.palette.background.paper,
-          backdropFilter: "blur(8px)",
         }}
       >
-        <Box
+        {/* <Box
           onClick={() => setOpen(false)}
           sx={{
             flex: 1,
             height: "100%",
             backgroundColor: theme.palette.background.paper,
             backdropFilter: "blur(8px)",
+          }}
+        /> */}
+        <Backdrop
+          open={open}
+          onClick={() => setOpen(false)}
+          sx={{
+            flex: 1,
+            position: "unset",
+            height: "100%",
+            backgroundColor: theme.palette.background.paper,
+            backdropFilter: "blur(8px)",
+            zIndex: 1,
           }}
         />
         <Container
