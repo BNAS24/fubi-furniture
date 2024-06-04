@@ -43,7 +43,7 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
       sx={{
         display: !animationComplete ? "flex" : "none",
         flexDirection: "row",
-        backgroundColor: "transparent",
+        backgroundColor: "rgba(15, 15, 15, 0.1)",
         height: "100vh",
         position: "fixed",
         top: 0,
@@ -60,7 +60,7 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
           position: "unset",
           height: "100%",
           backgroundColor: theme.palette.background.paper,
-          backdropFilter: "blur(8px)",
+          backdropFilter: "blur(8px) !important",
         }}
       />
       <Container
