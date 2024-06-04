@@ -44,6 +44,7 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
         display: !animationComplete ? "flex" : "none",
         flexDirection: "row",
         backgroundColor: "rgba(15, 15, 15, 0.1)",
+        backdropFilter: "blur(8px) !important",
         height: "100vh",
         position: "fixed",
         top: 0,
@@ -59,8 +60,8 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
           flex: 1,
           position: "unset",
           height: "100%",
-          backgroundColor: theme.palette.background.paper,
-          backdropFilter: "blur(8px) !important",
+          // backgroundColor: theme.palette.background.paper,
+
         }}
       />
       <Container
