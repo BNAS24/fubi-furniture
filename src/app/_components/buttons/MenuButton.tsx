@@ -98,7 +98,7 @@ export default function MenuButton({
             justifyContent: "flex-start",
             width: "296px",
             height: "100vh",
-            padding: "1rem 1rem",
+            padding: "1rem 1rem 2rem 1rem",
             color: theme.palette.primary.contrastText,
             backgroundColor: theme.palette.primary.main,
           }}
