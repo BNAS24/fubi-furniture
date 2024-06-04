@@ -21,7 +21,7 @@ export interface SearchPropTypes {
   bagButtonClicked?: boolean;
 }
 
-export const TopNavBar = ({ handleMenu }: any) => {
+export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
   const [searchButtonClicked, setSearchButtonClicked] =
     useState<boolean>(false);
   const clicked = () => setSearchButtonClicked(!searchButtonClicked);
@@ -44,6 +44,12 @@ export const TopNavBar = ({ handleMenu }: any) => {
       : setSearchButtonClicked(!searchButtonClicked);
   };
 
+  const getContainerPosition = () => {
+    if (menuOpen) return "absolute";
+    if (searchButtonClicked || bagButtonClicked) return "fixed";
+    return "sticky";
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Container
@@ -55,8 +61,7 @@ export const TopNavBar = ({ handleMenu }: any) => {
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "center",
-          position:
-            searchButtonClicked || bagButtonClicked ? "fixed" : "sticky",
+          position: getContainerPosition(),
           padding: searchButtonClicked ? "8px 0 0 0" : "unset",
           top: 0,
           height: "64px",

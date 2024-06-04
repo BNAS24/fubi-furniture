@@ -35,7 +35,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <body className={inter.className}>
             <CartProvider>
               <SideMenu handleMenu={handleMenu} menuOpen={menuOpen} />
-              <TopNavBar handleMenu={handleMenu} />
+              <TopNavBar handleMenu={handleMenu} menuOpen={menuOpen}/>
               <Container
                 disableGutters={true}
                 maxWidth={false}
