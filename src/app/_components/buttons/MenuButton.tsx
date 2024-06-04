@@ -122,7 +122,7 @@ export default function MenuButton({
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "space-between",
+              justifyContent: "space-around",
               height: "100%",
               maxHeight: "100%",
               width: "100%",
@@ -137,11 +137,15 @@ export default function MenuButton({
                 className="side-nav-link-decoration"
                 href={`${process.env.NEXT_PUBLIC_DOMAIN}${nav.path}`}
                 replace
+                style={{
+                  flex: "0 1",
+                }}
               >
                 <Typography
                   fontWeight={500}
                   sx={{
                     fontSize: "1.5rem",
+                    flex: "0 1",
                     "&:hover": {
                       cursor: "pointer",
                       textDecoration: "underline",
