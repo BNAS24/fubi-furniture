@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 
-const BagButton = ({ searchClicked, bagClicked }: SearchPropTypes) => (
+const BagButton = ({ searchClicked, bagClicked }: any) => (
   <Box
     onClick={bagClicked}
     sx={{
