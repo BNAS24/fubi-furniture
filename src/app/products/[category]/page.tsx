@@ -31,7 +31,9 @@ export default function Dashboard() {
   const [itemFiltered, setItemFiltered] = useState<Product | null>(null);
 
   const { addToCart, cartItems } = useCart();
-  const isInCart = cartItems.some(item => item.product_id === itemFiltered?.product_id);
+  const isInCart = cartItems.some(
+    (item) => item.product_id === itemFiltered?.product_id
+  );
 
   useEffect(() => {
     async function getProducts(category: any) {
@@ -59,6 +61,13 @@ export default function Dashboard() {
 
     getProducts(category);
   }, [category, item]);
+
+  // Prevents scrolling when item page is showing
+  useEffect(() => {
+    document.body.className = itemFiltered
+      ? "body-no-scroll-true"
+      : "body-no-scroll-false";
+  }, [itemFiltered]);
 
   return (
     <>
