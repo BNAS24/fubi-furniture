@@ -84,8 +84,8 @@ export default function MenuButton({
           sx={{
             flex: 1,
             height: "100%",
-            // backgroundColor: theme.palette.background.paper,
-            // backdropFilter: "blur(8px)",
+            backgroundColor: theme.palette.background.paper,
+            backdropFilter: "blur(8px)",
           }}
         />
         <Container
