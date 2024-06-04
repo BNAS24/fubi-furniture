@@ -122,9 +122,9 @@ export default function MenuButton({
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "space-between",
-              height: "100vh",
+              height: "100%",
               width: "100%",
-              paddingY: "1.5rem",
+              // paddingY: "1.5rem",
             }}
           >
             {navDir.map((nav, index) => (
