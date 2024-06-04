@@ -82,7 +82,7 @@ export default function MenuButton({
           onClick={() => setOpen(false)}
           sx={{
             flex: 1,
-            height: "100%",
+            height: "100vh",
             width: "auto",
             backgroundColor: theme.palette.background.paper,
             backdropFilter: "blur(8px)",
@@ -97,7 +97,7 @@ export default function MenuButton({
             alignItems: "center",
             justifyContent: "flex-start",
             width: "296px",
-            height: "100%",
+            height: "100vh",
             padding: "1rem 1rem",
             color: theme.palette.primary.contrastText,
             backgroundColor: theme.palette.primary.main,
@@ -122,7 +122,8 @@ export default function MenuButton({
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "space-between",
-              height: "100%",
+              height: "100vh",
+              width: "100%",
               paddingY: "1.5rem",
             }}
           >
