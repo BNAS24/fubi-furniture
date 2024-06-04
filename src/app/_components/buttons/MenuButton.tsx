@@ -75,15 +75,16 @@ export default function MenuButton({
           position: "fixed",
           top: 0,
           right: 0,
-          margin: "0 0",
+          bottom: 0,
+          // margin: "0 0",
         }}
       >
         <Box
           onClick={() => setOpen(false)}
           sx={{
             flex: 1,
-            height: "100vh",
-            width: "auto",
+            height: "100%",
+            // width: "auto",
             backgroundColor: theme.palette.background.paper,
             backdropFilter: "blur(8px)",
           }}
@@ -97,7 +98,7 @@ export default function MenuButton({
             alignItems: "center",
             justifyContent: "flex-start",
             width: "296px",
-            height: "100vh",
+            height: "100%",
             padding: "1rem 1rem 2rem 1rem",
             color: theme.palette.primary.contrastText,
             backgroundColor: theme.palette.primary.main,
@@ -123,7 +124,7 @@ export default function MenuButton({
               alignItems: "center",
               justifyContent: "space-between",
               height: "100%",
-              maxHeight: "100vh",
+              maxHeight: "100%",
               width: "100%",
               // paddingY: "1.5rem",
               overflowY: "auto",
