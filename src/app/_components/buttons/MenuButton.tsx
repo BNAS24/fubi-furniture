@@ -123,8 +123,10 @@ export default function MenuButton({
               alignItems: "center",
               justifyContent: "space-between",
               height: "100%",
+              maxHeight: "100vh",
               width: "100%",
               // paddingY: "1.5rem",
+              overflowY: "auto",
             }}
           >
             {navDir.map((nav, index) => (
