@@ -14,37 +14,38 @@ import Backdrop from "@mui/material/Backdrop";
 const SideNavigation = animated(Container);
 
 export default function MenuButton({
+  handleMenu,
   searchClicked,
   bagButtonClicked,
-}: SearchPropTypes) {
-  const [open, setOpen] = useState<boolean>(false);
-  const [animationComplete, setAnimationComplete] = useState(true);
+}: any) {
+  // const [open, setOpen] = useState<boolean>(false);
+  // const [animationComplete, setAnimationComplete] = useState(true);
 
-  // Define spring animation configuration
-  const spring = useSpring({
-    width: open ? "100%" : "0",
-    onStart: () => {
-      setAnimationComplete(false);
-    },
-    onRest: (result) => {
-      open && result.finished
-        ? setAnimationComplete(false)
-        : setAnimationComplete(true);
-    },
-  });
+  // // Define spring animation configuration
+  // const spring = useSpring({
+  //   width: open ? "100%" : "0",
+  //   onStart: () => {
+  //     setAnimationComplete(false);
+  //   },
+  //   onRest: (result) => {
+  //     open && result.finished
+  //       ? setAnimationComplete(false)
+  //       : setAnimationComplete(true);
+  //   },
+  // });
 
-  // Prevents scrolling when the nav side menu opens
-  useEffect(() => {
-    document.body.className = open
-      ? "body-no-scroll-true"
-      : "body-no-scroll-false";
-  }, [open]);
+  // // Prevents scrolling when the nav side menu opens
+  // useEffect(() => {
+  //   document.body.className = open
+  //     ? "body-no-scroll-true"
+  //     : "body-no-scroll-false";
+  // }, [open]);
 
   return (
     <>
       {/*Menu Button*/}
       <Box
-        onClick={() => setOpen(true)}
+        onClick={handleMenu}
         sx={{
           display: searchClicked || bagButtonClicked ? "none" : "flex",
           justifyContent: "center",
@@ -65,104 +66,6 @@ export default function MenuButton({
           />
         </svg>
       </Box>
-
-      {/*Nav side menu*/}
-      <SideNavigation
-        disableGutters={true}
-        maxWidth={false}
-        style={spring}
-        sx={{
-          display: !animationComplete ? "flex" : "none",
-          flexDirection: "row",
-          backgroundColor: "transparent",
-          // width: spring.width.to((w) => `${w * 100}%`),
-          height: "100vh",
-          position: "fixed",
-          top: 0,
-          right: 0,
-          bottom: 0,
-        }}
-      >
-        <Backdrop
-          open
-          onClick={() => setOpen(false)}
-          sx={{
-            flex: 1,
-            position: "unset",
-            height: "100%",
-            backgroundColor: theme.palette.background.paper,
-            backdropFilter: "blur(8px)",
-          }}
-        />
-        <Container
-          disableGutters={true}
-          maxWidth={false}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            width: "296px",
-            height: "100%",
-            padding: "1rem 1rem 2rem 1rem",
-            color: theme.palette.primary.contrastText,
-            backgroundColor: theme.palette.primary.main,
-          }}
-        >
-          <CloseIcon
-            onClick={() => setOpen(false)}
-            sx={{
-              alignSelf: "flex-end",
-              fontSize: "2.5rem",
-              color: theme.palette.primary.contrastText,
-              "&:hover": {
-                cursor: "pointer",
-              },
-            }}
-          />
-          <Container
-            disableGutters={true}
-            maxWidth={false}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "space-around",
-              height: "100%",
-              maxHeight: "100%",
-              width: "100%",
-              overflowY: "auto",
-            }}
-          >
-            {navDir.map((nav, index) => (
-              <Link
-                key={index}
-                onClick={() => setOpen(false)}
-                className="side-nav-link-decoration"
-                href={`${process.env.NEXT_PUBLIC_DOMAIN}${nav.path}`}
-                replace
-                style={{
-                  flex: "0 1",
-                }}
-              >
-                <Typography
-                  fontWeight={500}
-                  sx={{
-                    fontSize: "1.5rem",
-                    flex: "0 1",
-                    "&:hover": {
-                      cursor: "pointer",
-                      textDecoration: "underline",
-                    },
-                  }}
-                >
-                  {nav.title}
-                </Typography>
-              </Link>
-            ))}
-          </Container>
-        </Container>
-      </SideNavigation>
     </>
   );
 }

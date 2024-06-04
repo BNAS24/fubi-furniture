@@ -14,13 +14,14 @@ import { useCart } from "@/app/_context/CartContext";
 import { CheckoutButton } from "../buttons/CheckoutButton";
 
 export interface SearchPropTypes {
+  handleMenu?: () => any;
   clicked?: () => any;
   searchClicked: boolean;
   bagClicked?: () => any;
   bagButtonClicked?: boolean;
 }
 
-export const TopNavBar = () => {
+export const TopNavBar = ({ handleMenu }: any) => {
   const [searchButtonClicked, setSearchButtonClicked] =
     useState<boolean>(false);
   const clicked = () => setSearchButtonClicked(!searchButtonClicked);
@@ -107,6 +108,7 @@ export const TopNavBar = () => {
               searchClicked={searchButtonClicked}
             />
             <MenuButton
+              handleMenu={handleMenu}
               searchClicked={searchButtonClicked}
               bagButtonClicked={bagButtonClicked}
             />
