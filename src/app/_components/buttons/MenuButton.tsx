@@ -69,14 +69,14 @@ export default function MenuButton({
           ...spring,
           display: !animationComplete ? "flex" : "none",
           flexDirection: "row",
-          // backgroundColor: "transparent",
           width: spring.width.to((w) => `${w * 100}%`),
           height: "100vh",
           position: "fixed",
           top: 0,
           right: 0,
           bottom: 0,
-          // margin: "0 0",
+          backgroundColor: theme.palette.background.paper,
+          backdropFilter: "blur(8px)",
         }}
       >
         <Box
@@ -84,9 +84,8 @@ export default function MenuButton({
           sx={{
             flex: 1,
             height: "100%",
-            // width: "auto",
-            backgroundColor: theme.palette.background.paper,
-            backdropFilter: "blur(8px)",
+            // backgroundColor: theme.palette.background.paper,
+            // backdropFilter: "blur(8px)",
           }}
         />
         <Container
@@ -126,7 +125,6 @@ export default function MenuButton({
               height: "100%",
               maxHeight: "100%",
               width: "100%",
-              // paddingY: "1.5rem",
               overflowY: "auto",
             }}
           >
