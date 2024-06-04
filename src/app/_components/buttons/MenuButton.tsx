@@ -7,9 +7,11 @@ import theme from "../../_styles/muiTheme";
 import { navDir } from "../../_assets/navigation/navDirectory";
 import { animated, useSpring } from "@react-spring/web";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import { SearchPropTypes } from "../navigation/Nav";
 import Backdrop from "@mui/material/Backdrop";
+
+const SideNavigation = animated(Container);
 
 export default function MenuButton({
   searchClicked,
@@ -20,7 +22,7 @@ export default function MenuButton({
 
   // Define spring animation configuration
   const spring = useSpring({
-    width: open ? 1 : 0,
+    width: open ? "100%" : "0",
     onStart: () => {
       setAnimationComplete(false);
     },
@@ -65,13 +67,15 @@ export default function MenuButton({
       </Box>
 
       {/*Nav side menu*/}
-      <animated.nav
-        style={{
-          ...spring,
+      <SideNavigation
+        disableGutters={true}
+        maxWidth={false}
+        style={spring}
+        sx={{
           display: !animationComplete ? "flex" : "none",
           flexDirection: "row",
           backgroundColor: "transparent",
-          width: spring.width.to((w) => `${w * 100}%`),
+          // width: spring.width.to((w) => `${w * 100}%`),
           height: "100vh",
           position: "fixed",
           top: 0,
@@ -79,17 +83,8 @@ export default function MenuButton({
           bottom: 0,
         }}
       >
-        {/* <Box
-          onClick={() => setOpen(false)}
-          sx={{
-            flex: 1,
-            height: "100%",
-            backgroundColor: theme.palette.background.paper,
-            backdropFilter: "blur(8px)",
-          }}
-        /> */}
         <Backdrop
-          open={open}
+          open
           onClick={() => setOpen(false)}
           sx={{
             flex: 1,
@@ -97,7 +92,6 @@ export default function MenuButton({
             height: "100%",
             backgroundColor: theme.palette.background.paper,
             backdropFilter: "blur(8px)",
-            zIndex: 1,
           }}
         />
         <Container
@@ -168,7 +162,7 @@ export default function MenuButton({
             ))}
           </Container>
         </Container>
-      </animated.nav>
+      </SideNavigation>
     </>
   );
 }
