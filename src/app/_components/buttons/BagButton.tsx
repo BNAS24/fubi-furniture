@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import { SearchPropTypes } from "../navigation/Nav";
 
 const BagButton = ({ searchClicked, bagClicked }: SearchPropTypes) => (
   <Box

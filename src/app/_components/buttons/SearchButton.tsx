@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import theme from "../../_styles/muiTheme";
-import { SearchPropTypes } from "../navigation/Nav";
 import { animated, useSpring } from "@react-spring/web";
 
 const SearchAnimated = animated(Box);
@@ -9,7 +8,7 @@ const SearchButton = ({
   clicked,
   searchClicked,
   bagButtonClicked,
-}: SearchPropTypes) => {
+}: any) => {
   // Animation spring for search button
   const spring = useSpring({
     from: { width: searchClicked ? "15%" : "15%" },

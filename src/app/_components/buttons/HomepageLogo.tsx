@@ -1,9 +1,8 @@
 import Box from "@mui/material/Box";
 import theme from "../../_styles/muiTheme";
-import { SearchPropTypes } from "../navigation/Nav";
 import { useRouter } from "next/navigation";
 
-const HomepageLogo = ({ searchClicked, bagButtonClicked }: SearchPropTypes) => {
+const HomepageLogo = ({ searchClicked, bagButtonClicked }: any) => {
   const router = useRouter();
 
   return (
