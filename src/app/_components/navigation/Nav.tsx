@@ -202,6 +202,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             alignItems: "center",
             height: "100%",
             width: "100%",
+            backgroundColor: "white",
           }}
         >
           {bagButtonClicked &&
