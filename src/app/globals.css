@@ -31,6 +31,10 @@ body {
   left: 0;
 }
 
+.body-no-scroll-item-focus {
+  overflow-y: hidden;
+}
+
 .nav-controllers {
   display: flex;
   flex-direction: row;
@@ -61,6 +65,7 @@ input[type="search"]::placeholder {
 .search-button {
   min-width: 24px;
 }
+
 .search-button-false {
   display: none;
 }

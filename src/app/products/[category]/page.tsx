@@ -46,7 +46,7 @@ export default function Dashboard() {
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
-      }
+      };
 
       const products = await response.json();
 
@@ -57,17 +57,17 @@ export default function Dashboard() {
       setItemFiltered(
         products.filter((product: any) => product.product_id === item)[0]
       );
-    }
+    };
 
     getProducts(category);
   }, [category, item]);
 
-  // // Prevents scrolling when item page is showing
-  // useEffect(() => {
-  //   document.body.className = itemFiltered
-  //     ? "body-no-scroll-true"
-  //     : "body-no-scroll-false";
-  // }, [itemFiltered]);
+  // Prevents scrolling when item page is showing
+  useEffect(() => {
+    document.body.className = itemFiltered
+      ? "body-no-scroll-item-focus"
+      : "body-no-scroll-false";
+  }, [itemFiltered]);
 
   return (
     <>
