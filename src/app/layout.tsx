@@ -25,7 +25,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
-    console.log("menuOpen", menuOpen);
   };
 
   return (
@@ -35,7 +34,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <body className={inter.className}>
             <CartProvider>
               <SideMenu handleMenu={handleMenu} menuOpen={menuOpen} />
-              <TopNavBar handleMenu={handleMenu} menuOpen={menuOpen}/>
+              <TopNavBar handleMenu={handleMenu} menuOpen={menuOpen} />
               <Container
                 disableGutters={true}
                 maxWidth={false}
