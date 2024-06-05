@@ -14,7 +14,11 @@ import { useCart } from "@/app/_context/CartContext";
 import { CheckoutButton } from "../buttons/CheckoutButton";
 
 // Utility function to determine container position
-const getContainerPosition = ({ menuOpen, searchButtonClicked, bagButtonClicked }: any) => {
+const getContainerPosition = ({
+  menuOpen,
+  searchButtonClicked,
+  bagButtonClicked,
+}: any) => {
   if (menuOpen) return "absolute";
   if (searchButtonClicked || bagButtonClicked) return "fixed";
   return "sticky";
@@ -77,7 +81,12 @@ const CartItem = ({ item, removeFromCart }: any) => (
 );
 
 export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
-  const { searchButtonClicked, bagButtonClicked, toggleSearchButton, toggleBagButton } = useButtonState();
+  const {
+    searchButtonClicked,
+    bagButtonClicked,
+    toggleSearchButton,
+    toggleBagButton,
+  } = useButtonState();
   const { cartItems, removeFromCart } = useCart();
 
   useEffect(() => {
@@ -87,10 +96,16 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
     }
   }, [searchButtonClicked]);
 
+  // Prevents scrolling when item page is showing
+  useEffect(() => {
+    document.body.className =
+      searchButtonClicked || bagButtonClicked
+        ? "body-no-scroll-item-focus"
+        : "body-no-scroll-false";
+  }, [searchButtonClicked, bagButtonClicked]);
+
   const bagOrSearchIconClicked = (arg: string) => {
-    arg === "bag"
-      ? toggleBagButton()
-      : toggleSearchButton();
+    arg === "bag" ? toggleBagButton() : toggleSearchButton();
   };
 
   return (
@@ -104,7 +119,11 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "center",
-          position: getContainerPosition({ menuOpen, searchButtonClicked, bagButtonClicked }),
+          position: getContainerPosition({
+            menuOpen,
+            searchButtonClicked,
+            bagButtonClicked,
+          }),
           padding: searchButtonClicked ? "8px 0 0 0" : "unset",
           top: 0,
           bottom: 0,
@@ -202,14 +221,20 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             alignItems: "center",
             height: "100%",
             width: "100%",
-            backgroundColor: "white",
+            backgroundColor: theme.palette.primary.main,
           }}
         >
-          {bagButtonClicked &&
-            cartItems &&
-            cartItems.map((item) => (
-              <CartItem key={item.product_id} item={item} removeFromCart={removeFromCart} />
-            ))}
+          <Container disableGutters={true} maxWidth={false}>
+            {bagButtonClicked &&
+              cartItems &&
+              cartItems.map((item) => (
+                <CartItem
+                  key={item.product_id}
+                  item={item}
+                  removeFromCart={removeFromCart}
+                />
+              ))}
+          </Container>
           {bagButtonClicked && cartItems.length > 0 && (
             <CheckoutButton closeBag={toggleBagButton} />
           )}
