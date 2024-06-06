@@ -22,7 +22,7 @@ const getContainerPosition = ({
   bagButtonClicked,
 }: any) => {
   if (menuOpen) return "absolute";
-  if (searchButtonClicked || bagButtonClicked) return "fixed";
+  if (searchButtonClicked || bagButtonClicked) return "absolute";
   return "sticky";
 };
 
