@@ -18,9 +18,9 @@ export interface Product {
   category: string;
   fallbackImages?: [];
   stripe_price_link?: string;
-}
+};
 
-export default function Dashboard() {
+export default function ProductPage() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -63,11 +63,11 @@ export default function Dashboard() {
   }, [category, item]);
 
   // Prevents scrolling when item page is showing
-  useEffect(() => {
-    document.body.className = itemFiltered
-      ? "body-no-scroll-item-focus"
-      : "body-no-scroll-false";
-  }, [itemFiltered]);
+  // useEffect(() => {
+  //   document.body.className = itemFiltered
+  //     ? "body-no-scroll-item-focus"
+  //     : "body-no-scroll-false";
+  // }, [itemFiltered]);
 
   return (
     <>
@@ -276,4 +276,4 @@ export default function Dashboard() {
       </Container>
     </>
   );
-}
+};

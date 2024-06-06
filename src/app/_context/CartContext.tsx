@@ -10,7 +10,7 @@ const getCart = (): Product[] => {
     } catch (error) {
         console.error('Failed to retrieve cart:', error);
         return [];
-    }
+    };
 };
 
 // Helper function to save the cart to localStorage
@@ -26,7 +26,7 @@ interface CartContextType {
     cartItems: Product[];
     addToCart: (product: Product) => void;
     removeFromCart: (productId: string) => void;
-}
+};
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
@@ -51,7 +51,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
       if (isProductInCart) {
           console.warn(`Product with id ${product.product_id} is already in the cart.`);
           return;
-      }
+      };
 
       const updatedCart = [...cartItems, product];
       setCartItems(updatedCart);

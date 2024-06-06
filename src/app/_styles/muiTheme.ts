@@ -29,7 +29,7 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ["__Inter_aaf875", "__Inter_aaf875"].join(","),
+    // fontFamily: ["__Inter_aaf875", "__Inter_aaf875"].join(","),
     button: {
       textTransform: "none",
     },
