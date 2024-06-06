@@ -233,14 +233,22 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             flexGrow: 1,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            // justifyContent: "space-between",
             alignItems: "center",
             height: "100%",
             width: "100%",
+            paddingBottom: "1rem",
             backgroundColor: theme.palette.primary.main,
           }}
         >
-          <Container disableGutters={true} maxWidth={false}>
+          <Container
+            disableGutters={true}
+            maxWidth={false}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             {bagButtonClicked &&
               cartItems &&
               cartItems.map((item) => (
