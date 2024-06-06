@@ -12,7 +12,7 @@
   --light-grey2: #C0BDBD;
 }
 
-body {
+/* body {
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -33,7 +33,7 @@ body {
 
 .body-no-scroll-item-focus {
   overflow-y: hidden;
-}
+} */
 
 .nav-controllers {
   display: flex;

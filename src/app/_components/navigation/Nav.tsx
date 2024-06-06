@@ -97,12 +97,12 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
   }, [searchButtonClicked]);
 
   // Prevents scrolling when item page is showing
-  useEffect(() => {
-    document.body.className =
-      searchButtonClicked || bagButtonClicked
-        ? "body-no-scroll-item-focus"
-        : "body-no-scroll-false";
-  }, [searchButtonClicked, bagButtonClicked]);
+  // useEffect(() => {
+  //   document.body.className =
+  //     searchButtonClicked || bagButtonClicked
+  //       ? "body-no-scroll-item-focus"
+  //       : "body-no-scroll-false";
+  // }, [searchButtonClicked, bagButtonClicked]);
 
   const bagOrSearchIconClicked = (arg: string) => {
     arg === "bag" ? toggleBagButton() : toggleSearchButton();

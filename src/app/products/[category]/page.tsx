@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
+import { useBodyStyle } from "@/app/_context/BodyStylesContext";
 
 export interface Product {
   product_id: string;
@@ -18,7 +19,7 @@ export interface Product {
   category: string;
   fallbackImages?: [];
   stripe_price_link?: string;
-};
+}
 
 export default function ProductPage() {
   const pathname = usePathname();
@@ -35,6 +36,8 @@ export default function ProductPage() {
     (item) => item.product_id === itemFiltered?.product_id
   );
 
+  const { setBodyStyle } = useBodyStyle();
+
   useEffect(() => {
     async function getProducts(category: any) {
       const response = await fetch(
@@ -46,7 +49,7 @@ export default function ProductPage() {
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
-      };
+      }
 
       const products = await response.json();
 
@@ -57,17 +60,37 @@ export default function ProductPage() {
       setItemFiltered(
         products.filter((product: any) => product.product_id === item)[0]
       );
-    };
+    }
 
     getProducts(category);
   }, [category, item]);
 
   // Prevents scrolling when item page is showing
-  // useEffect(() => {
-  //   document.body.className = itemFiltered
-  //     ? "body-no-scroll-item-focus"
-  //     : "body-no-scroll-false";
-  // }, [itemFiltered]);
+  useEffect(() => {
+    item
+      ? setBodyStyle({
+          position: "fixed",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+        })
+      : setBodyStyle({
+          display: "flex",
+          flexDirection: "column",
+          width: "100vw",
+          minHeight: "100vh",
+          background: "var(--main-white)",
+          overflowX: "hidden",
+          fontFamily: "__Inter_aaf875, Roboto, sans-serif",
+        });
+
+        console.log({
+          item: item,
+          itemFiltered: itemFiltered,
+        })
+        
+  }, [item, itemFiltered, setBodyStyle]);
 
   return (
     <>
@@ -276,4 +299,4 @@ export default function ProductPage() {
       </Container>
     </>
   );
-};
+}

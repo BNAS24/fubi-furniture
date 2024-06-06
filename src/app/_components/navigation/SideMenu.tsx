@@ -8,11 +8,13 @@ import { animated, useSpring } from "@react-spring/web";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Backdrop from "@mui/material/Backdrop";
+import { useBodyStyle } from "../../_context/BodyStylesContext";
 
 const SideNavigation = animated(Container);
 
 export default function SideMenu({ handleMenu, menuOpen }: any) {
   const [animationComplete, setAnimationComplete] = useState(true);
+  const { setBodyStyle } = useBodyStyle();
 
   // Define spring animation configuration
   const spring = useSpring({
@@ -27,12 +29,25 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
     },
   });
 
-  // Prevents scrolling when the nav side menu menuOpens
   useEffect(() => {
-    document.body.className = menuOpen
-      ? "body-no-scroll-true"
-      : "body-no-scroll-false";
-  }, [menuOpen]);
+    menuOpen
+      ? setBodyStyle({
+          position: "fixed",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+        })
+      : setBodyStyle({
+          display: "flex",
+          flexDirection: "column",
+          width: "100vw",
+          minHeight: "100vh",
+          background: "var(--main-white)",
+          overflowX: "hidden",
+          fontFamily: "__Inter_aaf875, Roboto, sans-serif",
+        });
+  }, [menuOpen, setBodyStyle]);
 
   return (
     //Nav side menu
@@ -60,8 +75,6 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
           flex: 1,
           position: "unset",
           height: "100%",
-          // backgroundColor: theme.palette.background.paper,
-
         }}
       />
       <Container
