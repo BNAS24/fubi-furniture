@@ -62,34 +62,40 @@ export default function ProductPage() {
       );
     }
 
+    // Calls the getProducts function with the category string extracted from the url
     getProducts(category);
   }, [category, item]);
 
   // Prevents scrolling when item page is showing
   useEffect(() => {
-    item
-      ? setBodyStyle({
-          position: "fixed",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-        })
-      : setBodyStyle({
-          display: "flex",
-          flexDirection: "column",
-          width: "100vw",
-          minHeight: "100vh",
-          background: "var(--main-white)",
-          overflowX: "hidden",
-          fontFamily: "__Inter_aaf875, Roboto, sans-serif",
-        });
+    const bodyStyleDefault = {
+      display: "flex",
+      flexDirection: "column",
+      width: "100vw",
+      minHeight: "100vh",
+      background: "var(--main-white)",
+      overflowX: "hidden",
+      fontFamily: "__Inter_aaf875, Roboto, sans-serif",
+    };
 
-        console.log({
-          item: item,
-          itemFiltered: itemFiltered,
-        })
-        
+    const bodyStyleFixed = {
+      position: "fixed",
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+    };
+
+    if (item && itemFiltered) {
+      setBodyStyle(bodyStyleFixed);
+    } else {
+      setBodyStyle(bodyStyleDefault);
+    }
+
+    return () => {
+      // Ensure cleanup to reset body style
+      setBodyStyle(bodyStyleDefault);
+    };
   }, [item, itemFiltered, setBodyStyle]);
 
   return (

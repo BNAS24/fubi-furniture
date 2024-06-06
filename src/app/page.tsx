@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { featuredCategories } from "./_assets/homepage/featuredCategories";
 import { slide } from "./_assets/homepage/slideImages";
-import { HomepageButton } from "./_components/buttons/HomepageButton1";
+import { HomepageButton } from "./_components/buttons/CallToAction";
 import EmblaCarouselSlide from "./_components/carousels/EmblaCarouselSlide";
 import styles from "./page.module.css";
 

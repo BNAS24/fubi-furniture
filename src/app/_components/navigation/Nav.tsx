@@ -12,6 +12,7 @@ import Image from "next/image";
 import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
 import { CheckoutButton } from "../buttons/CheckoutButton";
+import { useBodyStyle } from "@/app/_context/BodyStylesContext";
 
 // Utility function to determine container position
 const getContainerPosition = ({
@@ -29,6 +30,7 @@ const useButtonState = () => {
   const [searchButtonClicked, setSearchButtonClicked] = useState(false);
   const [bagButtonClicked, setBagButtonClicked] = useState(false);
 
+  const { setBodyStyle } = useBodyStyle();
   const toggleSearchButton = () => setSearchButtonClicked(!searchButtonClicked);
   const toggleBagButton = () => setBagButtonClicked(!bagButtonClicked);
 
@@ -37,6 +39,7 @@ const useButtonState = () => {
     bagButtonClicked,
     toggleSearchButton,
     toggleBagButton,
+    setBodyStyle,
   };
 };
 
@@ -86,6 +89,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
     bagButtonClicked,
     toggleSearchButton,
     toggleBagButton,
+    setBodyStyle,
   } = useButtonState();
   const { cartItems, removeFromCart } = useCart();
 
@@ -96,13 +100,25 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
     }
   }, [searchButtonClicked]);
 
-  // Prevents scrolling when item page is showing
-  // useEffect(() => {
-  //   document.body.className =
-  //     searchButtonClicked || bagButtonClicked
-  //       ? "body-no-scroll-item-focus"
-  //       : "body-no-scroll-false";
-  // }, [searchButtonClicked, bagButtonClicked]);
+  useEffect(() => {
+    searchButtonClicked || bagButtonClicked
+      ? setBodyStyle({
+          position: "fixed",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+        })
+      : setBodyStyle({
+          display: "flex",
+          flexDirection: "column",
+          width: "100vw",
+          minHeight: "100vh",
+          background: "var(--main-white)",
+          overflowX: "hidden",
+          fontFamily: "__Inter_aaf875, Roboto, sans-serif",
+        });
+  }, [searchButtonClicked, bagButtonClicked, setBodyStyle]);
 
   const bagOrSearchIconClicked = (arg: string) => {
     arg === "bag" ? toggleBagButton() : toggleSearchButton();
