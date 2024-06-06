@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
 import { CheckoutButton } from "../buttons/CheckoutButton";
 import { useBodyStyle } from "@/app/_context/BodyStylesContext";
+import Box from "@mui/material/Box";
 
 // Utility function to determine container position
 const getContainerPosition = ({
@@ -233,11 +234,9 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             flexGrow: 1,
             display: "flex",
             flexDirection: "column",
-            // justifyContent: "space-between",
             alignItems: "center",
             height: "100%",
             width: "100%",
-            paddingBottom: "1rem",
             backgroundColor: theme.palette.primary.main,
           }}
         >
@@ -262,6 +261,14 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           {bagButtonClicked && cartItems.length > 0 && (
             <CheckoutButton closeBag={toggleBagButton} />
           )}
+          {/*It would be nice to make this a global compenent called a spacer */}
+          <Box
+            sx={{
+              flexShrink: 0,
+              height: "2rem",
+              width: "100%",
+            }}
+          />
         </Container>
       </Container>
     </ThemeProvider>
