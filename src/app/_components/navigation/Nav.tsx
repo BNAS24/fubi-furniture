@@ -21,8 +21,8 @@ const getContainerPosition = ({
   searchButtonClicked,
   bagButtonClicked,
 }: any) => {
-  if (menuOpen) return "absolute";
-  if (searchButtonClicked || bagButtonClicked) return "absolute";
+  if (menuOpen) return "sticky";
+  if (searchButtonClicked || bagButtonClicked) return "fixed";
   return "sticky";
 };
 
@@ -104,11 +104,14 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
   useEffect(() => {
     searchButtonClicked || bagButtonClicked
       ? setBodyStyle({
-          position: "fixed",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
+        display: "flex",
+        flexDirection: "column",
+        width: "100vw",
+        minHeight: "100vh",
+        background: "var(--main-white)",
+        overflowX: "hidden",
+        overflowY: "hidden",
+        fontFamily: "__Inter_aaf875, Roboto, sans-serif",
         })
       : setBodyStyle({
           display: "flex",
@@ -142,14 +145,15 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             bagButtonClicked,
           }),
           padding: searchButtonClicked ? "8px 0 0 0" : "unset",
-          // top: 0,
+          top: 0,
           // bottom: 0,
           // left: 0,
           // right: 0,
           height: "64px",
           minHeight: searchButtonClicked || bagButtonClicked ? "100vh" : "auto",
           background: theme.palette.primary.main,
-          overflow: "auto",
+          overflowX: "hidden",
+          overflowY: "auto",
           zIndex: 99,
         }}
       >
@@ -261,14 +265,6 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           {bagButtonClicked && cartItems.length > 0 && (
             <CheckoutButton closeBag={toggleBagButton} />
           )}
-          {/*It would be nice to make this a global compenent called a spacer */}
-          <Box
-            sx={{
-              flexShrink: 0,
-              height: "2rem",
-              width: "100%",
-            }}
-          />
         </Container>
       </Container>
     </ThemeProvider>
