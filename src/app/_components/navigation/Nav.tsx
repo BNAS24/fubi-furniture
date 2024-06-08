@@ -13,7 +13,6 @@ import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
 import { CheckoutButton } from "../buttons/CheckoutButton";
 import { useBodyStyle } from "@/app/_context/BodyStylesContext";
-import Box from "@mui/material/Box";
 
 // Utility function to determine container position
 const getContainerPosition = ({
@@ -143,8 +142,6 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           inset: 0,
           height: searchButtonClicked || bagButtonClicked ? "100%" : "64px",
           background: theme.palette.primary.main,
-          // overflowX: "hidden",
-          // overflowY: "auto",
           overflow: "hidden",
           zIndex: 99,
         }}
@@ -232,7 +229,6 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             display: bagButtonClicked ? "flex" : "none",
             flexDirection: "column",
             alignItems: "center",
-            // height: "100%",  
             width: "100%",
             overflowY: "auto",
             backgroundColor: theme.palette.primary.main,
@@ -243,11 +239,11 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             maxWidth={false}
             sx={{
               flexGrow: 1,
-              // maxHeight: '100%',
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              backgroundColor: "white",
+              backgroundColor:
+                cartItems.length > 0 ? "white" : theme.palette.primary.main,
             }}
           >
             {bagButtonClicked &&
