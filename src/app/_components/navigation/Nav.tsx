@@ -221,12 +221,13 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
               {searchButtonClicked ? "cancel" : "close"}
             </Typography>
           </Container>
+        </Container>
         <Container
           disableGutters={true}
           maxWidth={false}
           sx={{
             flexGrow: 1,
-            display: "flex",
+            display: bagButtonClicked ? "flex" : "none",
             flexDirection: "column",
             alignItems: "center",
             height: "100%",
@@ -255,7 +256,6 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           {bagButtonClicked && cartItems.length > 0 && (
             <CheckoutButton closeBag={toggleBagButton} />
           )}
-        </Container>
         </Container>
       </Container>
     </ThemeProvider>
