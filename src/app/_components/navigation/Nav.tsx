@@ -104,9 +104,9 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
   useEffect(() => {
     searchButtonClicked || bagButtonClicked
       ? setBodyStyle({
-        display: "block",
-        position: "fixed",
-        inset: 0,
+          display: "block",
+          position: "fixed",
+          inset: 0,
         })
       : setBodyStyle({
           display: "flex",
@@ -140,12 +140,8 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             bagButtonClicked,
           }),
           padding: searchButtonClicked ? "8px 0 0 0" : "unset",
-          top: 0,
-          // bottom: 0,
-          // left: 0,
-          // right: 0,
-          height: "64px",
-          minHeight: searchButtonClicked || bagButtonClicked ? "100vh" : "auto",
+          inset: 0,
+          height: searchButtonClicked || bagButtonClicked ? "100vh" :"64px",
           background: theme.palette.primary.main,
           overflowX: "hidden",
           overflowY: "auto",
@@ -225,7 +221,6 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
               {searchButtonClicked ? "cancel" : "close"}
             </Typography>
           </Container>
-        </Container>
         <Container
           disableGutters={true}
           maxWidth={false}
@@ -260,6 +255,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           {bagButtonClicked && cartItems.length > 0 && (
             <CheckoutButton closeBag={toggleBagButton} />
           )}
+        </Container>
         </Container>
       </Container>
     </ThemeProvider>

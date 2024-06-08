@@ -98,69 +98,6 @@ export default function ProductPage() {
 
   return (
     <>
-      {item && itemFiltered && (
-        <Container
-          disableGutters={true}
-          maxWidth={false}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            height: "100vh",
-            width: "100vw",
-            backgroundColor: "var(--main-white)",
-            position: "fixed",
-            inset: 0,
-            zIndex: "98",
-          }}
-        >
-          <Image
-            src={
-              `${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${itemFiltered.image}` ||
-              "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
-            }
-            alt={itemFiltered.name || "Fubi furniture item"}
-            priority
-            style={{
-              width: "100%",
-              height: "auto",
-              aspectRatio: "1:1",
-            }}
-            width={100}
-            height={100}
-            sizes="max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-
-          <Container
-            maxWidth={false}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-            }}
-          >
-            <Typography fontWeight={600} variant="h3" align="left">
-              {itemFiltered.name}
-            </Typography>
-            <Typography>${itemFiltered.price}</Typography>
-            <Typography variant="body1" align="left">
-              {itemFiltered.description}
-            </Typography>
-            <Button
-              variant="contained"
-              fullWidth={true}
-              onClick={() => addToCart(itemFiltered)}
-              disabled={isInCart}
-              sx={{
-                alignSelf: "center",
-                marginTop: "16px",
-              }}
-            >
-              {isInCart ? "Added to Cart" : "Add to Cart"}
-            </Button>
-          </Container>
-        </Container>
-      )}
-
       {/*Container for category of products*/}
       <Container
         disableGutters={true}
@@ -174,6 +111,69 @@ export default function ProductPage() {
           backgroundColor: "var(--main-white)",
         }}
       >
+        {item && itemFiltered && (
+          <Container
+            disableGutters={true}
+            maxWidth={false}
+            sx={{
+              display: "flex",
+              position: "fixed",
+              flexDirection: "column",
+              height: "100vh",
+              width: "100vw",
+              paddingTop: "4rem",
+              backgroundColor: "var(--main-white)",
+              inset: 0,
+              zIndex: "98",
+            }}
+          >
+            <Image
+              src={
+                `${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${itemFiltered.image}` ||
+                "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
+              }
+              alt={itemFiltered.name || "Fubi furniture item"}
+              priority
+              style={{
+                width: "100%",
+                height: "auto",
+                aspectRatio: "1:1",
+              }}
+              width={100}
+              height={100}
+              sizes="max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+
+            <Container
+              maxWidth={false}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+              }}
+            >
+              <Typography fontWeight={600} variant="h3" align="left">
+                {itemFiltered.name}
+              </Typography>
+              <Typography>${itemFiltered.price}</Typography>
+              <Typography variant="body1" align="left">
+                {itemFiltered.description}
+              </Typography>
+              <Button
+                variant="contained"
+                fullWidth={true}
+                onClick={() => addToCart(itemFiltered)}
+                disabled={isInCart}
+                sx={{
+                  alignSelf: "center",
+                  marginTop: "16px",
+                }}
+              >
+                {isInCart ? "Added to Cart" : "Add to Cart"}
+              </Button>
+            </Container>
+          </Container>
+        )}
         <Typography
           fontWeight={500}
           sx={{
@@ -183,6 +183,7 @@ export default function ProductPage() {
           {category}
         </Typography>
       </Container>
+
       {/*Container for filtering and results count*/}
       <Container
         disableGutters={true}
@@ -191,7 +192,7 @@ export default function ProductPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          height: "2.5rem",
+          // height: "2.5rem",
           paddingX: "1rem",
           backgroundColor: "var(--main-white)",
         }}
