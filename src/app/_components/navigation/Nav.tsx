@@ -141,10 +141,11 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           }),
           padding: searchButtonClicked ? "8px 0 0 0" : "unset",
           inset: 0,
-          height: searchButtonClicked || bagButtonClicked ? "100vh" :"64px",
+          height: searchButtonClicked || bagButtonClicked ? "100vh" : "64px",
           background: theme.palette.primary.main,
-          overflowX: "hidden",
-          overflowY: "auto",
+          // overflowX: "hidden",
+          // overflowY: "auto",
+          overflow: "hidden",
           zIndex: 99,
         }}
       >
@@ -153,11 +154,12 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           maxWidth={false}
           sx={{
             display: "flex",
+            flexShrink: 0,
             flexDirection: "row",
             justifyContent: searchButtonClicked ? "center" : "space-between",
             alignItems: "center",
             width: "100%",
-            height: searchButtonClicked || bagButtonClicked ? "unset" : "100%",
+            height: searchButtonClicked || bagButtonClicked ? "64px" : "100%",
             padding: "0 16px",
           }}
         >
@@ -230,8 +232,9 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             display: bagButtonClicked ? "flex" : "none",
             flexDirection: "column",
             alignItems: "center",
-            height: "100%",
+            // height: "100%",
             width: "100%",
+            overflowY: "auto",
             backgroundColor: theme.palette.primary.main,
           }}
         >
@@ -239,8 +242,12 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             disableGutters={true}
             maxWidth={false}
             sx={{
+              flexGrow: 1,
+              // maxHeight: '100%',
               display: "flex",
               flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: "white",
             }}
           >
             {bagButtonClicked &&
@@ -253,10 +260,10 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
                 />
               ))}
           </Container>
-          {bagButtonClicked && cartItems.length > 0 && (
-            <CheckoutButton closeBag={toggleBagButton} />
-          )}
         </Container>
+        {bagButtonClicked && cartItems.length > 0 && (
+          <CheckoutButton closeBag={toggleBagButton} />
+        )}
       </Container>
     </ThemeProvider>
   );
