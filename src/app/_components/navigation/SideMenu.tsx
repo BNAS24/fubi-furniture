@@ -32,14 +32,9 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
   useEffect(() => {
     menuOpen
       ? setBodyStyle({
-        display: "flex",
-        flexDirection: "column",
-        width: "100vw",
-        minHeight: "100vh",
-        background: "var(--main-white)",
-        overflowX: "hidden",
-        overflowY: "hidden",
-        fontFamily: "__Inter_aaf875, Roboto, sans-serif",
+        display: "block",
+        position: "fixed",
+        inset: 0,
         })
       : setBodyStyle({
           display: "flex",
@@ -63,11 +58,11 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
         flexDirection: "row",
         backgroundColor: "rgba(15, 15, 15, 0.1)",
         backdropFilter: "blur(8px) !important",
-        height: "100vh",
+        height: "100%",
         position: "fixed",
         top: 0,
         right: 0,
-        bottom: 0,
+        // inset: 0,
         zIndex: "101",
       }}
     >

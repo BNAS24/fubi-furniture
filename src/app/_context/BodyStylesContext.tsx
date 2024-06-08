@@ -14,6 +14,7 @@ interface NavigationState {
   right?: number;
   bottom?: number;
   left?: number;
+  inset?: number | string;
 };
 
 type BodyStyleContextType = {

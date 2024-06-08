@@ -104,14 +104,9 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
   useEffect(() => {
     searchButtonClicked || bagButtonClicked
       ? setBodyStyle({
-        display: "flex",
-        flexDirection: "column",
-        width: "100vw",
-        minHeight: "100vh",
-        background: "var(--main-white)",
-        overflowX: "hidden",
-        overflowY: "hidden",
-        fontFamily: "__Inter_aaf875, Roboto, sans-serif",
+        display: "block",
+        position: "fixed",
+        inset: 0,
         })
       : setBodyStyle({
           display: "flex",
