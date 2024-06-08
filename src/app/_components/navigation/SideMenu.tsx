@@ -62,7 +62,6 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
         position: "fixed",
         top: 0,
         right: 0,
-        // inset: 0,
         zIndex: "101",
       }}
     >
