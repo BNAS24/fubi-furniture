@@ -6,7 +6,6 @@ import useEmblaCarousel from "embla-carousel-react";
 import { usePagination } from "../../_helpers/emblaPagination";
 import { HomepageButton } from "../buttons/CallToAction";
 import SliderPagination from "../svg/SliderPagination";
-import Link from "next/link";
 
 interface PropType {
   slides: SlideContent[];
@@ -24,45 +23,42 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
       <div className="embla" ref={emblaRef}>
         <div className="embla__container">
           {slides.map((slide: any) => (
-            <Link
+            <Container
               key={slide.id}
-              href={slide.link}
-              style={{
-                all: "unset",
+              disableGutters={true}
+              maxWidth={false}
+              className="embla__slide"
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundImage: `url(${slide.backgroundImage})`,
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
               }}
             >
-              <Container
-                disableGutters={true}
-                maxWidth={false}
-                className="embla__slide"
+              <Typography
+                align="center"
+                noWrap
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundImage: `url(${slide.backgroundImage})`,
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
+                  color: "white",
+                  fontSize: "2rem",
+                  textShadow: "0px 2px 4px #000000A6",
                 }}
               >
-                <Typography
-                  align="center"
-                  noWrap
-                  sx={{
-                    color: "white",
-                    fontSize: "2rem",
-                    textShadow: "0px 2px 4px #000000A6",
-                  }}
-                >
-                  {slide.name}
-                </Typography>
-                <div className="pair-of-buttons-container">
-                  <HomepageButton text="Shop Now" variant="contained" />
-                  <HomepageButton text="Buy" variant="outlined" />
-                </div>
-              </Container>
-            </Link>
+                {slide.name}
+              </Typography>
+              <div className="pair-of-buttons-container">
+                <HomepageButton
+                  text="Shop Now"
+                  variant="contained"
+                  link={slide.link}
+                />
+                <HomepageButton text="Buy" variant="outlined" />
+              </div>
+            </Container>
           ))}
         </div>
       </div>
