@@ -7,16 +7,16 @@ export interface SlideContent {
 
 export const slide: SlideContent[] = [
   {
-    name: "Harmony Heaven",
+    name: "Hastens",
     backgroundImage: "/Furniture/pop-funiture-5.webp",
     id: 1,
-    link: "",
+    link: "/products/pillows?item=prod_QChm4iWmFDhWC5",
   },
   {
     name: "Seige Chenille",
     backgroundImage: "/Furniture/pop-funiture-7.webp",
     id: 2,
-    link: "",
+    link: "/",
   },
   {
     name: "Gubi",
@@ -37,9 +37,9 @@ export const slide: SlideContent[] = [
     link: "/products/sofas?item=prod_QChx08Io4vQzeY",
   },
   {
-    name: "Fendi Casa",
+    name: "Natuzi Itallia",
     backgroundImage: "/Furniture/pop-funiture-6.jpg",
     id: 6,
-    link: "",
+    link: "/products/sofas?item=prod_QChvLw7MS8CynO",
   },
 ];

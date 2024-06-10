@@ -255,6 +255,17 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
                   removeFromCart={removeFromCart}
                 />
               ))}
+            {cartItems.length === 0 && (
+              <Typography
+                variant="h3"
+                align="center"
+                sx={{
+                  color: "white",
+                }}
+              >
+                Your cart is currently empty
+              </Typography>
+            )}
           </Container>
         </Container>
         {bagButtonClicked && cartItems.length > 0 && (

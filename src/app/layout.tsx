@@ -2,7 +2,6 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/material/styles";
-import { Inter } from "next/font/google";
 import theme from "./_styles/muiTheme";
 import CartProvider from "./_context/CartContext";
 import { BodyStyleProvider, useBodyStyle } from "./_context/BodyStylesContext";
@@ -11,8 +10,6 @@ import { TopNavBar } from "./_components/navigation/Nav";
 import { Footer } from "./_components/navigation/Footer";
 import "./globals.css";
 import { useState } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
