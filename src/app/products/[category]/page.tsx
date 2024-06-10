@@ -192,8 +192,7 @@ export default function ProductPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          // height: "2.5rem",
-          paddingX: "1rem",
+          padding: "1rem",
           backgroundColor: "var(--main-white)",
         }}
       >

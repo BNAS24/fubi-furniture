@@ -12,29 +12,6 @@
   --light-grey2: #C0BDBD;
 }
 
-/* body {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  min-height: 100vh;
-  background: var(--main-white);
-  overflow-x: hidden;
-  font-family: __Inter_aaf875, Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-.body-no-scroll-true {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.body-no-scroll-item-focus {
-  overflow-y: hidden;
-} */
-
 .nav-controllers {
   display: flex;
   flex-direction: row;

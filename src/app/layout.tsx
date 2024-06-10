@@ -56,7 +56,7 @@ const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          flex: 1,
+          flex: "1 0",
           backgroundColor: "var(--main-white)",
         }}
       >

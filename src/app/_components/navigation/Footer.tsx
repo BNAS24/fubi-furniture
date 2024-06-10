@@ -3,16 +3,16 @@ import Container from "@mui/material/Container";
 
 export const Footer = () => {
   return (
-    <footer>
-      <Container
+    <Container
+      component="footer"
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100%",
+        height: "64px",
         backgroundColor: "var(--main-green)",
       }}
-      >
+    >
       <Typography
         align="center"
         noWrap
@@ -21,9 +21,8 @@ export const Footer = () => {
           fontSize: "16px",
         }}
       >
-        Website Created By Brandon Bradley
+        Website created by Brandon Bradley
       </Typography>
-      </Container>
-    </footer>
+    </Container>
   );
 };

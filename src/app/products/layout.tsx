@@ -15,6 +15,7 @@ export default function Layout({ children }: LayoutProps) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        height: "100%"
       }}
     >
       {children}

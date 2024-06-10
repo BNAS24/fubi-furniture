@@ -77,7 +77,7 @@ export default function Home() {
             >
               {category.title}
             </Typography>
-            <HomepageButton text="Shop Now" variant="contained" />
+            <HomepageButton text="Shop Now" variant="contained" link={category.link} />
           </div>
         ))}
       </Container>

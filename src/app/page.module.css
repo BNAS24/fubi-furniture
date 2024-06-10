@@ -54,3 +54,17 @@
     background-repeat: none;
     background-size: cover;
 }
+
+.bedding {
+    background-image: url(../../public/Furniture/category-pop-4.jpeg);
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+}
+
+.chairs {
+    background-image: url(../../public/Furniture/category-pop-5.jpg);
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+}
