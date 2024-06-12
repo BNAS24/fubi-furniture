@@ -61,6 +61,7 @@ const SearchButton = ({
         type="search"
         placeholder="search"
         id="site-search"
+        inputMode="search"
         value={value}
         onChange={(event) => handleSearchText(event)}
       />
