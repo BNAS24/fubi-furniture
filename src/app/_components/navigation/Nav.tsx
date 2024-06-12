@@ -139,9 +139,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
       if (searchText.trim() !== "") {
         try {
           const response = await fetch(
-            `${
-              process.env.NEXT_PUBLIC_DOMAIN
-            }/api/search?query=${encodeURIComponent(searchText)}`,
+            `${process.env.NEXT_PUBLIC_DOMAIN}/api/search?query=${searchText}`,
             {
               method: "POST",
               headers: {
