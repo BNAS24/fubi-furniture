@@ -152,10 +152,8 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
-                  "x-algolia-api-key": process.env.ALGOLIA_WRITE_API_KEY!,
-                  "x-algolia-application-id": process.env.ALGOLIA_APPLICATION_ID!,
                 },
-                cache: "no-store",
+                // cache: "no-store",
               }
             );
 
