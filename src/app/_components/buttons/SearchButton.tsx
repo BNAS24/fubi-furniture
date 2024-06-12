@@ -63,7 +63,7 @@ const SearchButton = ({
         placeholder="search"
         id="site-search"
         value={value}
-        onChange={handleSearchText}
+        onChange={(event) => handleSearchText(event.target.value)}
       />
     </SearchAnimated>
   );
