@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import theme from "../../_styles/muiTheme";
 import { animated, useSpring } from "@react-spring/web";
-import { useState, useEffect } from "react";
 
 const SearchAnimated = animated(Box);
 

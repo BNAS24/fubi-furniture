@@ -139,7 +139,9 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
       if (searchText.trim() !== "") {
         try {
           const response = await fetch(
-            `/api/search?query=${encodeURIComponent(searchText)}`,
+            `${
+              process.env.NEXT_PUBLIC_DOMAIN
+            }/api/search?query=${encodeURIComponent(searchText)}`,
             {
               method: "POST",
               headers: {
@@ -322,33 +324,46 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
         {bagButtonClicked && cartItems.length > 0 && (
           <CheckoutButton closeBag={toggleBagButton} />
         )}
-        {searchButtonClicked &&
-          searchResults &&
-          searchResults.map((result) => (
-            <Container
-              key={result.objectID}
-              sx={{
-                mt: "16px",
-              }}
-            >
-              <Typography
-                variant="h5"
+
+        <Container
+          sx={{
+            flexGrow: 1,
+            display: searchButtonClicked ? "flex" : "none",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "100%",
+            overflowY: "auto",
+            backgroundColor: theme.palette.primary.main,
+          }}
+        >
+          {searchButtonClicked &&
+            searchResults &&
+            searchResults.map((result) => (
+              <Container
+                key={result.objectID}
                 sx={{
-                  color: theme.palette.primary.contrastText,
+                  mt: "16px",
                 }}
               >
-                {result.name}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{
-                  color: theme.palette.primary.contrastText,
-                }}
-              >
-                {result.description}
-              </Typography>
-            </Container>
-          ))}
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: theme.palette.primary.contrastText,
+                  }}
+                >
+                  {result.name}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: theme.palette.primary.contrastText,
+                  }}
+                >
+                  {result.description}
+                </Typography>
+              </Container>
+            ))}
+        </Container>
       </Container>
     </ThemeProvider>
   );
