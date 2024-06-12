@@ -8,7 +8,7 @@ interface SearchButtonProps {
   clicked: () => void;
   searchClicked: boolean;
   bagButtonClicked: boolean;
-  handleSearchText: React.FormEventHandler<HTMLInputElement>;
+  handleSearchText: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SearchButton = ({
