@@ -11,7 +11,7 @@ const client = algoliasearch(
 const index = client.initIndex("stripe_products");
 
 // Search the index and print the results
-export async function get(request: NextRequest) {
+export async function GET() {
   try {
     const products = await stripe.products.list({
       limit: 100,
