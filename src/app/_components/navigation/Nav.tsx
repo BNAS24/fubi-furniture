@@ -232,6 +232,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
               clicked={toggleSearchButton}
               searchClicked={searchButtonClicked}
               bagButtonClicked={bagButtonClicked}
+              value={searchText}
               handleSearchText={handleSearchText}
             />
             <BagButton

@@ -9,6 +9,7 @@ interface SearchButtonProps {
   searchClicked: boolean;
   bagButtonClicked: boolean;
   handleSearchText: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
 }
 
 const SearchButton = ({
@@ -16,6 +17,7 @@ const SearchButton = ({
   searchClicked,
   bagButtonClicked,
   handleSearchText,
+  value,
 }: SearchButtonProps) => {
   // Animation spring for search button
   const spring = useSpring({
@@ -60,6 +62,7 @@ const SearchButton = ({
         type="search"
         placeholder="search"
         id="site-search"
+        value={value}
         onChange={handleSearchText}
       />
     </SearchAnimated>
