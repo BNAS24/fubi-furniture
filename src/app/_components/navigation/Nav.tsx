@@ -129,7 +129,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
     cartItems.length > 0 ? setBagPopulated(true) : setBagPopulated(false);
   }, [cartItems]);
 
-  const handleSearchText = (event: any) => {
+  const handleSearchText = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
   };
 
