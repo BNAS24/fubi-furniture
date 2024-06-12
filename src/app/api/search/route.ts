@@ -8,11 +8,11 @@ const client = algoliasearch(
   process.env.ALGOLIA_APPLICATION_ID!,
   process.env.ALGOLIA_WRITE_API_KEY!
 );
-const index = client.initIndex("stripe_products");
 
 // Search the index and print the results
 export async function GET() {
   try {
+    const index = client.initIndex("stripe_products");
     const products = await stripe.products.list({
       limit: 100,
     });
@@ -32,38 +32,26 @@ export async function GET() {
     return NextResponse.json(objects);
   } catch (error: any) {
     console.error(error);
-
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }
 
+// Endpoint to search through algolias product index
 export async function POST(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const search = searchParams.get("query");
-
-  // const results = await client.search(search!);
-
   try {
-    const products = await stripe.products.list({
-      limit: 100,
-    });
+    const searchParams = request.nextUrl.searchParams;
+    const search = searchParams.get("query");
 
-    const objects = products.data.map((product) => ({
-      objectID: product.id,
-      name: product.name,
-      description: product.description,
-      category: product.metadata.category,
-      image: product.images[0],
-    }));
+    const results = await client.search([
+      {
+        indexName: "stripe_products",
+        query: search || "",
+      },
+    ]);
 
-    await index.saveObjects(objects);
-
-    console.log("Products indexed to Algolia" + objects.length);
-
-    return NextResponse.json(objects);
+    return NextResponse.json(results);
   } catch (error: any) {
     console.error(error);
-
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
-}
+};

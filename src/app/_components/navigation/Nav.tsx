@@ -13,7 +13,6 @@ import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
 import { CheckoutButton } from "../buttons/CheckoutButton";
 import { useBodyStyle } from "@/app/_context/BodyStylesContext";
-import algoliasearch from "algoliasearch";
 
 // Utility function to determine container position
 const getContainerPosition = ({
@@ -84,14 +83,10 @@ const CartItem = ({ item, removeFromCart }: any) => (
   </Container>
 );
 
-// Activate algolia search
-const searchClient = algoliasearch(
-  process.env.ALGOLIA_APPLICATION_ID!,
-  process.env.ALGOLIA_WRITE_API_KEY!
-);
-
 export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
   const [bagPopulated, setBagPopulated] = useState(false);
+  const [searchText, setSearchText] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
 
   const {
     searchButtonClicked,
@@ -132,7 +127,45 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
 
   useEffect(() => {
     cartItems.length > 0 ? setBagPopulated(true) : setBagPopulated(false);
-  },[cartItems]);
+  }, [cartItems]);
+
+  const handleSearchText = (event: any) => {
+    setSearchText(event.target.value);
+  };
+
+  // Nav bar fetching results from search input functionality
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      if (searchText.trim() !== "") {
+        try {
+          const response = await fetch(
+            `/api/search?query=${encodeURIComponent(searchText)}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+
+          const data = await response.json();
+          setSearchResults(data.results[0].hits); // Adjust based on your API response structure
+        } catch (error) {
+          console.error("Error fetching search results:", error);
+        }
+      } else {
+        setSearchResults([]); // Clear results if search text is empty
+      }
+    };
+
+    fetchSearchResults();
+  }, [searchText]);
+
+  console.log(searchResults);
 
   const bagOrSearchIconClicked = (arg: string) => {
     arg === "bag" ? toggleBagButton() : toggleSearchButton();
@@ -199,6 +232,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
               clicked={toggleSearchButton}
               searchClicked={searchButtonClicked}
               bagButtonClicked={bagButtonClicked}
+              handleSearchText={handleSearchText}
             />
             <BagButton
               bagClicked={toggleBagButton}
@@ -288,6 +322,33 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
         {bagButtonClicked && cartItems.length > 0 && (
           <CheckoutButton closeBag={toggleBagButton} />
         )}
+        {searchButtonClicked &&
+          searchResults &&
+          searchResults.map((result) => (
+            <Container
+              key={result.objectID}
+              sx={{
+                mt: "16px",
+              }}
+            >
+              <Typography
+                variant="h5"
+                sx={{
+                  color: theme.palette.primary.contrastText,
+                }}
+              >
+                {result.name}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: theme.palette.primary.contrastText,
+                }}
+              >
+                {result.description}
+              </Typography>
+            </Container>
+          ))}
       </Container>
     </ThemeProvider>
   );

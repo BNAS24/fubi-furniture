@@ -1,22 +1,16 @@
 import Box from "@mui/material/Box";
 import theme from "../../_styles/muiTheme";
 import { animated, useSpring } from "@react-spring/web";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SearchAnimated = animated(Box);
 
-// interface SearchInputProps {
-//   onSearch: (query: string) => void;
-// }
-
-const SearchButton = ({ clicked, searchClicked, bagButtonClicked }: any) => {
-  // const [searchText, setSearchText] = useState<string>("");
-
-  // const handleSearchText = (event: any
-  // ) => {
-  //   setSearchText(event.target.value)
-  // };
-
+const SearchButton = ({
+  clicked,
+  searchClicked,
+  bagButtonClicked,
+  handleSearchText,
+}: any) => {
   // Animation spring for search button
   const spring = useSpring({
     from: { width: searchClicked ? "15%" : "15%" },
@@ -60,7 +54,7 @@ const SearchButton = ({ clicked, searchClicked, bagButtonClicked }: any) => {
         type="search"
         placeholder="search"
         id="site-search"
-        // onChange={handleSearchText}
+        onChange={handleSearchText}
       />
     </SearchAnimated>
   );
