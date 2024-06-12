@@ -129,7 +129,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
     cartItems.length > 0 ? setBagPopulated(true) : setBagPopulated(false);
   }, [cartItems]);
 
-  const handleSearchText = (event: { target: { value: string } }) => {
+  const handleSearchText = (event: any) => {
     setSearchText(event.target.value);
   };
 

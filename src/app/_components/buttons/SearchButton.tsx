@@ -8,7 +8,7 @@ interface SearchButtonProps {
   clicked: () => void;
   searchClicked: boolean;
   bagButtonClicked: boolean;
-  handleSearchText: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSearchText: (event: any) => void;
   value: string;
 }
 
@@ -63,7 +63,7 @@ const SearchButton = ({
         placeholder="search"
         id="site-search"
         value={value}
-        onChange={(event) => handleSearchText(event.target.value)}
+        onChange={(event) => handleSearchText(event)}
       />
     </SearchAnimated>
   );
