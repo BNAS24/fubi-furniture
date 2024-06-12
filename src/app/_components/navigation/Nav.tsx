@@ -135,25 +135,35 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
 
   // Nav bar fetching results from search input functionality
   useEffect(() => {
+    // Define a variable to hold the timeout ID
+    let timeoutId: NodeJS.Timeout;
+
     const fetchSearchResults = async () => {
       if (searchText.trim() !== "") {
         try {
-          const response = await fetch(
-            `${process.env.NEXT_PUBLIC_DOMAIN}/api/search?query=${searchText}`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
+          // Clear the previous timeout to prevent multiple fetches
+          clearTimeout(timeoutId);
+
+          // Set a new timeout to delay the fetch
+          timeoutId = setTimeout(async () => {
+            const response = await fetch(
+              `${process.env.NEXT_PUBLIC_DOMAIN}/api/search?query=${searchText}`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                cache: "no-store",
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
             }
-          );
 
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-
-          const data = await response.json();
-          setSearchResults(data.results[0].hits); // Adjust based on your API response structure
+            const data = await response.json();
+            setSearchResults(data.results[0].hits); // Adjust based on your API response structure
+          }, 500); // Adjust the delay time (in milliseconds) as needed
         } catch (error) {
           console.error("Error fetching search results:", error);
         }
@@ -163,6 +173,10 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
     };
 
     fetchSearchResults();
+    // Cleanup function to clear the timeout when the component unmounts or when searchText changes
+    return () => clearTimeout(timeoutId);
+
+    // Dependency array including searchText to trigger the effect when searchText changes
   }, [searchText]);
 
   console.log(searchResults);

@@ -58,7 +58,6 @@ const SearchButton = ({
         />
       </svg>
       <input
-        className={searchClicked ? "unset" : "search-button-false"}
         type="search"
         placeholder="search"
         id="site-search"
