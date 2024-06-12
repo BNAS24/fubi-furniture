@@ -4,12 +4,19 @@ import { animated, useSpring } from "@react-spring/web";
 
 const SearchAnimated = animated(Box);
 
+interface SearchButtonProps {
+  clicked: () => void;
+  searchClicked: boolean;
+  bagButtonClicked: boolean;
+  handleSearchText: React.FormEventHandler<HTMLInputElement>;
+}
+
 const SearchButton = ({
   clicked,
   searchClicked,
   bagButtonClicked,
   handleSearchText,
-}: any) => {
+}: SearchButtonProps) => {
   // Animation spring for search button
   const spring = useSpring({
     from: { width: searchClicked ? "15%" : "15%" },
