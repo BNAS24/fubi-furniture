@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
 import { CheckoutButton } from "../buttons/CheckoutButton";
 import { useBodyStyle } from "@/app/_context/BodyStylesContext";
+import algoliasearch from "algoliasearch";
 
 // Utility function to determine container position
 const getContainerPosition = ({
@@ -83,7 +84,15 @@ const CartItem = ({ item, removeFromCart }: any) => (
   </Container>
 );
 
+// Activate algolia search
+const searchClient = algoliasearch(
+  process.env.ALGOLIA_APPLICATION_ID!,
+  process.env.ALGOLIA_WRITE_API_KEY!
+);
+
 export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
+  const [bagPopulated, setBagPopulated] = useState(false);
+
   const {
     searchButtonClicked,
     bagButtonClicked,
@@ -91,6 +100,8 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
     toggleBagButton,
     setBodyStyle,
   } = useButtonState();
+
+  // Extracts cart items from the cart context
   const { cartItems, removeFromCart } = useCart();
 
   useEffect(() => {
@@ -100,6 +111,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
     }
   }, [searchButtonClicked]);
 
+  // Alters the body's style based on navigation state changes
   useEffect(() => {
     searchButtonClicked || bagButtonClicked
       ? setBodyStyle({
@@ -117,6 +129,10 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           fontFamily: "__Inter_aaf875, Roboto, sans-serif",
         });
   }, [searchButtonClicked, bagButtonClicked, setBodyStyle]);
+
+  useEffect(() => {
+    cartItems.length > 0 ? setBagPopulated(true) : setBagPopulated(false);
+  },[cartItems]);
 
   const bagOrSearchIconClicked = (arg: string) => {
     arg === "bag" ? toggleBagButton() : toggleSearchButton();
@@ -187,6 +203,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             <BagButton
               bagClicked={toggleBagButton}
               searchClicked={searchButtonClicked}
+              bagPopulated={bagPopulated}
             />
             <MenuButton
               handleMenu={handleMenu}
