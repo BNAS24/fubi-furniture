@@ -41,7 +41,8 @@ export async function POST(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const search = searchParams.get("query");
 
-  const results = await client.search(search);
+  // const results = await client.search(search!);
+
   try {
     const products = await stripe.products.list({
       limit: 100,
