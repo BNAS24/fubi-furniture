@@ -13,6 +13,8 @@ import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
 import { CheckoutButton } from "../buttons/CheckoutButton";
 import { useBodyStyle } from "@/app/_context/BodyStylesContext";
+import Link from "next/link";
+import { CustomLink } from "../../_components/misc/CustomLink";
 
 // Utility function to determine container position
 const getContainerPosition = ({
@@ -333,7 +335,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             )}
           </Container>
         </Container>
-        
+
         {bagButtonClicked && cartItems.length > 0 && (
           <CheckoutButton closeBag={toggleBagButton} />
         )}
@@ -354,40 +356,48 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           {searchButtonClicked &&
             searchResults &&
             searchResults.map((result) => (
-              <Container
+              <CustomLink
                 key={result.objectID}
-                disableGutters={true}
-                maxWidth={false}
+                href={`/products/${result.category}?item=${result.objectID}`}
+                onClick={toggleSearchButton}
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
+                  width: "100%",
                 }}
               >
-                <Image
-                  src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${result.image}`}
-                  alt={result.name}
-                  height={70}
-                  width={70}
-                />
-                <Container>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: theme.palette.primary.contrastText,
-                    }}
-                  >
-                    {result.name}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: theme.palette.primary.contrastText,
-                    }}
-                  >
-                    {result.description}
-                  </Typography>
+                <Container
+                  disableGutters={true}
+                  maxWidth={false}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${result.image}`}
+                    alt={result.name}
+                    height={70}
+                    width={70}
+                  />
+                  <Container>
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        color: theme.palette.primary.contrastText,
+                      }}
+                    >
+                      {result.name}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: theme.palette.primary.contrastText,
+                      }}
+                    >
+                      {result.description}
+                    </Typography>
+                  </Container>
                 </Container>
-              </Container>
+              </CustomLink>
             ))}
         </Container>
       </Container>
