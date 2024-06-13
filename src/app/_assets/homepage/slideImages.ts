@@ -1,6 +1,6 @@
 export interface SlideContent {
   name: string;
-  backgroundImage: string;
+  image: string;
   id: number;
   link: string;
 };
@@ -8,37 +8,37 @@ export interface SlideContent {
 export const slide: SlideContent[] = [
   {
     name: "Hastens",
-    backgroundImage: "/Furniture/pop-funiture-5.webp",
+    image: "/Furniture/pop-funiture-5.webp",
     id: 1,
     link: "/products/pillows?item=prod_QChm4iWmFDhWC5",
   },
   {
     name: "Seige Chenille",
-    backgroundImage: "/Furniture/pop-funiture-7.webp",
+    image: "/Furniture/pop-funiture-7.webp",
     id: 2,
     link: "/",
   },
   {
     name: "Gubi",
-    backgroundImage: "/Furniture/pop-funiture-8.jpg",
+    image: "/Furniture/pop-funiture-8.jpg",
     id: 3,
     link: "/products/lamps?item=prod_QC1nP288ob5WhN",
   },
   {
     name: "Brabbu",
-    backgroundImage: "/Furniture/pop-funiture-2.jpg",
+    image: "/Furniture/pop-funiture-2.jpg",
     id: 4,
     link: "/products/featured?item=prod_QCi7iyBjcHoufO",
   },
   {
     name: "Flexform",
-    backgroundImage: "/Furniture/pop-funiture-4.jpg",
+    image: "/Furniture/pop-funiture-4.jpg",
     id: 5,
     link: "/products/sofas?item=prod_QChx08Io4vQzeY",
   },
   {
     name: "Natuzi Itallia",
-    backgroundImage: "/Furniture/pop-funiture-6.jpg",
+    image: "/Furniture/pop-funiture-6.jpg",
     id: 6,
     link: "/products/sofas?item=prod_QChvLw7MS8CynO",
   },

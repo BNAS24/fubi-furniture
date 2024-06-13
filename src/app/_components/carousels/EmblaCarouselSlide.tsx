@@ -6,6 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { usePagination } from "../../_helpers/emblaPagination";
 import { HomepageButton } from "../buttons/CallToAction";
 import SliderPagination from "../svg/SliderPagination";
+import Image from "next/image";
 
 interface PropType {
   slides: SlideContent[];
@@ -18,10 +19,36 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
 
   return (
     //Slides wrapper div to keep elements together
-    <div>
+    <Container
+      disableGutters={true}
+      maxWidth={false}
+      sx={{
+        position: "relative",
+        width: "100%",
+        height: "50vh",
+      }}
+    >
       {/*Main embla slides container*/}
-      <div className="embla" ref={emblaRef}>
-        <div className="embla__container">
+      <Container
+        disableGutters={true}
+        maxWidth={false}
+        ref={emblaRef}
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          height: "100%",
+          overflow: "hidden",
+        }}
+      >
+        <Container
+          disableGutters={true}
+          maxWidth={false}
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            height: "100%",
+          }}
+        >
           {slides.map((slide: any) => (
             <Container
               key={slide.id}
@@ -33,12 +60,23 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundImage: `url(${slide.backgroundImage})`,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
+                position: "relative",
               }}
             >
+              <Image
+                src={slide.image}
+                alt={slide.name}
+                sizes="100%"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  position: "absolute",
+                  inset: 0,
+                }}
+                width={348}
+                height={348}
+                quality={100}
+              />
               <Typography
                 align="center"
                 noWrap
@@ -46,6 +84,7 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
                   color: "white",
                   fontSize: "2rem",
                   textShadow: "0px 2px 4px #000000A6",
+                  zIndex: "2",
                 }}
               >
                 {slide.name}
@@ -60,10 +99,10 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
               </div>
             </Container>
           ))}
-        </div>
-      </div>
+        </Container>
+      </Container>
       {/*Slider pagination dots*/}
       <SliderPagination selectedIndex={selectedIndex} />
-    </div>
+    </Container>
   );
 }

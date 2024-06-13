@@ -1,19 +1,19 @@
 "use client";
+import { useCart } from "@/app/_context/CartContext";
+import { useButtonState } from "@/app/_customhooks/useButtonState";
 import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import { CustomLink } from "../../_components/misc/CustomLink";
+import { updateContainerPosition } from "../../_helpers/updateContainerPosition";
 import theme from "../../_styles/muiTheme";
 import BagButton from "../buttons/BagButton";
+import { CheckoutButton } from "../buttons/CheckoutButton";
 import HomepageLogo from "../buttons/HomepageLogo";
 import MenuButton from "../buttons/MenuButton";
 import SearchButton from "../buttons/SearchButton";
-import Image from "next/image";
-import { useCart } from "@/app/_context/CartContext";
-import { CheckoutButton } from "../buttons/CheckoutButton";
-import { CustomLink } from "../../_components/misc/CustomLink";
-import { updateContainerPosition } from "../../_helpers/updateContainerPosition";
-import { useButtonState } from "@/app/_customhooks/useButtonState";
 import { CartItem } from "../products/CartItem";
 
 export const TopNavBar = ({ handleMenu, menuOpen }: any) => {

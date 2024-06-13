@@ -2,6 +2,7 @@ import { ThemeProvider } from "@emotion/react";
 import Button, { ButtonProps } from "@mui/material/Button"; // Import ButtonProps from Material-UI
 import theme from "../../_styles/muiTheme";
 import Link from "next/link";
+import { CustomLink } from "../misc/CustomLink";
 
 interface HomepageButtonProps {
   text: string;
@@ -16,17 +17,15 @@ export const HomepageButton = ({
 }: HomepageButtonProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <Link
+      <CustomLink
         href={link}
-        style={{
-          all: "unset",
-        }}
+
       >
         <Button
           variant={variant}
           disableElevation
           sx={{
-            mt: "1rem",
+            // mt: "1rem",
             height: "2.5rem",
             width: "6rem",
             borderRadius: "16rem",
@@ -45,7 +44,7 @@ export const HomepageButton = ({
         >
           {text}
         </Button>
-      </Link>
+      </CustomLink>
     </ThemeProvider>
   );
 };
