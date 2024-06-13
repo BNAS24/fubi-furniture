@@ -278,9 +278,9 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             alignItems: "center",
             gap: "16px",
             width: "100%",
-            paddingBottom: "16px",
+            paddingY: "16px",
             overflowY: "auto",
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: theme.palette.primary.contrastText,
           }}
         >
           {searchButtonClicked &&
@@ -312,7 +312,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
                     <Typography
                       variant="h5"
                       sx={{
-                        color: theme.palette.primary.contrastText,
+                        color: theme.palette.common.black,
                       }}
                     >
                       {result.name}
@@ -320,7 +320,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
                     <Typography
                       variant="body2"
                       sx={{
-                        color: theme.palette.primary.contrastText,
+                        color: theme.palette.common.black,
                       }}
                     >
                       {result.description}
