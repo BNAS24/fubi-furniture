@@ -217,7 +217,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             </Typography>
           </Container>
         </Container>
-        
+
         <Container
           disableGutters={true}
           maxWidth={false}
@@ -271,6 +271,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
         )}
 
         <Container
+          maxWidth={false}
           sx={{
             flexGrow: 1,
             display: searchButtonClicked ? "flex" : "none",
@@ -308,7 +309,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
                     height={70}
                     width={70}
                   />
-                  <Container>
+                  <Container maxWidth={false}>
                     <Typography
                       variant="h5"
                       sx={{
