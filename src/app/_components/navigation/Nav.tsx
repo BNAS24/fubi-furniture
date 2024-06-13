@@ -9,81 +9,12 @@ import HomepageLogo from "../buttons/HomepageLogo";
 import MenuButton from "../buttons/MenuButton";
 import SearchButton from "../buttons/SearchButton";
 import Image from "next/image";
-import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
 import { CheckoutButton } from "../buttons/CheckoutButton";
-import { useBodyStyle } from "@/app/_context/BodyStylesContext";
-import Link from "next/link";
 import { CustomLink } from "../../_components/misc/CustomLink";
-
-// Utility function to determine container position
-const getContainerPosition = ({
-  menuOpen,
-  searchButtonClicked,
-  bagButtonClicked,
-}: any) => {
-  if (menuOpen) return "sticky";
-  if (searchButtonClicked || bagButtonClicked) return "fixed";
-  return "sticky";
-};
-
-// Custom hook for managing button states
-const useButtonState = () => {
-  const [searchButtonClicked, setSearchButtonClicked] = useState(false);
-  const [bagButtonClicked, setBagButtonClicked] = useState(false);
-
-  const { setBodyStyle } = useBodyStyle();
-  const toggleSearchButton = () => setSearchButtonClicked(!searchButtonClicked);
-  const toggleBagButton = () => setBagButtonClicked(!bagButtonClicked);
-
-  return {
-    searchButtonClicked,
-    bagButtonClicked,
-    toggleSearchButton,
-    toggleBagButton,
-    setBodyStyle,
-  };
-};
-
-// Component for rendering cart items
-const CartItem = ({ item, removeFromCart }: any) => (
-  <Container
-    sx={{
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%",
-      height: "auto",
-      backgroundColor: "white",
-      padding: "0 0 8px 0",
-    }}
-  >
-    <Image
-      src={
-        `${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${item.image}` ||
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
-      }
-      alt={item.name || "Fubi furniture item"}
-      priority
-      style={{ width: "100%", height: "auto" }}
-      height={100}
-      width={100}
-    />
-    <Typography>{item.name}</Typography>
-    <Typography align="center">{item.description}</Typography>
-    <Typography>{`\$${item.price}`}</Typography>
-    <Button
-      disableElevation={true}
-      onClick={() => removeFromCart(item.product_id)}
-      sx={{
-        color: theme.palette.error.dark,
-      }}
-    >
-      Remove from cart
-    </Button>
-  </Container>
-);
+import { updateContainerPosition } from "../../_helpers/updateContainerPosition";
+import { useButtonState } from "@/app/_customhooks/useButtonState";
+import { CartItem } from "../products/CartItem";
 
 export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
   const [bagPopulated, setBagPopulated] = useState(false);
@@ -180,8 +111,6 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
     // Dependency array including searchText to trigger the effect when searchText changes
   }, [searchText]);
 
-  console.log(searchResults);
-
   const bagOrSearchIconClicked = (arg: string) => {
     arg === "bag" ? toggleBagButton() : toggleSearchButton();
   };
@@ -197,7 +126,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "center",
-          position: getContainerPosition({
+          position: updateContainerPosition({
             menuOpen,
             searchButtonClicked,
             bagButtonClicked,
@@ -288,6 +217,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             </Typography>
           </Container>
         </Container>
+        
         <Container
           disableGutters={true}
           maxWidth={false}
