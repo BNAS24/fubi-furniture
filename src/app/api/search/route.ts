@@ -22,7 +22,7 @@ export async function GET() {
       name: product.name,
       description: product.description,
       category: product.metadata.category,
-      image: product.images[0],
+      image: product.metadata.image_url,
     }));
 
     await index.saveObjects(objects);

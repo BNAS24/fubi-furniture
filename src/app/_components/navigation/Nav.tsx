@@ -153,7 +153,6 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
                 headers: {
                   "Content-Type": "application/json",
                 },
-                // cache: "no-store",
               }
             );
 
@@ -334,6 +333,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             )}
           </Container>
         </Container>
+        
         {bagButtonClicked && cartItems.length > 0 && (
           <CheckoutButton closeBag={toggleBagButton} />
         )}
@@ -344,7 +344,9 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             display: searchButtonClicked ? "flex" : "none",
             flexDirection: "column",
             alignItems: "center",
+            gap: "16px",
             width: "100%",
+            paddingBottom: "16px",
             overflowY: "auto",
             backgroundColor: theme.palette.primary.main,
           }}
@@ -354,26 +356,37 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
             searchResults.map((result) => (
               <Container
                 key={result.objectID}
+                disableGutters={true}
+                maxWidth={false}
                 sx={{
-                  mt: "16px",
+                  display: "flex",
+                  alignItems: "center",
                 }}
               >
-                <Typography
-                  variant="h5"
-                  sx={{
-                    color: theme.palette.primary.contrastText,
-                  }}
-                >
-                  {result.name}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: theme.palette.primary.contrastText,
-                  }}
-                >
-                  {result.description}
-                </Typography>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${result.image}`}
+                  alt={result.name}
+                  height={70}
+                  width={70}
+                />
+                <Container>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: theme.palette.primary.contrastText,
+                    }}
+                  >
+                    {result.name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: theme.palette.primary.contrastText,
+                    }}
+                  >
+                    {result.description}
+                  </Typography>
+                </Container>
               </Container>
             ))}
         </Container>
