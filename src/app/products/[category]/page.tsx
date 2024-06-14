@@ -120,8 +120,8 @@ export default function ProductPage() {
               position: "fixed",
               inset: 0,
               flexDirection: "column",
-              height: "100vh",
-              width: "100vw",
+              height: "100%",
+              width: "100%",
               paddingTop: "4rem",
               paddingBottom: "1rem",
               backgroundColor: "var(--main-white)",
@@ -135,7 +135,7 @@ export default function ProductPage() {
                 "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
               }
               alt={itemFiltered.name || "Fubi furniture item"}
-              priority
+              priority={true}
               style={{
                 width: "100%",
                 height: "auto",
