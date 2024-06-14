@@ -5,7 +5,6 @@ import { featuredCategories } from "./_assets/homepage/featuredCategories";
 import { slide } from "./_assets/homepage/slideImages";
 import { HomepageButton } from "./_components/buttons/CallToAction";
 import EmblaCarouselSlide from "./_components/carousels/EmblaCarouselSlide";
-import styles from "./page.module.css";
 import Image from "next/image";
 
 // Homepage component
@@ -38,15 +37,10 @@ export default function Home() {
         <Image
           src="/Furniture/hero-image-verticle-2.jpg"
           alt="Vintage Voyage Hero"
-          sizes="100%"
+          fill
           style={{
-            width: "100%",
-            height: "100%",
-            position: "absolute",
-            inset: 0,
+            objectFit: "cover",
           }}
-          width={3930}
-          height={5895}
           priority={true}
           quality={100}
         />
@@ -122,27 +116,21 @@ export default function Home() {
             <Image
               src={category.image}
               alt={category.title}
-              sizes="100%"
               style={{
-                width: "100%",
-                height: "auto",
-                position: "absolute",
-                // inset: 0,
-                aspectRatio: "2/3",
+                objectFit: "cover",
               }}
-              width={375}
-              height={667}
+              fill
               priority={true}
               quality={100}
             />
             <Container
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              zIndex: 2,
-            }}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 2,
+              }}
             >
               <Typography
                 align="center"

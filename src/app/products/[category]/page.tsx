@@ -118,12 +118,14 @@ export default function ProductPage() {
             sx={{
               display: "flex",
               position: "fixed",
+              inset: 0,
               flexDirection: "column",
               height: "100vh",
               width: "100vw",
               paddingTop: "4rem",
+              paddingBottom: "1rem",
               backgroundColor: "var(--main-white)",
-              inset: 0,
+              overflowY: "auto",
               zIndex: "98",
             }}
           >

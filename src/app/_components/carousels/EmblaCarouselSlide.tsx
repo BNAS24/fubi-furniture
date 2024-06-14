@@ -66,15 +66,10 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
               <Image
                 src={slide.image}
                 alt={slide.name}
-                sizes="100%"
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  position: "absolute",
-                  inset: 0,
+                  objectFit: "cover",
                 }}
-                width={348}
-                height={348}
+                fill
                 quality={100}
               />
               <Typography
