@@ -1,5 +1,7 @@
 "use client";
 import { createTheme } from "@mui/material/styles";
+// Supports weights 100-900
+import '@fontsource-variable/inter';
 
 const mainWhite = "#F2F1F1";
 const mainGreen = "#668C14";

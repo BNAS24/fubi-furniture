@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { usePagination } from "../../_helpers/emblaPagination";
-import { HomepageButton } from "../buttons/CallToAction";
+import { CallToAction } from "../buttons/CallToAction";
 import SliderPagination from "../svg/SliderPagination";
 import Image from "next/image";
 
@@ -25,7 +25,13 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
       sx={{
         position: "relative",
         width: "100%",
-        height: "50vh",
+        height: {
+          xs: "50vh",
+          sm: "80vh",
+          md: "100vh",
+          lg: "100vh",
+          xl: "100vh",
+        },
       }}
     >
       {/*Main embla slides container*/}
@@ -71,13 +77,20 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
                 }}
                 fill
                 quality={100}
+                priority={true}
               />
               <Typography
                 align="center"
                 noWrap
                 sx={{
                   color: "white",
-                  fontSize: "2rem",
+                  fontSize: {
+                    xs: "2rem",
+                    sm: "2.5rem",
+                    md: "",
+                    lg: "",
+                    xl: "",
+                  },
                   textShadow: "0px 2px 4px #000000A6",
                   zIndex: "2",
                 }}
@@ -85,12 +98,12 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
                 {slide.name}
               </Typography>
               <div className="pair-of-buttons-container">
-                <HomepageButton
+                <CallToAction
                   text="Shop Now"
                   variant="contained"
                   link={slide.link}
                 />
-                <HomepageButton text="Buy" variant="outlined" />
+                <CallToAction text="Buy" variant="outlined" />
               </div>
             </Container>
           ))}

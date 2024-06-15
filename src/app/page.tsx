@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { featuredCategories } from "./_assets/homepage/featuredCategories";
 import { slide } from "./_assets/homepage/slideImages";
-import { HomepageButton } from "./_components/buttons/CallToAction";
+import { CallToAction } from "./_components/buttons/CallToAction";
 import EmblaCarouselSlide from "./_components/carousels/EmblaCarouselSlide";
 import Image from "next/image";
 
@@ -30,7 +30,13 @@ export default function Home() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          height: "85vh",
+          height: {
+            xs: "85vh",
+            sm: "85vh",
+            md: "85vh",
+            lg: "85vh",
+            xl: "110vh",
+          },
           width: "100%",
         }}
       >
@@ -59,10 +65,16 @@ export default function Home() {
           <Typography
             align="center"
             noWrap
-            fontWeight={500}
+            fontWeight={400}
             sx={{
               color: "white",
-              fontSize: "2.5rem",
+              fontSize: {
+                xs: "2.5rem",
+                sm: "3rem",
+                md: "4rem",
+                lg: "5rem",
+                xl: "5.5rem",
+              },
               textShadow: "0px 2px 4px #000000A6",
             }}
           >
@@ -73,14 +85,20 @@ export default function Home() {
             fontWeight={200}
             sx={{
               color: "white",
-              fontSize: "1rem",
+              fontSize: {
+                xs: "1rem",
+                sm: "1.3rem",
+                md: "1.5rem",
+                lg: "2rem",
+                xl: "2.1rem",
+              },
               maxWidth: "80%",
               textShadow: "0px 2px 4px #000000A6",
             }}
           >
             Elevate your comfort: Vintage Voyage - Where Cozy Meets Chic!
           </Typography>
-          <HomepageButton text="Shop Now" variant="contained" />
+          <CallToAction text="Shop Now" variant="contained" />
         </Container>
       </Container>
 
@@ -138,14 +156,20 @@ export default function Home() {
                 fontWeight={500}
                 sx={{
                   color: "white",
-                  fontSize: "2.5rem",
+                  fontSize: {
+                    xs: "2.5rem",
+                    sm: "3rem",
+                    md: "",
+                    lg: "",
+                    xl: "",
+                  },
                   textShadow: "0px 2px 4px #000000A6",
                   zIndex: 2,
                 }}
               >
                 {category.title}
               </Typography>
-              <HomepageButton
+              <CallToAction
                 text="Shop Now"
                 variant="contained"
                 link={category.link}
@@ -156,4 +180,4 @@ export default function Home() {
       </Container>
     </Container>
   );
-}
+};
