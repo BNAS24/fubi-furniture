@@ -140,11 +140,19 @@ export default function ProductPage() {
           }}
         >
           <Container
+            disableGutters={true}
             sx={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
               alignItems: "center",
+              width: {
+                xs: "100%",
+                sm: "100%",
+                md: "100%",
+                lg: "100%",
+                xl: "40%",
+              },
             }}
           >
             <Image
@@ -171,6 +179,13 @@ export default function ProductPage() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
+                paddingX: {
+                  xs: "1rem",
+                  sm: "1rem",
+                  md: "1rem",
+                  lg: "0",
+                  xl: "0",
+                }
               }}
             >
               <Typography fontWeight={600} variant="h3" align="left">
