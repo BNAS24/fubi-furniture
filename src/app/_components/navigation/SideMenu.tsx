@@ -39,8 +39,8 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
       : setBodyStyle({
           display: "flex",
           flexDirection: "column",
-          width: "100vw",
-          minHeight: "100vh",
+          // width: "100vw",
+          // minHeight: "100vh",
           background: "var(--main-white)",
           overflowX: "hidden",
           fontFamily: "__Inter_aaf875, Roboto, sans-serif",

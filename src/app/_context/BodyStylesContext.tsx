@@ -34,8 +34,8 @@ export const BodyStyleProvider = ({
   const [styles, setStyles] = useState<NavigationState>({
     display: "flex",
     flexDirection: "column",
-    width: "100vw",
-    minHeight: "100%",
+    // width: "100vw",
+    // minHeight: "100%",
     background: "var(--main-white)",
     overflowX: "hidden",
     overflowY: "auto",
