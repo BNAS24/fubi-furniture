@@ -127,7 +127,7 @@ export default function Home() {
               display: "flex",
               alignItems: "center",
               position: "relative",
-              height: "85vh",
+              height: "95vh",
               width: "100%",
             }}
           >
@@ -159,9 +159,9 @@ export default function Home() {
                   fontSize: {
                     xs: "2.5rem",
                     sm: "3rem",
-                    md: "",
-                    lg: "",
-                    xl: "",
+                    md: "3rem",
+                    lg: "3.5rem",
+                    xl: "5rem",
                   },
                   textShadow: "0px 2px 4px #000000A6",
                   zIndex: 2,

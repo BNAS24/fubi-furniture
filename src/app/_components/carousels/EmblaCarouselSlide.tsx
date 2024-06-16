@@ -29,7 +29,7 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
           xs: "50vh",
           sm: "80vh",
           md: "100vh",
-          lg: "100vh",
+          lg: "70vh",
           xl: "100vh",
         },
       }}
@@ -53,6 +53,13 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
             display: "flex",
             flexDirection: "row",
             height: "100%",
+            width: {
+              xs: "100%",
+              sm: "100%",
+              md: "100%",
+              lg: "33.33%",
+              xl: "33.33%",
+            },
           }}
         >
           {slides.map((slide: any) => (
@@ -86,10 +93,10 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
                   color: "white",
                   fontSize: {
                     xs: "2rem",
-                    sm: "2.5rem",
-                    md: "",
-                    lg: "",
-                    xl: "",
+                    sm: "2.3rem",
+                    md: "2.5rem",
+                    lg: "2.5rem",
+                    xl: "3rem",
                   },
                   textShadow: "0px 2px 4px #000000A6",
                   zIndex: "2",

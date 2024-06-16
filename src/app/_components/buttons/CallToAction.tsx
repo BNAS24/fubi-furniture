@@ -24,7 +24,6 @@ export const CallToAction = ({
         <Button
           variant={variant}
           disableElevation
-          // size="large"
           sx={{
             borderRadius: "16rem",
             whiteSpace: "nowrap",

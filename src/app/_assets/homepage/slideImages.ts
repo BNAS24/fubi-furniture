@@ -20,7 +20,7 @@ export const slide: SlideContent[] = [
   },
   {
     name: "Gubi",
-    image: "/Furniture/pop-funiture-8.jpg",
+    image: "/Furniture/pop-funiture-8.webp",
     id: 3,
     link: "/products/lamps?item=prod_QC1nP288ob5WhN",
   },

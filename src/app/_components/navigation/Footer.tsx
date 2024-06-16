@@ -4,12 +4,14 @@ import Container from "@mui/material/Container";
 export const Footer = () => {
   return (
     <Container
+      maxWidth={false}
       component="footer"
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         height: "64px",
+        width: "100%",
         backgroundColor: "var(--main-green)",
       }}
     >
