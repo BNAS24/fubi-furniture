@@ -211,14 +211,14 @@ export default function ProductPage() {
       {/*Container for products collection*/}
       <Container
         disableGutters={true}
-        maxWidth={false}
+        // maxWidth={false}
         sx={{
           flexGrow: 1,
           display: "grid",
           gridTemplateColumns: "repeat(12, 1fr)",
           gridTemplateRows: "repeat(2, 1fr)",
           gap: "1rem",
-          width: "100vw",
+          width: "100%",
           height: "auto",
           padding: "0 1rem 1.5rem 1rem",
           backgroundColor: "var(--main-white)",
