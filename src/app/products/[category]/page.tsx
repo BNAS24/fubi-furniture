@@ -106,27 +106,45 @@ export default function ProductPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          height: "2.5rem",
           borderBottom: "2px solid var(--light-grey2)",
           backgroundColor: "var(--main-white)",
         }}
       >
-        {item && itemFiltered && (
+        <Typography
+          fontWeight={500}
+          sx={{
+            fontSize: "1.5rem",
+          }}
+        >
+          {category}
+        </Typography>
+      </Container>
+
+      {/*Popup for items details */}
+      {item && itemFiltered && (
+        <Container
+          disableGutters={true}
+          maxWidth={false}
+          sx={{
+            display: "flex",
+            position: "fixed",
+            inset: 0,
+            flexDirection: "column",
+            height: "100%",
+            width: "100%",
+            paddingTop: "4rem",
+            paddingBottom: "1rem",
+            backgroundColor: "var(--main-white)",
+            overflowY: "auto",
+            zIndex: "98",
+          }}
+        >
           <Container
-            disableGutters={true}
-            maxWidth={false}
             sx={{
               display: "flex",
-              position: "fixed",
-              inset: 0,
               flexDirection: "column",
-              height: "100%",
-              width: "100%",
-              paddingTop: "4rem",
-              paddingBottom: "1rem",
-              backgroundColor: "var(--main-white)",
-              overflowY: "auto",
-              zIndex: "98",
+              justifyContent: "flex-start",
+              alignItems: "center",
             }}
           >
             <Image
@@ -148,6 +166,7 @@ export default function ProductPage() {
 
             <Container
               maxWidth={false}
+              disableGutters={true}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -175,16 +194,8 @@ export default function ProductPage() {
               </Button>
             </Container>
           </Container>
-        )}
-        <Typography
-          fontWeight={500}
-          sx={{
-            fontSize: "1.5rem",
-          }}
-        >
-          {category}
-        </Typography>
-      </Container>
+        </Container>
+      )}
 
       {/*Container for filtering and results count*/}
       <Container
