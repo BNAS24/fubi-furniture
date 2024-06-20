@@ -5,6 +5,7 @@ import theme from "../../_styles/muiTheme";
 // Component for rendering cart items
 export const CartItem = ({ item, removeFromCart }: any) => (
   <Container
+    // disableGutters={true}
     sx={{
       display: "flex",
       flexDirection: "column",
@@ -19,7 +20,13 @@ export const CartItem = ({ item, removeFromCart }: any) => (
     <Container
       sx={{
         position: "relative",
-        width: "100%",
+        width: {
+          xs: "100%", // 0px
+          sm: "70%", // 600px
+          md: "50%", // 900px
+          lg: "40%", // 1200px
+          xl: "40%", // 1536px
+        },
         height: "auto",
         aspectRatio: "1/1",
       }}
@@ -43,8 +50,8 @@ export const CartItem = ({ item, removeFromCart }: any) => (
           xs: "1.5rem", // 0px
           sm: "2rem", // 600px
           md: "2.5rem", // 900px
-          lg: "3rem", // 1200px
-          xl: "3.5rem", // 1536px
+          lg: "2.5rem", // 1200px
+          xl: "3rem", // 1536px
         },
       }}
     >
@@ -55,16 +62,28 @@ export const CartItem = ({ item, removeFromCart }: any) => (
       sx={{
         fontSize: {
           xs: "1rem", // 0px
-          sm: "1.5rem", // 600px
-          md: "2rem", // 900px
-          lg: "2.5rem", // 1200px
-          xl: "3rem", // 1536px
+          sm: "1.2rem", // 600px
+          md: "1.4rem", // 900px
+          lg: "1.5rem", // 1200px
+          xl: "1.7rem", // 1536px
         },
       }}
     >
       {item.description}
     </Typography>
-    <Typography>{`\$${item.price}`}</Typography>
+    <Typography
+      sx={{
+        fontSize: {
+          xs: "1rem", // 0px
+          sm: "1.1rem", // 600px
+          md: "1.2rem", // 900px
+          lg: "1.3rem", // 1200px
+          xl: "1.4rem", // 1536px
+        },
+      }}
+    >
+      {`\$${item.price}`}
+    </Typography>
     <Button
       disableElevation={true}
       onClick={() => removeFromCart(item.product_id)}
