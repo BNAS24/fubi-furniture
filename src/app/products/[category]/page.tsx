@@ -25,7 +25,7 @@ export default function ProductPage() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const category = pathname.split("/")[2];
+  const category =  pathname.split("/")[2].charAt(0).toUpperCase() + pathname.split("/")[2].slice(1);
   const item = searchParams.get("item");
 
   const [products, setProducts] = useState<Product[]>([]);
@@ -183,8 +183,8 @@ export default function ProductPage() {
                 alignItems: "flex-start",
                 paddingX: {
                   xs: "1rem",
-                  sm: "1rem",
-                  md: "1rem",
+                  sm: "0",
+                  md: "0",
                   lg: "0",
                   xl: "0",
                 },

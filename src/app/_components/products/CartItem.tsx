@@ -16,17 +16,54 @@ export const CartItem = ({ item, removeFromCart }: any) => (
       padding: "0 0 8px 0",
     }}
   >
-    <Image
-      src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${item.image}`}
-      alt={item.name}
-      priority={true}
-      style={{ width: "100%", height: "auto" }}
-      height={100}
-      width={100}
-      quality={100}
-    />
-    <Typography>{item.name}</Typography>
-    <Typography align="center">{item.description}</Typography>
+    <Container
+      sx={{
+        position: "relative",
+        width: "100%",
+        height: "auto",
+        aspectRatio: "1/1",
+      }}
+    >
+      <Image
+        src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${item.image}`}
+        alt={item.name}
+        priority={true}
+        quality={100}
+        fill
+        sizes="100w"
+        style={{
+          objectFit: "cover",
+        }}
+      />
+    </Container>
+    <Typography
+      fontWeight={500}
+      sx={{
+        fontSize: {
+          xs: "1.5rem", // 0px
+          sm: "2rem", // 600px
+          md: "2.5rem", // 900px
+          lg: "3rem", // 1200px
+          xl: "3.5rem", // 1536px
+        },
+      }}
+    >
+      {item.name}
+    </Typography>
+    <Typography
+      align="center"
+      sx={{
+        fontSize: {
+          xs: "1rem", // 0px
+          sm: "1.5rem", // 600px
+          md: "2rem", // 900px
+          lg: "2.5rem", // 1200px
+          xl: "3rem", // 1536px
+        },
+      }}
+    >
+      {item.description}
+    </Typography>
     <Typography>{`\$${item.price}`}</Typography>
     <Button
       disableElevation={true}
