@@ -71,8 +71,6 @@ export default function ProductPage() {
     const bodyStyleDefault = {
       display: "flex",
       flexDirection: "column",
-      // width: "100vw",
-      // minHeight: "100vh",
       background: "var(--main-white)",
       overflowX: "hidden",
       fontFamily: "__Inter_aaf875, Roboto, sans-serif",
@@ -148,30 +146,34 @@ export default function ProductPage() {
               alignItems: "center",
               width: {
                 xs: "100%",
-                sm: "100%",
-                md: "100%",
-                lg: "100%",
+                sm: "80%",
+                md: "75%",
+                lg: "50%",
                 xl: "40%",
               },
             }}
-          >
-            <Image
-              src={
-                `${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${itemFiltered.image}` ||
-                "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
-              }
-              alt={itemFiltered.name || "Fubi furniture item"}
-              priority={true}
-              style={{
+            >
+            <Container
+              disableGutters={true}
+              sx={{
+                position: "relative",
                 width: "100%",
                 height: "auto",
-                aspectRatio: "1:1",
+                aspectRatio: "1/1",
               }}
-              width={100}
-              height={100}
-              sizes="max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-
+            >
+              <Image
+                src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${itemFiltered.image}`}
+                alt={itemFiltered.name}
+                priority={true}
+                quality={100}
+                fill
+                sizes="100w"
+                style={{
+                  objectFit: "cover",
+                }}
+              />
+            </Container>
             <Container
               maxWidth={false}
               disableGutters={true}
@@ -185,7 +187,8 @@ export default function ProductPage() {
                   md: "1rem",
                   lg: "0",
                   xl: "0",
-                }
+                },
+                paddingBottom: "1rem",
               }}
             >
               <Typography fontWeight={600} variant="h3" align="left">

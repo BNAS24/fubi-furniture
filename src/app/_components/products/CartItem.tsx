@@ -17,11 +17,8 @@ export const CartItem = ({ item, removeFromCart }: any) => (
     }}
   >
     <Image
-      src={
-        `${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${item.image}` ||
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fclarionhealthcare.com%2Fcategory%2Frare-diesease%2F&psig=AOvVaw08oOaZP4d9cPYCdn3Bm8m8&ust=1717307613000000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOix1MTbuYYDFQAAAAAdAAAAABAE"
-      }
-      alt={item.name || "Fubi furniture item"}
+      src={`${process.env.NEXT_PUBLIC_DOMAIN}/Furniture/${item.image}`}
+      alt={item.name}
       priority={true}
       style={{ width: "100%", height: "auto" }}
       height={100}
