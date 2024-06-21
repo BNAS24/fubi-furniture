@@ -6,6 +6,7 @@ const Account = () => {
     <Container
       sx={{
         flex: "1 0",
+        minHeight: "100vh",
       }}
     >
       <Typography variant="h3" align="center">

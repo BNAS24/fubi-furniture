@@ -9,13 +9,16 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import { useBodyStyle } from "../../_context/BodyStylesContext";
+import { useSearchParams } from "next/navigation";
 
 const SideNavigation = animated(Container);
 
 export default function SideMenu({ handleMenu, menuOpen }: any) {
   const [animationComplete, setAnimationComplete] = useState(true);
   const { setBodyStyle } = useBodyStyle();
-
+  const searchParams = useSearchParams();
+  const item = searchParams.get("item");
+  
   // Define spring animation configuration
   const spring = useSpring({
     width: menuOpen ? "100%" : "0",
@@ -39,13 +42,12 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
       : setBodyStyle({
           display: "flex",
           flexDirection: "column",
-          // width: "100vw",
-          // minHeight: "100vh",
           background: "var(--main-white)",
           overflowX: "hidden",
-          fontFamily: "__Inter_aaf875, Roboto, sans-serif",
+          overflowY: item ? "hidden" : null,
+          fontFamily: "Inter, Roboto, sans-serif",
         });
-  }, [menuOpen, setBodyStyle]);
+  }, [menuOpen, setBodyStyle, item]);
 
   return (
     //Nav side menu

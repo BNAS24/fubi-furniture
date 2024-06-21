@@ -7,7 +7,7 @@ interface NavigationState {
   minHeight?: string;
   background?: string;
   overflowX?: string;
-  overflowY?: string;
+  overflowY?: string | null;
   fontFamily?: string;
   position?: string;
   top?: number;
@@ -34,12 +34,9 @@ export const BodyStyleProvider = ({
   const [styles, setStyles] = useState<NavigationState>({
     display: "flex",
     flexDirection: "column",
-    // width: "100vw",
-    // minHeight: "100%",
     background: "var(--main-white)",
     overflowX: "hidden",
-    overflowY: "auto",
-    fontFamily: "__Inter_aaf875, Roboto, sans-serif",
+    fontFamily: "Inter, Roboto, sans-serif",
   });
 
   const setBodyStyle = useCallback(

@@ -44,6 +44,8 @@ const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
       sx={{
         ...styles,
         minHeight: "100vh",
+        fontFamily: "Inter, Roboto, sans-serif",
+
       }}
     >
       <SideMenu handleMenu={handleMenu} menuOpen={menuOpen} />
