@@ -17,7 +17,7 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
   const [animationComplete, setAnimationComplete] = useState(true);
   const [queryItem, setQueryItem] = useState<string | null>("")
 
-  const { setBodyStyle } = useBodyStyle();
+  const { setBodyStyle } = useBodyStyle(); 
 
   const searchParams = useSearchParams();
   // const item = searchParams.get("item");
