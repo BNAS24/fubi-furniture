@@ -39,16 +39,13 @@ export const BodyStyleProvider = ({
     fontFamily: "Inter, Roboto, sans-serif",
   });
 
-  // const setBodyStyle = useCallback(
-  //   (state: NavigationState) => {
-  //     setStyles(state);
-  //   },
-  //   [] // No dependencies needed as we're not using any external variables or props
-  // );
-  const setBodyStyle = (state: NavigationState) => {
-    setStyles(state);
-  };
-  
+  const setBodyStyle = useCallback(
+    (state: NavigationState) => {
+      setStyles(state);
+    },
+    [] // No dependencies needed as we're not using any external variables or props
+  );
+
   return (
     <BodyStyleContext.Provider value={{ styles, setBodyStyle }}>
       {children}
