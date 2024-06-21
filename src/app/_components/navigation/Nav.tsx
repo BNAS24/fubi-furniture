@@ -15,11 +15,13 @@ import HomepageLogo from "../buttons/HomepageLogo";
 import MenuButton from "../buttons/MenuButton";
 import SearchButton from "../buttons/SearchButton";
 import { CartItem } from "../products/CartItem";
+import { calculateTotalPrice } from "@/app/_helpers/calculateTotalPrice";
 
 export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
   const [bagPopulated, setBagPopulated] = useState(false);
   const [searchText, setSearchText] = useState<string>("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [cartTotal, setCartTotal] = useState("");
 
   const {
     searchButtonClicked,
@@ -50,8 +52,6 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
       : setBodyStyle({
           display: "flex",
           flexDirection: "column",
-          // width: "100vw",
-          // minHeight: "100vh",
           background: "var(--main-white)",
           overflowX: "hidden",
           fontFamily: "__Inter_aaf875, Roboto, sans-serif",
@@ -59,7 +59,12 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
   }, [searchButtonClicked, bagButtonClicked, setBodyStyle]);
 
   useEffect(() => {
-    cartItems.length > 0 ? setBagPopulated(true) : setBagPopulated(false);
+    if (cartItems.length > 0) {
+      setBagPopulated(true);
+    } else {
+      setBagPopulated(false);
+    }
+    setCartTotal(calculateTotalPrice(cartItems));
   }, [cartItems]);
 
   const handleSearchText = (event: any) => {
@@ -110,6 +115,8 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
 
     // Dependency array including searchText to trigger the effect when searchText changes
   }, [searchText]);
+
+  console.log(cartItems);
 
   const bagOrSearchIconClicked = (arg: string) => {
     arg === "bag" ? toggleBagButton() : toggleSearchButton();
@@ -263,6 +270,19 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
                 Your cart is currently empty
               </Typography>
             )}
+            <Container
+              disableGutters={true}
+              maxWidth={false}
+              sx={{ paddingX: "0.2rem", paddingBottom: "1rem" }}
+            >
+              <Typography
+                align="center"
+                fontWeight={600}
+                sx={{ color: theme.palette.primary.main }}
+              >
+                Subtotal: ${cartTotal}
+              </Typography>
+            </Container>
           </Container>
         </Container>
 
