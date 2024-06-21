@@ -51,7 +51,6 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
           background: "var(--main-white)",
           overflowX: "hidden",
           overflowY: queryItem ? "hidden" : null,
-          minHeight: queryItem ? "unset" : "100vh",
           fontFamily: "Inter, Roboto, sans-serif",
         });
   }, [menuOpen, setBodyStyle, item, queryItem]);

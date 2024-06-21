@@ -45,7 +45,7 @@ const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
       component="body"
       sx={{
         ...styles,
-        // minHeight: "100vh",
+        minHeight: "100vh",
         fontFamily: "Inter, Roboto, sans-serif",
       }}
     >

@@ -107,6 +107,7 @@ export default function ProductPage() {
           justifyContent: "center",
           borderBottom: "2px solid var(--light-grey2)",
           backgroundColor: "var(--main-white)",
+          overflow: item ? "hidden" : null,
         }}
       >
         <Typography
