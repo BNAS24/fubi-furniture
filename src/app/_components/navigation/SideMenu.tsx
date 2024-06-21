@@ -50,12 +50,12 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
           flexDirection: "column",
           background: "var(--main-white)",
           overflowX: "hidden",
-          overflowY: queryItem ? "hidden" : null,
+          // overflowY: queryItem ? "hidden" : null,
           fontFamily: "Inter, Roboto, sans-serif",
         });
   }, [menuOpen, setBodyStyle, item, queryItem]);
 
-  console.log("queryItem", queryItem);
+  // console.log("queryItem", queryItem);
   
   return (
     //Nav side menu
