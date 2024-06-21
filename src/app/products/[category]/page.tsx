@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import { useCart } from "@/app/_context/CartContext";
 import { useBodyStyle } from "@/app/_context/BodyStylesContext";
 
+
 export interface Product {
   product_id: string;
   name: string;
