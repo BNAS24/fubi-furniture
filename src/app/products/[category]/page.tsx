@@ -23,9 +23,9 @@ export interface Product {
 
 export default function ProductPage() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-
   const category =  pathname.split("/")[2].charAt(0).toUpperCase() + pathname.split("/")[2].slice(1);
+  
+  const searchParams = useSearchParams();
   const item = searchParams.get("item");
 
   const [products, setProducts] = useState<Product[]>([]);
