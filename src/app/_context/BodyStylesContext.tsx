@@ -1,4 +1,3 @@
-"use client";
 import React, { createContext, useState, useCallback, useContext } from "react";
 
 interface NavigationState {
@@ -40,13 +39,16 @@ export const BodyStyleProvider = ({
     fontFamily: "Inter, Roboto, sans-serif",
   });
 
-  const setBodyStyle = useCallback(
-    (state: NavigationState) => {
-      setStyles(state);
-    },
-    [] // No dependencies needed as we're not using any external variables or props
-  );
-
+  // const setBodyStyle = useCallback(
+  //   (state: NavigationState) => {
+  //     setStyles(state);
+  //   },
+  //   [] // No dependencies needed as we're not using any external variables or props
+  // );
+  const setBodyStyle = (state: NavigationState) => {
+    setStyles(state);
+  };
+  
   return (
     <BodyStyleContext.Provider value={{ styles, setBodyStyle }}>
       {children}
