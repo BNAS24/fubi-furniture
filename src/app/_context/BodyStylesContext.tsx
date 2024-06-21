@@ -1,3 +1,4 @@
+"use client";
 import React, { createContext, useState, useCallback, useContext } from "react";
 
 interface NavigationState {
