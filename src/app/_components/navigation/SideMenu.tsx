@@ -1,19 +1,17 @@
 "use client";
 import CloseIcon from "@mui/icons-material/Close";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import theme from "../../_styles/muiTheme";
-import { navDir } from "../../_assets/navigation/navDirectory";
 import { animated, useSpring } from "@react-spring/web";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
-import Backdrop from "@mui/material/Backdrop";
-import { useBodyStyle } from "../../_context/BodyStylesContext";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
+import { Suspense, useEffect, useState } from "react";
+import { navDir } from "../../_assets/navigation/navDirectory";
+import { useBodyStyle } from "../../_context/BodyStylesContext";
+import theme from "../../_styles/muiTheme";
 
-export const dynamic = 'force-dynamic';
 const SideNavigation = animated(Container);
 
 export default function SideMenu({ handleMenu, menuOpen }: any) {

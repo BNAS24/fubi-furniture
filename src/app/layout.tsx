@@ -10,6 +10,8 @@ import { TopNavBar } from "./_components/navigation/Nav";
 import { Footer } from "./_components/navigation/Footer";
 import "./globals.css";
 import { useState } from "react";
+import { Suspense } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -45,10 +47,12 @@ const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
         ...styles,
         minHeight: "100vh",
         fontFamily: "Inter, Roboto, sans-serif",
-
       }}
     >
-      <SideMenu handleMenu={handleMenu} menuOpen={menuOpen} />
+      <Suspense fallback={<CircularProgress />}>
+        <SideMenu handleMenu={handleMenu} menuOpen={menuOpen} />
+      </Suspense>
+
       <TopNavBar handleMenu={handleMenu} menuOpen={menuOpen} />
       <Container
         disableGutters
