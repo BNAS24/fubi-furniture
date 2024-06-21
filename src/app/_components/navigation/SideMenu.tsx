@@ -13,6 +13,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 
+export const dynamic = 'force-dynamic';
 const SideNavigation = animated(Container);
 
 export default function SideMenu({ handleMenu, menuOpen }: any) {
