@@ -65,14 +65,15 @@ export default function ProductPage() {
     // Calls the getProducts function with the category string extracted from the url
     getProducts(category);
   }, [category, item]);
-console.log("item" , itemFiltered)
+
   // Prevents scrolling when item page is showing
   useEffect(() => {
     const bodyStyleDefault = {
       display: "flex",
       flexDirection: "column",
-      backgroundColor: "var(--main-white)",
+      background: "var(--main-white)",
       overflowX: "hidden",
+      fontFamily: "__Inter_aaf875, Roboto, sans-serif",
     };
 
     const bodyStyleFixed = {

@@ -16,7 +16,6 @@ import MenuButton from "../buttons/MenuButton";
 import SearchButton from "../buttons/SearchButton";
 import { CartItem } from "../products/CartItem";
 import { calculateTotalPrice } from "@/app/_helpers/calculateTotalPrice";
-import { useSearchParams } from "next/navigation";
 
 export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
   const [bagPopulated, setBagPopulated] = useState(false);
@@ -34,10 +33,6 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
 
   // Extracts cart items from the cart context
   const { cartItems, removeFromCart } = useCart();
-
-  const searchParams = useSearchParams();
-  const item = searchParams.get("item");
-  console.log(item);
 
   useEffect(() => {
     const searchElement = document.getElementById("site-search");
@@ -59,9 +54,9 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           flexDirection: "column",
           background: "var(--main-white)",
           overflowX: "hidden",
-          fontFamily: "Inter, Roboto, sans-serif",
+          fontFamily: "__Inter_aaf875, Roboto, sans-serif",
         });
-  }, [searchButtonClicked, bagButtonClicked, setBodyStyle, item]);
+  }, [searchButtonClicked, bagButtonClicked, setBodyStyle]);
 
   useEffect(() => {
     if (cartItems.length > 0) {
