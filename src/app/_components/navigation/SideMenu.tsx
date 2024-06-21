@@ -9,16 +9,18 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import { useBodyStyle } from "../../_context/BodyStylesContext";
-// import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const SideNavigation = animated(Container);
 
 export default function SideMenu({ handleMenu, menuOpen }: any) {
   const [animationComplete, setAnimationComplete] = useState(true);
+  const [queryItem, setQueryItem] = useState<string | null>("")
+
   const { setBodyStyle } = useBodyStyle();
 
-  // const searchParams = useSearchParams();
-  // const item = searchParams.get("item");
+  const searchParams = useSearchParams();
+  const item = searchParams.get("item");
   
   // Define spring animation configuration
   const spring = useSpring({
@@ -34,6 +36,9 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
   });
 
   useEffect(() => {
+
+    setQueryItem(item);
+
     menuOpen
       ? setBodyStyle({
         display: "block",
@@ -45,11 +50,13 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
           flexDirection: "column",
           background: "var(--main-white)",
           overflowX: "hidden",
-          // overflowY: item ? "hidden" : null,
+          overflowY: queryItem ? "hidden" : null,
           fontFamily: "Inter, Roboto, sans-serif",
         });
-  }, [menuOpen, setBodyStyle]);
+  }, [menuOpen, setBodyStyle, item, queryItem]);
 
+  console.log("queryItem", queryItem);
+  
   return (
     //Nav side menu
     <SideNavigation
