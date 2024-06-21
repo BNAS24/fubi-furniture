@@ -116,8 +116,6 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
     // Dependency array including searchText to trigger the effect when searchText changes
   }, [searchText]);
 
-  console.log(cartItems);
-
   const bagOrSearchIconClicked = (arg: string) => {
     arg === "bag" ? toggleBagButton() : toggleSearchButton();
   };
