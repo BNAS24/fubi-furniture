@@ -1,5 +1,5 @@
 interface Product {
-    product_id: number;
+    product_id: string;
     name: string;
     price: string | number; // Allow price to be a string or number
     description?: string
