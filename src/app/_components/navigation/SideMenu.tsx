@@ -16,8 +16,10 @@ const SideNavigation = animated(Container);
 export default function SideMenu({ handleMenu, menuOpen }: any) {
   const [animationComplete, setAnimationComplete] = useState(true);
   const { setBodyStyle } = useBodyStyle();
+
   const searchParams = useSearchParams();
   const item = searchParams.get("item");
+  const itemExists = !!item;
   
   // Define spring animation configuration
   const spring = useSpring({
@@ -44,10 +46,10 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
           flexDirection: "column",
           background: "var(--main-white)",
           overflowX: "hidden",
-          overflowY: item ? "hidden" : null,
+          overflowY: itemExists ? "hidden" : null,
           fontFamily: "Inter, Roboto, sans-serif",
         });
-  }, [menuOpen, setBodyStyle, item]);
+  }, [menuOpen, setBodyStyle, itemExists]);
 
   return (
     //Nav side menu
