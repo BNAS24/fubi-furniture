@@ -20,7 +20,7 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
   const { setBodyStyle } = useBodyStyle();
 
   const searchParams = useSearchParams();
-  const item = searchParams.get("item");
+  // const item = searchParams.get("item");
   
   // Define spring animation configuration
   const spring = useSpring({
@@ -37,7 +37,7 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
 
   useEffect(() => {
 
-    setQueryItem(item);
+    // setQueryItem(item);
 
     menuOpen
       ? setBodyStyle({
@@ -53,7 +53,7 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
           // overflowY: queryItem ? "hidden" : null,
           fontFamily: "Inter, Roboto, sans-serif",
         });
-  }, [menuOpen, setBodyStyle, item, queryItem]);
+  }, [menuOpen, setBodyStyle]);
 
   // console.log("queryItem", queryItem);
   
