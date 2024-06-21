@@ -43,6 +43,7 @@ const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
       component="body"
       sx={{
         ...styles,
+        minHeight: "100vh",
       }}
     >
       <SideMenu handleMenu={handleMenu} menuOpen={menuOpen} />
