@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = 'force-dynamic'
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { FilterButton } from "../../_components/buttons/FilterButton";
@@ -74,7 +73,7 @@ export default function ProductPage() {
       flexDirection: "column",
       background: "var(--main-white)",
       overflowX: "hidden",
-      fontFamily: "__Inter_aaf875, Roboto, sans-serif",
+      fontFamily: "Inter, Roboto, sans-serif",
     };
 
     const bodyStyleFixed = {
