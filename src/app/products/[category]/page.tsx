@@ -74,6 +74,7 @@ export default function ProductPage() {
       flexDirection: "column",
       background: "var(--main-white)",
       overflowX: "hidden",
+      overflowY: itemFiltered ? "hidden" : null,
       fontFamily: "Inter, Roboto, sans-serif",
     };
 
@@ -107,7 +108,6 @@ export default function ProductPage() {
           justifyContent: "center",
           borderBottom: "2px solid var(--light-grey2)",
           backgroundColor: "var(--main-white)",
-          overflow: item ? "hidden" : null,
         }}
       >
         <Typography
