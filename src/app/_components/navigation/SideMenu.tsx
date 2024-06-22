@@ -39,21 +39,27 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
   useEffect(() => {
     setQueryItem(item);
 
-    menuOpen && queryItem
+    const productPage = {
+      display: "block",
+      position: "fixed",
+      inset: 0,
+    };
+
+    const other = {
+      display: "flex",
+      flexDirection: "column",
+      backgroundColor: "var(--main-white)",
+      overflowX: "hidden",
+      fontFamily: "Inter, Roboto, sans-serif",
+    };
+
+    menuOpen
       ? setBodyStyle({
           display: "block",
           position: "fixed",
           inset: 0,
         })
-      : setBodyStyle({
-          display: queryItem ? "block" : "flex",
-          flexDirection: queryItem ? "unset" : "column",
-          backgroundColor: "var(--main-white)",
-          overflowX: queryItem ? "hidden" : "unset",
-          overflowY: queryItem ? "hidden" : "unset",
-          minHeight: queryItem ? "unset" : "100vh",
-          fontFamily: "Inter, Roboto, sans-serif",
-        });
+      : setBodyStyle(queryItem ? productPage : other);
   }, [menuOpen, setBodyStyle, item, queryItem]);
 
   return (
