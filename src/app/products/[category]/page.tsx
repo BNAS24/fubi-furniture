@@ -74,7 +74,6 @@ export default function ProductPage() {
       flexDirection: "column",
       backgroundColor: "var(--main-white)",
       overflowX: "hidden",
-      // overflowY: itemFiltered ? "hidden" : "unset",
       fontFamily: "Inter, Roboto, sans-serif",
     };
 
