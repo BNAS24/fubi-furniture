@@ -52,7 +52,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
       : setBodyStyle({
           display: "flex",
           flexDirection: "column",
-          background: "var(--main-white)",
+          backgroundColor: "var(--main-white)",
           overflowX: "hidden",
           fontFamily: "__Inter_aaf875, Roboto, sans-serif",
         });
@@ -139,7 +139,7 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
           padding: searchButtonClicked ? "8px 0 0 0" : "unset",
           inset: 0,
           height: searchButtonClicked || bagButtonClicked ? "100%" : "64px",
-          background: theme.palette.primary.main,
+          backgroundColor: theme.palette.primary.main,
           overflow: "hidden",
           zIndex: 99,
         }}

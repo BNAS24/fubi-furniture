@@ -72,7 +72,7 @@ export default function ProductPage() {
     const bodyStyleDefault = {
       display: "flex",
       flexDirection: "column",
-      background: "var(--main-white)",
+      backgroundColor: "var(--main-white)",
       overflowX: "hidden",
       overflowY: itemFiltered ? "hidden" : "unset",
       fontFamily: "Inter, Roboto, sans-serif",
