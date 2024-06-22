@@ -50,7 +50,7 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
           flexDirection: "column",
           background: "var(--main-white)",
           overflowX: "hidden",
-          overflowY: queryItem ? "hidden" : null,
+          overflowY: queryItem ? "hidden" : "unset",
           fontFamily: "Inter, Roboto, sans-serif",
         });
   }, [menuOpen, setBodyStyle, item, queryItem]);
