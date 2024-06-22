@@ -39,18 +39,19 @@ export default function SideMenu({ handleMenu, menuOpen }: any) {
   useEffect(() => {
     setQueryItem(item);
 
-    menuOpen
+    menuOpen && queryItem
       ? setBodyStyle({
           display: "block",
           position: "fixed",
           inset: 0,
         })
       : setBodyStyle({
-          display: "flex",
-          flexDirection: "column",
-          background: "var(--main-white)",
-          overflowX: "hidden",
+          display: queryItem ? "block" : "flex",
+          flexDirection: queryItem ? "unset" : "column",
+          backgroundColor: "var(--main-white)",
+          overflowX: queryItem ? "hidden" : "unset",
           overflowY: queryItem ? "hidden" : "unset",
+          minHeight: queryItem ? "unset" : "100vh",
           fontFamily: "Inter, Roboto, sans-serif",
         });
   }, [menuOpen, setBodyStyle, item, queryItem]);
