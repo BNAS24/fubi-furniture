@@ -67,6 +67,10 @@ input[type="search"]::placeholder {
   color: var(--light-grey1);
 }
 
+.global-buttons-hover:hover {
+  cursor: pointer;
+}
+
 .search-button {
   min-width: 24px;
 }
@@ -101,8 +105,7 @@ footer {
 
 .embla__slide {
   display: flex;
-  flex: 0 0 100%;
-  min-width: 0;
+  flex: 1 0 auto;
 }
 
 .pair-of-buttons-container {

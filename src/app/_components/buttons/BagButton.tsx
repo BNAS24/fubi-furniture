@@ -9,6 +9,9 @@ const BagButton = ({ searchClicked, bagClicked, bagPopulated }: any) =>
         justifyContent: bagClicked ? "flex-start" : "center",
         alignItems: "center",
         padding: "0.5rem 0.5rem",
+        "&:hover": {
+          cursor: "pointer",
+        },
       }}
     >
       <svg
@@ -40,6 +43,9 @@ const BagButton = ({ searchClicked, bagClicked, bagPopulated }: any) =>
         justifyContent: bagClicked ? "flex-start" : "center",
         alignItems: "center",
         padding: "0.5rem 0.5rem",
+        "&:hover": {
+          cursor: "pointer",
+        },
       }}
     >
       <svg

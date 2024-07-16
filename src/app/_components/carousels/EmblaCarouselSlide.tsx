@@ -14,9 +14,11 @@ interface PropType {
 
 // Slider component
 export default function EmblaCarouselSlide({ slides }: PropType) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: true }, [Autoplay()]);
   const { selectedIndex } = usePagination(emblaApi);
 
+  console.log("slides", slides);
+  
   return (
     //Slides wrapper div to keep elements together
     <Container
@@ -53,13 +55,7 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
             display: "flex",
             flexDirection: "row",
             height: "100%",
-            width: {
-              xs: "100%",
-              sm: "100%",
-              md: "100%",
-              lg: "33.33%",
-              xl: "33.33%",
-            },
+            width: "100%",
           }}
         >
           {slides.map((slide: any) => (
@@ -74,6 +70,7 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
                 justifyContent: "center",
                 alignItems: "center",
                 position: "relative",
+                width: "33.33%",
               }}
             >
               <Image

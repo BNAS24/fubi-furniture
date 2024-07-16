@@ -12,11 +12,15 @@ export default function MenuButton({
       {/*Menu Button*/}
       <Box
         onClick={handleMenu}
+        // className="global-buttons-hover"
         sx={{
           display: searchClicked || bagButtonClicked ? "none" : "flex",
           justifyContent: "center",
           alignItems: "center",
           padding: "0.5rem 0.5rem",
+          "&:hover": {
+            cursor: "pointer",
+          }
         }}
       >
         <svg

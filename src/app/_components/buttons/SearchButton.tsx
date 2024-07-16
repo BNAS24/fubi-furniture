@@ -39,6 +39,9 @@ const SearchButton = ({
           ? theme.palette.primary.light
           : "transparent",
         borderRadius: "2.5rem",
+        "&:hover": {
+          cursor: "pointer",
+        }
       }}
     >
       <svg
