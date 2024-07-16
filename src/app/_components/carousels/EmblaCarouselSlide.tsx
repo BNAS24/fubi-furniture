@@ -18,6 +18,7 @@ export default function EmblaCarouselSlide({ slides }: PropType) {
     { align: "start", loop: true },
     [Autoplay()]
   );
+  
   const { selectedIndex } = usePagination(emblaApi);
 
   console.log("slides", slides);

@@ -216,6 +216,9 @@ export const TopNavBar = ({ handleMenu, menuOpen }: any) => {
                   searchButtonClicked || bagButtonClicked ? "flex" : "none",
                 color: theme.palette.primary.contrastText,
                 padding: "0 0",
+                "&:hover": {
+                  cursor: "pointer",
+                }
               }}
             >
               {searchButtonClicked ? "cancel" : "close"}
